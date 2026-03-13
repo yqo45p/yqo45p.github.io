@@ -21,8 +21,22 @@ nav {
     background: rgba(180,212,109,0.9);
     display:flex; justify-content:center; padding:15px 0; z-index:10;
 }
-nav a { color:#b4d46d; margin:0 25px; text-decoration:none; font-weight:bold; letter-spacing:1px; }
-nav a:hover { text-decoration:underline; }
+nav a {
+    color:#b4d46d;
+    margin:0 25px;
+    text-decoration:none;
+    font-weight:bold;
+    letter-spacing:1px;
+    padding:4px 8px;
+    border-radius:8px;
+    transition: 0.2s;
+}
+/* 點擊/聚焦圈圈效果只留 nav，email 不用 */
+nav a:focus, nav a:active {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(180, 212, 109, 0.7);
+    background: rgba(180,212,109,0.1);
+}
 
 #hero h1, section h2, section h3 {
     font-family: 'Dela Gothic One', sans-serif;
@@ -54,7 +68,7 @@ section.visible { opacity:1; transform: translateY(0); }
 .project img {
     width:100%;
     height:250px;
-    object-fit:cover; /* 修正格子空白 */
+    object-fit:cover;
     display:block;
 }
 .project:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.5); }
@@ -77,6 +91,15 @@ section.visible { opacity:1; transform: translateY(0); }
     max-width:90%; max-height:90%; border-radius:8px;
 }
 #lightbox span { position:absolute; top:30px; right:30px; font-size:40px; color:#fff; cursor:pointer; }
+
+/* Email 文字不出圈，只改顏色 */
+a[href^="mailto:"] {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+a[href^="mailto:"]:hover {
+    text-decoration: underline;
+}
 </style>
 </head>
 
@@ -139,6 +162,8 @@ const lightbox = document.getElementById('lightbox');
 projects.forEach(proj => {
   proj.addEventListener('click', () => {
     lightbox.innerHTML = '<span id="close">&times;</span>'; // 重置內容
+    lightbox.style.display = 'flex';
+
     if(proj.dataset.video){
         const iframe = document.createElement('iframe');
         iframe.src = proj.dataset.video;
@@ -149,12 +174,11 @@ projects.forEach(proj => {
         img.src = proj.querySelector('img').src;
         lightbox.appendChild(img);
     }
-    lightbox.style.display = 'flex';
 
-    document.getElementById('close').addEventListener('click', ()=>{ lightbox.style.display='none'; });
+    const closeBtn = document.getElementById('close');
+    closeBtn.addEventListener('click', ()=>{ lightbox.style.display='none'; });
   });
 });
-lightbox.addEventListener('click', e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
 
 // 滑動淡入
 const sections = document.querySelectorAll('section');
