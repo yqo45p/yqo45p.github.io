@@ -2,14 +2,11 @@
 <html lang="zh-HK">
 
 <head>
-
 <meta charset="UTF-8">
 <title>曾珮甄作品集</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
 <style>
-
 body{
 margin:0;
 font-family:'Dela Gothic One',sans-serif;
@@ -45,7 +42,6 @@ font-size:18px;
 }
 
 /* hero */
-
 #hero{
 height:100vh;
 display:flex;
@@ -60,7 +56,6 @@ margin-bottom:10px;
 }
 
 /* masonry layout */
-
 .projects{
 column-count:3;
 column-gap:20px;
@@ -97,7 +92,6 @@ display:block;
 }
 
 /* hover title */
-
 .project-title{
 position:absolute;
 bottom:0;
@@ -114,7 +108,6 @@ opacity:1;
 }
 
 /* project panel */
-
 #project-panel{
 position:fixed;
 top:0;
@@ -144,7 +137,6 @@ cursor:pointer;
 }
 
 /* mouse background */
-
 #mouse-bg{
 position:fixed;
 top:0;
@@ -160,9 +152,7 @@ body *{
 position:relative;
 z-index:1;
 }
-
 </style>
-
 </head>
 
 <body>
@@ -175,189 +165,121 @@ z-index:1;
 <a href="#connect">Connect</a>
 </nav>
 
-
 <section id="hero">
-
 <h1>曾珮甄作品集</h1>
-
 <p>Design / Editing / 3D Modeling</p>
-
 </section>
-
 
 <section id="about">
-
 <h2>About</h2>
-
-<p>
-這裡可以寫你的自我介紹，例如設計理念、擅長的領域、或是你想做的方向。
-</p>
-
+<p>這裡可以寫你的自我介紹，例如設計理念、擅長的領域、或是你想做的方向。</p>
 </section>
 
-
 <section id="work">
-
 <h2>Work</h2>
 
 <h3>Design</h3>
-
 <div class="projects">
-
-<div class="project"
-data-title="SHIFT"
-data-description="SHIFT 視覺設計專案，透過幾何構圖與色彩呈現動態轉變。">
-
+<div class="project" data-title="SHIFT" data-description="SHIFT 視覺設計專案，透過幾何構圖與色彩呈現動態轉變。">
 <img src="design/shift.jpg">
-
-<div class="project-title">
-SHIFT
+<div class="project-title">SHIFT</div>
 </div>
 
-</div>
-
-<div class="project"
-data-title="Film Festival"
-data-description="Film Festival 海報設計。">
-
+<div class="project" data-title="Film Festival" data-description="Film Festival 海報設計。">
 <img src="design/filmfestival.png">
-
-<div class="project-title">
-Film Festival
+<div class="project-title">Film Festival</div>
 </div>
 
-</div>
-
-<div class="project"
-data-title="Communication Camp"
-data-description="Communication Camp 視覺設計。">
-
+<div class="project" data-title="Communication Camp" data-description="Communication Camp 視覺設計。">
 <img src="design/communicationcamp.jpg">
-
-<div class="project-title">
-Communication Camp
+<div class="project-title">Communication Camp</div>
 </div>
 
-</div>
-
-<div class="project"
-data-title="Voice of Zhongzheng"
-data-description="Voice of Zhongzheng 視覺專案。">
-
+<div class="project" data-title="Voice of Zhongzheng" data-description="Voice of Zhongzheng 視覺專案。">
 <img src="design/voiceofzhongzheng.jpg">
-
-<div class="project-title">
-Voice of Zhongzheng
+<div class="project-title">Voice of Zhongzheng</div>
+</div>
 </div>
 
+<h3>Editing</h3>
+<div class="projects">
+<div class="project" data-title="Editing Work 1" data-description="剪輯作品。">
+<img src="editing/video1.jpg">
+<div class="project-title">Editing Work 1</div>
 </div>
 
+<div class="project" data-title="Editing Work 2" data-description="剪輯作品。">
+<img src="editing/video2.jpg">
+<div class="project-title">Editing Work 2</div>
+</div>
+</div>
+
+<h3>3D Modeling</h3>
+<div class="projects">
+<div class="project" data-title="3D Project 1" data-description="3D 建模作品。">
+<img src="3d/model1.jpg">
+<div class="project-title">3D Project 1</div>
+</div>
+<div class="project" data-title="3D Project 2" data-description="3D 建模作品。">
+<img src="3d/model2.jpg">
+<div class="project-title">3D Project 2</div>
+</div>
 </div>
 
 </section>
-
 
 <section id="connect">
-
 <h2>Connect</h2>
-
 <p>Email: jane940410@gmail.com</p>
-
 </section>
 
-
 <div id="project-panel">
-
 <span id="panel-close">✕</span>
-
 <img id="panel-img">
-
 <h2 id="panel-title"></h2>
-
 <p id="panel-text"></p>
-
 </div>
 
-
 <script>
-
-/* mouse background */
-
+// mouse background
 const bg = document.getElementById("mouse-bg");
-
 document.addEventListener("mousemove",(e)=>{
-
-bg.style.background =
-`radial-gradient(circle 120px at ${e.clientX}px ${e.clientY}px,rgba(217,164,65,0.25),transparent 80%)`;
-
+  bg.style.background = `radial-gradient(circle 120px at ${e.clientX}px ${e.clientY}px,rgba(217,164,65,0.25),transparent 80%)`;
 });
 
-
-/* project panel */
-
+// project panel
 const projects = document.querySelectorAll(".project")
-
 const panel = document.getElementById("project-panel")
 const panelImg = document.getElementById("panel-img")
 const panelTitle = document.getElementById("panel-title")
 const panelText = document.getElementById("panel-text")
-
 projects.forEach(project=>{
-
-project.addEventListener("click",()=>{
-
-panel.style.right="0"
-
-panelImg.src=project.querySelector("img").src
-
-panelTitle.textContent=project.dataset.title
-
-panelText.textContent=project.dataset.description
-
+  project.addEventListener("click",()=>{
+    panel.style.right="0"
+    panelImg.src=project.querySelector("img").src
+    panelTitle.textContent=project.dataset.title
+    panelText.textContent=project.dataset.description
+  })
 })
+document.getElementById("panel-close").onclick=()=>{ panel.style.right="-100%" }
 
-})
-
-
-document.getElementById("panel-close").onclick=()=>{
-
-panel.style.right="-100%"
-
-}
-
-
-/* 3D hover */
-
+// 3D hover
 const cards=document.querySelectorAll(".project")
-
 cards.forEach(card=>{
-
-card.addEventListener("mousemove",(e)=>{
-
-const rect=card.getBoundingClientRect()
-
-const x=e.clientX-rect.left
-const y=e.clientY-rect.top
-
-const centerX=rect.width/2
-const centerY=rect.height/2
-
-const rotateX=(y-centerY)/10
-const rotateY=(centerX-x)/10
-
-card.style.transform=
-`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`
-
+  card.addEventListener("mousemove",(e)=>{
+    const rect=card.getBoundingClientRect()
+    const x=e.clientX-rect.left
+    const y=e.clientY-rect.top
+    const centerX=rect.width/2
+    const centerY=rect.height/2
+    const rotateX=(y-centerY)/10
+    const rotateY=(centerX-x)/10
+    card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`
+  })
+  card.addEventListener("mouseleave",()=>{
+    card.style.transform="rotateX(0) rotateY(0) scale(1)"
+  })
 })
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform="rotateX(0) rotateY(0) scale(1)"
-
-})
-
-})
-
 </script>
 
 </body>
