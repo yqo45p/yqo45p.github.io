@@ -163,8 +163,10 @@ nav a{
 }
 
 #panel-img, #panel-video{
-  width:100%;
-  max-height:400px;
+  width:auto;
+  max-width:80%;
+  height:auto;
+  max-height:60vh; /* 限制高度，保持比例 */
   margin-bottom:20px;
 }
 
@@ -195,7 +197,7 @@ nav a{
 
 <section id="hero">
 <h1>曾珮甄作品集</h1>
-<p>Design / Editing / 3D Modeling</p>
+<p>Design / Video / 3D Modeling</p>
 </section>
 
 <section id="work">
@@ -203,7 +205,7 @@ nav a{
 
 <div class="category-btns">
 <button data-cat="design">Design</button>
-<button data-cat="editing">Editing</button>
+<button data-cat="video">Video</button>
 <button data-cat="3d">3D Modeling</button>
 </div>
 
@@ -227,9 +229,9 @@ nav a{
 </div>
 </div>
 
-<!-- Editing -->
-<div class="projects" id="editing">
-<div class="project" data-title="劇情片｜剪輯" data-description="Ravine" data-video="https://www.youtube.com/embed/ANlh-9-dZR8?si=zwyEOQ5nlduVLKED">
+<!-- Video -->
+<div class="projects" id="video">
+<div class="project" data-title="劇情片｜剪輯" data-description="Ravine、場記" data-video="https://www.youtube.com/embed/ANlh-9-dZR8?si=zwyEOQ5nlduVLKED">
 <img src="editing/ravine.png">
 <div class="project-title">劇情片｜剪輯</div>
 </div>
@@ -257,7 +259,7 @@ nav a{
 
 </section>
 
-<!-- About 移到 Work 後面 -->
+<!-- About 放在 Work 後 -->
 <section id="about">
 <h2>About</h2>
 <p>
