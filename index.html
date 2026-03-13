@@ -10,24 +10,23 @@
 <style>
 body {
     margin:0;
-    font-family: 'Dela Gothic One', sans-serif; /* 全站字體 */
+    font-family: 'Dela Gothic One', sans-serif;
     scroll-behavior: smooth;
-    background:#D1CF75;
-    color:#5F4F3A;
+    background:#161917;
+    color:#FFFFFF;
 }
 
 nav {
     position: fixed; top:0; width:100%;
-    background: rgba(141,153,91,0.9);
+    background: rgba(180,212,109,0.9);
     display:flex; justify-content:center; padding:15px 0; z-index:10;
 }
-nav a { color:#fff; margin:0 25px; text-decoration:none; font-weight:bold; letter-spacing:1px; }
+nav a { color:#b4d46d; margin:0 25px; text-decoration:none; font-weight:bold; letter-spacing:1px; }
 nav a:hover { text-decoration:underline; }
 
-/* 標題顏色 #8D995B */
 #hero h1, section h2, section h3 {
     font-family: 'Dela Gothic One', sans-serif;
-    color:#8D995B;
+    color:#b4d46d;
     letter-spacing:1px;
     margin-bottom:25px;
 }
@@ -40,49 +39,44 @@ section {
 }
 section.visible { opacity:1; transform: translateY(0); }
 
-#hero {
-    text-align:center; position:relative; overflow:hidden;
-    background:url('hero.jpg') center/cover no-repeat;
-}
+#hero { text-align:center; position:relative; overflow:hidden; }
 #hero h1 { font-size:70px; margin-bottom:15px; }
-#hero p { font-size:28px; color:#5F4F3A; }
+#hero p { font-size:28px; color:#FFFFFF; }
 
 .projects {
     display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr));
     gap:25px; margin-top:25px; width:90%; max-width:1000px;
 }
 .project {
-    border:1px solid #8D995B; border-radius:10px; overflow:hidden;
-    background:#F0EFC2; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s;
+    border:1px solid #b4d46d; border-radius:10px; overflow:hidden;
+    background:#222; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s;
 }
-.project img { width:100%; display:block; }
-.project:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.3); }
+.project img {
+    width:100%;
+    height:250px;
+    object-fit:cover; /* 修正格子空白 */
+    display:block;
+}
+.project:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.5); }
 
 .filter-buttons { margin-bottom:20px; }
 .filter-buttons button {
     padding:8px 18px; margin:0 10px;
     border:none; border-radius:5px; cursor:pointer;
-    background:#8D995B; color:#fff; font-weight:bold;
+    background:#b4d46d; color:#161917; font-weight:bold;
     transition:0.3s;
 }
-.filter-buttons button:hover { background:#6a7448; }
-.filter-buttons button.active { background:#333; }
+.filter-buttons button:hover { background:#95b34f; }
+.filter-buttons button.active { background:#333; color:#b4d46d; }
 
 #lightbox {
     position:fixed; top:0; left:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index:100;
+    background:rgba(0,0,0,0.95); display:none; justify-content:center; align-items:center; z-index:100;
 }
-#lightbox img { max-width:90%; max-height:90%; border-radius:8px; }
+#lightbox img, #lightbox iframe {
+    max-width:90%; max-height:90%; border-radius:8px;
+}
 #lightbox span { position:absolute; top:30px; right:30px; font-size:40px; color:#fff; cursor:pointer; }
-
-.video-container { margin-top:25px; width:90%; max-width:800px; display:flex; flex-direction:column; gap:20px; }
-.video-container iframe { width:100%; height:450px; border:none; border-radius:8px; }
-
-a[href^="mailto:"] {
-    color: #5F4F3A;
-    text-decoration: none;
-}
-a[href^="mailto:"]:hover { text-decoration: underline; }
 </style>
 </head>
 
@@ -115,20 +109,18 @@ a[href^="mailto:"]:hover { text-decoration: underline; }
 
   <div class="projects">
     <!-- Design 圖片 -->
-    <div class="project design"><img src="design/shift.jpg" alt="Design Project: Shift"></div>
-    <div class="project design"><img src="design/filmfestival.png" alt="Design Project: Film Festival"></div>
-    <div class="project design"><img src="design/communicationcamp.jpg" alt="Design Project: Communication Camp"></div>
-    <div class="project design"><img src="design/voiceofzhongzheng.jpg" alt="Design Project: Voice of Zhongzheng"></div>
-  </div>
+    <div class="project design"><img src="design/shift.jpg" alt="Shift"></div>
+    <div class="project design"><img src="design/filmfestival.png" alt="Film Festival"></div>
+    <div class="project design"><img src="design/communicationcamp.jpg" alt="Communication Camp"></div>
+    <div class="project design"><img src="design/voiceofzhongzheng.jpg" alt="Voice of Zhongzheng"></div>
 
-  <!-- 剪輯影片 -->
-  <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/YSA-ws8PeJo" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/k5CRxQ0rPTc" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/DDLpt_OMKXY" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/_tzyIj1j39Q" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/D-h27S7wz5s" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/7ZRsVUVbRbg" allowfullscreen></iframe>
+    <!-- 剪輯影片封面圖（點擊後播放） -->
+    <div class="project editing" data-video="https://www.youtube.com/embed/YSA-ws8PeJo"><img src="design/video1.jpg" alt="Video 1"></div>
+    <div class="project editing" data-video="https://www.youtube.com/embed/k5CRxQ0rPTc"><img src="design/video2.jpg" alt="Video 2"></div>
+    <div class="project editing" data-video="https://www.youtube.com/embed/DDLpt_OMKXY"><img src="design/video3.jpg" alt="Video 3"></div>
+    <div class="project editing" data-video="https://www.youtube.com/embed/_tzyIj1j39Q"><img src="design/video4.jpg" alt="Video 4"></div>
+    <div class="project editing" data-video="https://www.youtube.com/embed/D-h27S7wz5s"><img src="design/video5.jpg" alt="Video 5"></div>
+    <div class="project editing" data-video="https://www.youtube.com/embed/7ZRsVUVbRbg"><img src="design/video6.jpg" alt="Video 6"></div>
   </div>
 </section>
 
@@ -137,23 +129,32 @@ a[href^="mailto:"]:hover { text-decoration: underline; }
   <p>Email: <a href="mailto:jane940410@gmail.com">jane940410@gmail.com</a></p>
 </section>
 
-<div id="lightbox"><span id="close">&times;</span><img src="" alt=""></div>
+<div id="lightbox"><span id="close">&times;</span></div>
 
 <script>
-// Lightbox
-const projects = document.querySelectorAll('.project img');
+// Lightbox 支援圖片與影片
+const projects = document.querySelectorAll('.project');
 const lightbox = document.getElementById('lightbox');
-const lightboxImg = lightbox.querySelector('img');
-const closeBtn = document.getElementById('close');
 
-projects.forEach(img => {
-  img.addEventListener('click', () => {
+projects.forEach(proj => {
+  proj.addEventListener('click', () => {
+    lightbox.innerHTML = '<span id="close">&times;</span>'; // 重置內容
+    if(proj.dataset.video){
+        const iframe = document.createElement('iframe');
+        iframe.src = proj.dataset.video;
+        iframe.allow = "fullscreen";
+        lightbox.appendChild(iframe);
+    } else {
+        const img = document.createElement('img');
+        img.src = proj.querySelector('img').src;
+        lightbox.appendChild(img);
+    }
     lightbox.style.display = 'flex';
-    lightboxImg.src = img.src;
+
+    document.getElementById('close').addEventListener('click', ()=>{ lightbox.style.display='none'; });
   });
 });
-closeBtn.addEventListener('click', () => { lightbox.style.display='none'; });
-lightbox.addEventListener('click', e => { if(e.target===lightbox) lightbox.style.display='none'; });
+lightbox.addEventListener('click', e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
 
 // 滑動淡入
 const sections = document.querySelectorAll('section');
