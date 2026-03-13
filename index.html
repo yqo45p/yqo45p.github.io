@@ -7,168 +7,164 @@
 
 <style>
 body{
-margin:0;
-font-family:'Dela Gothic One',sans-serif;
-background:#6DA3A9;
-color:#FFFFFF;
-overflow-x:hidden;
-scroll-behavior:smooth;
+  margin:0;
+  font-family:'Dela Gothic One',sans-serif;
+  background:#FFFFFF;
+  color:#8C3A3A;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
 }
 
 h1,h2,h3{
-color:#8C3A3A;
+  color:#8C3A3A;
 }
 
 section{
-padding:120px 20px;
-text-align:center;
+  padding:120px 20px;
+  text-align:center;
 }
 
-/* 右側導覽列 */
+/* 上方右上導覽列 */
 nav{
-position:fixed;
-top:50%;
-right:0;
-transform:translateY(-50%);
-background:#6DA3A9; /* 統一背景色 */
-padding:20px;
-text-align:right;
-z-index:10;
+  position:fixed;
+  top:20px;
+  right:20px;
+  display:flex;
+  gap:20px;
+  z-index:10;
 }
 
 nav a{
-display:block;
-margin:10px 0;
-text-decoration:none;
-color:#FFFFFF;
-font-size:18px;
+  text-decoration:none;
+  color:#8C3A3A;
+  font-size:18px;
 }
 
 /* hero */
 #hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
 #hero h1{
-font-size:60px;
-margin-bottom:10px;
+  font-size:60px;
+  margin-bottom:10px;
 }
 
 /* 分類按鈕 */
 .category-btns{
-margin:30px 0;
+  margin:30px 0;
 }
 
 .category-btns button{
-background:#FFFFFF;
-color:#8C3A3A;
-border:none;
-padding:10px 20px;
-margin:0 5px;
-cursor:pointer;
-font-family:'Dela Gothic One',sans-serif;
-font-size:16px;
-border-radius:4px;
-transition:0.3s;
+  background:#FFFFFF;
+  color:#8C3A3A;
+  border:2px solid #8C3A3A;
+  padding:10px 20px;
+  margin:0 5px;
+  cursor:pointer;
+  font-family:'Dela Gothic One',sans-serif;
+  font-size:16px;
+  border-radius:4px;
+  transition:0.3s;
 }
 
 .category-btns button:hover{
-opacity:0.8;
+  opacity:0.8;
 }
 
 /* masonry layout */
 .projects{
-column-count:3;
-column-gap:20px;
-max-width:1100px;
-margin:40px auto;
-display:none;
+  column-count:3;
+  column-gap:20px;
+  max-width:1100px;
+  margin:40px auto;
+  display:none;
 }
 
 @media (max-width:800px){
-.projects{
-column-count:2;
-}
+  .projects{
+    column-count:2;
+  }
 }
 
 .project{
-break-inside:avoid;
-margin-bottom:20px;
-border:2px solid #FFFFFF;
-border-radius:6px;
-overflow:hidden;
-cursor:pointer;
-position:relative;
-transition:0.3s;
-transform-style:preserve-3d;
+  break-inside:avoid;
+  margin-bottom:20px;
+  border:2px solid #8C3A3A;
+  border-radius:6px;
+  overflow:hidden;
+  cursor:pointer;
+  position:relative;
+  transition:0.3s;
+  transform-style:preserve-3d;
 }
 
 .project:hover{
-transform:scale(1.03);
+  transform:scale(1.03);
 }
 
 .project img{
-width:100%;
-height:auto;
-display:block;
+  width:100%;
+  height:auto;
+  display:block;
 }
 
 /* hover title */
 .project-title{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-background:rgba(0,0,0,0.6);
-padding:10px;
-opacity:0;
-transition:0.3s;
-color:#FFFFFF;
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:rgba(0,0,0,0.1);
+  padding:10px;
+  opacity:0;
+  transition:0.3s;
+  color:#8C3A3A;
 }
 
 .project:hover .project-title{
-opacity:1;
+  opacity:1;
 }
 
 /* project panel */
 #project-panel{
-position:fixed;
-top:0;
-right:-100%;
-width:50%;
-height:100%;
-background:#6DA3A9;
-color:#FFFFFF;
-padding:40px;
-box-sizing:border-box;
-transition:0.5s;
-overflow:auto;
-z-index:999;
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:50%;
+  height:100%;
+  background:#FFFFFF;
+  color:#8C3A3A;
+  padding:40px;
+  box-sizing:border-box;
+  transition:0.5s;
+  overflow:auto;
+  z-index:999;
 }
 
-#panel-img{
-width:100%;
-margin-bottom:20px;
+#panel-img, #panel-video{
+  width:100%;
+  margin-bottom:20px;
 }
 
 #panel-close{
-position:absolute;
-top:20px;
-right:30px;
-font-size:30px;
-cursor:pointer;
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  cursor:pointer;
 }
 
 /* Connect 最底部 */
 #connect{
-padding:60px 20px;
-background:#5B8E8F;
-color:#FFFFFF;
-text-align:center;
+  padding:60px 20px;
+  background:#FFFFFF;
+  color:#8C3A3A;
+  text-align:center;
 }
 </style>
 </head>
@@ -221,15 +217,15 @@ text-align:center;
 
 <!-- Editing -->
 <div class="projects" id="editing">
-<div class="project" data-title="Ravine" data-description="剪輯作品。影片：https://youtu.be/ANlh-9-dZR8?si=zwyEOQ5nlduVLKED">
+<div class="project" data-title="Ravine" data-description="影片：ANlh-9-dZR8" data-video="https://www.youtube.com/embed/ANlh-9-dZR8?si=zwyEOQ5nlduVLKED">
 <img src="editing/ravine.png">
 <div class="project-title">Ravine</div>
 </div>
-<div class="project" data-title="Sony" data-description="剪輯作品。影片：https://youtu.be/YSA-ws8PeJo">
+<div class="project" data-title="Sony" data-description="影片：YSA-ws8PeJo" data-video="https://www.youtube.com/embed/YSA-ws8PeJo">
 <img src="editing/sony.png">
 <div class="project-title">Sony</div>
 </div>
-<div class="project" data-title="Wendan" data-description="剪輯作品。影片：https://www.peopo.org/video/822058/embed">
+<div class="project" data-title="Wendan" data-description="影片：PeoPo" data-video="https://www.peopo.org/video/822058/embed">
 <img src="editing/wendan.jpg">
 <div class="project-title">Wendan</div>
 </div>
@@ -256,27 +252,53 @@ text-align:center;
 
 <div id="project-panel">
 <span id="panel-close">✕</span>
+<div id="panel-img-container">
 <img id="panel-img">
+<iframe id="panel-video" width="100%" height="315" frameborder="0" allowfullscreen style="display:none;"></iframe>
+</div>
 <h2 id="panel-title"></h2>
 <p id="panel-text"></p>
 </div>
 
 <script>
-// project panel
+// 右側 project panel
 const projects = document.querySelectorAll(".project")
 const panel = document.getElementById("project-panel")
 const panelImg = document.getElementById("panel-img")
+const panelVideo = document.getElementById("panel-video")
 const panelTitle = document.getElementById("panel-title")
 const panelText = document.getElementById("panel-text")
+
 projects.forEach(project=>{
   project.addEventListener("click",()=>{
     panel.style.right="0"
-    panelImg.src=project.querySelector("img").src
+    const videoUrl = project.dataset.video
+    if(videoUrl){
+      panelImg.style.display="none"
+      panelVideo.style.display="block"
+      panelVideo.src = videoUrl
+    } else {
+      panelVideo.style.display="none"
+      panelImg.style.display="block"
+      panelImg.src=project.querySelector("img").src
+    }
     panelTitle.textContent=project.dataset.title
     panelText.textContent=project.dataset.description
   })
 })
-document.getElementById("panel-close").onclick=()=>{ panel.style.right="-100%" }
+
+// 點擊叉叉或任意空白處關閉 panel
+function closePanel(){
+  panel.style.right="-100%"
+  panelVideo.src = "" // 停止影片播放
+}
+
+document.getElementById("panel-close").onclick=closePanel
+document.addEventListener('click', (e)=>{
+  if(!panel.contains(e.target) && !e.target.classList.contains('project-title') && !e.target.closest('.project')){
+    closePanel()
+  }
+})
 
 // 3D hover
 const cards=document.querySelectorAll(".project")
@@ -296,7 +318,7 @@ cards.forEach(card=>{
   })
 })
 
-// category toggle
+// 分類按鈕切換
 const buttons = document.querySelectorAll('.category-btns button');
 buttons.forEach(btn=>{
   btn.addEventListener('click',()=>{
