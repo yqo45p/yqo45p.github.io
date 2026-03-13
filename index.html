@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title>曾珮甄作品集</title>
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+
 <style>
+/* 全站字體 & 背景 & 內文字色 */
 body {
     margin:0;
     font-family: 'Dela Gothic One', sans-serif;
     scroll-behavior: smooth;
     background:#D1CF75;
-    color:#AF7F58;       /* 內文字顏色 */
+    color:#4F4744;
 }
+
+/* 導航列 */
 nav {
     position: fixed; top:0; width:100%;
     background: rgba(141,153,91,0.9);
@@ -20,6 +26,7 @@ nav {
 nav a { color:#fff; margin:0 25px; text-decoration:none; font-weight:bold; letter-spacing:1px; }
 nav a:hover { text-decoration:underline; }
 
+/* 分頁區塊 */
 section {
     min-height:100vh; padding:120px 20px 60px;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -28,33 +35,35 @@ section {
 }
 section.visible { opacity:1; transform: translateY(0); }
 
+/* Hero */
 #hero {
-    text-align:center; position:relative; overflow:hidden; 
-    background:url('hero.jpg') center/cover no-repeat; /* 可換成你的背景圖 */
+    text-align:center; position:relative; overflow:hidden;
+    background:url('hero.jpg') center/cover no-repeat;
 }
 #hero h1 {
-    font-size:100px;  /* 放大標題 */
+    font-size:100px;      /* 標題大小 */
     margin-bottom:15px;
-    color:#8D995B;   /* 標題顏色 */
+    color:#8D995B;
+    text-shadow: none;    /* 不加邊框 */
 }
-#hero p {
-    font-size:28px;    /* 副標題大小稍微放大 */
-    color:#AF7F58;     /* 副標題文字顏色 */
-}
+#hero p { font-size:28px; color:#4F4744; }
 
+/* Work 區 */
 .projects {
     display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr));
     gap:25px; margin-top:25px; width:90%; max-width:1000px;
 }
 .project {
-    border:1px solid #8D995B; border-radius:10px; overflow:hidden; 
+    border:1px solid #8D995B; border-radius:10px; overflow:hidden;
     background:#F0EFC2; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s;
 }
 .project img { width:100%; display:block; }
 .project:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.3); }
 
+/* 標題色 */
 section h2, section h3 { margin-bottom:25px; color:#8D995B; letter-spacing:1px; }
 
+/* 篩選按鈕 */
 .filter-buttons { margin-bottom:20px; }
 .filter-buttons button {
     padding:8px 18px; margin:0 10px;
@@ -65,14 +74,20 @@ section h2, section h3 { margin-bottom:25px; color:#8D995B; letter-spacing:1px; 
 .filter-buttons button:hover { background:#6a7448; }
 .filter-buttons button.active { background:#333; }
 
+/* Lightbox */
 #lightbox {
     position:fixed; top:0; left:0; width:100%; height:100%;
     background:rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index:100;
 }
 #lightbox img { max-width:90%; max-height:90%; border-radius:8px; }
 #lightbox span { position:absolute; top:30px; right:30px; font-size:40px; color:#fff; cursor:pointer; }
+
+/* 影片區 */
+.video-container { margin-top:25px; width:90%; max-width:800px; }
+.video-container iframe { width:100%; height:450px; border:none; border-radius:8px; }
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -94,6 +109,7 @@ section h2, section h3 { margin-bottom:25px; color:#8D995B; letter-spacing:1px; 
 <section id="work">
   <h2>Work</h2>
 
+  <!-- 篩選按鈕 -->
   <div class="filter-buttons">
     <button data-filter="all" class="active">All</button>
     <button data-filter="editing">Editing</button>
@@ -111,6 +127,11 @@ section h2, section h3 { margin-bottom:25px; color:#8D995B; letter-spacing:1px; 
     <!-- 3D Modeling -->
     <div class="project modeling"><img src="model1.jpg" alt="3D Modeling Project 1"></div>
     <div class="project modeling"><img src="model2.jpg" alt="3D Modeling Project 2"></div>
+  </div>
+
+  <!-- 影片區示範 -->
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
   </div>
 </section>
 
