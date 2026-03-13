@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-HK">
-
 <head>
 <meta charset="UTF-8">
 <title>曾珮甄作品集</title>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
 <style>
+/* 全局設定 */
 body{
 margin:0;
 font-family:'Dela Gothic One',sans-serif;
-background:#AF4B42;
-color:#D9A441;
+background:#6DA3A9;
+color:#FFFFFF;
+overflow-x:hidden; /* 禁止左右滾動 */
 scroll-behavior:smooth;
 }
 
 h1,h2,h3{
-color:#D9A441;
+color:#8C3A3A;
 }
 
 section{
@@ -24,20 +25,23 @@ padding:120px 20px;
 text-align:center;
 }
 
+/* 右側導覽列 */
 nav{
 position:fixed;
-top:0;
-width:100%;
-background:#AF4B42;
+top:50%;
+right:0;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.1);
 padding:20px;
-text-align:center;
+text-align:right;
 z-index:10;
 }
 
 nav a{
-margin:0 20px;
+display:block;
+margin:10px 0;
 text-decoration:none;
-color:#D9A441;
+color:#FFFFFF;
 font-size:18px;
 }
 
@@ -55,12 +59,35 @@ font-size:60px;
 margin-bottom:10px;
 }
 
+/* 分類按鈕 */
+.category-btns{
+margin:30px 0;
+}
+
+.category-btns button{
+background:#FFFFFF;
+color:#8C3A3A;
+border:none;
+padding:10px 20px;
+margin:0 5px;
+cursor:pointer;
+font-family:'Dela Gothic One',sans-serif;
+font-size:16px;
+border-radius:4px;
+transition:0.3s;
+}
+
+.category-btns button:hover{
+opacity:0.8;
+}
+
 /* masonry layout */
 .projects{
 column-count:3;
 column-gap:20px;
 max-width:1100px;
 margin:40px auto;
+display:none; /* 預設隱藏，點按分類才顯示 */
 }
 
 @media (max-width:800px){
@@ -72,7 +99,7 @@ column-count:2;
 .project{
 break-inside:avoid;
 margin-bottom:20px;
-border:2px solid #D9A441;
+border:2px solid #FFFFFF;
 border-radius:6px;
 overflow:hidden;
 cursor:pointer;
@@ -101,6 +128,7 @@ background:rgba(0,0,0,0.6);
 padding:10px;
 opacity:0;
 transition:0.3s;
+color:#FFFFFF;
 }
 
 .project:hover .project-title{
@@ -114,8 +142,8 @@ top:0;
 right:-100%;
 width:50%;
 height:100%;
-background:#AF4B42;
-color:#D9A441;
+background:#6DA3A9;
+color:#FFFFFF;
 padding:40px;
 box-sizing:border-box;
 transition:0.5s;
@@ -144,7 +172,7 @@ left:0;
 width:100%;
 height:100%;
 pointer-events:none;
-background:radial-gradient(circle 120px at 50% 50%,rgba(217,164,65,0.25),transparent 80%);
+background:radial-gradient(circle 120px at 50% 50%,rgba(255,255,255,0.2),transparent 80%);
 z-index:0;
 }
 
@@ -152,6 +180,15 @@ body *{
 position:relative;
 z-index:1;
 }
+
+/* Connect 最底部 */
+#connect{
+padding:60px 20px;
+background:#5B8E8F;
+color:#FFFFFF;
+text-align:center;
+}
+
 </style>
 </head>
 
@@ -162,7 +199,6 @@ z-index:1;
 <nav>
 <a href="#about">About</a>
 <a href="#work">Work</a>
-<a href="#connect">Connect</a>
 </nav>
 
 <section id="hero">
@@ -178,44 +214,46 @@ z-index:1;
 <section id="work">
 <h2>Work</h2>
 
-<h3>Design</h3>
-<div class="projects">
+<div class="category-btns">
+<button data-cat="design">Design</button>
+<button data-cat="editing">Editing</button>
+<button data-cat="3d">3D Modeling</button>
+</div>
+
+<!-- Design -->
+<div class="projects" id="design">
 <div class="project" data-title="SHIFT" data-description="SHIFT 視覺設計專案，透過幾何構圖與色彩呈現動態轉變。">
 <img src="design/shift.jpg">
 <div class="project-title">SHIFT</div>
 </div>
-
 <div class="project" data-title="Film Festival" data-description="Film Festival 海報設計。">
 <img src="design/filmfestival.png">
 <div class="project-title">Film Festival</div>
 </div>
-
 <div class="project" data-title="Communication Camp" data-description="Communication Camp 視覺設計。">
 <img src="design/communicationcamp.jpg">
 <div class="project-title">Communication Camp</div>
 </div>
-
 <div class="project" data-title="Voice of Zhongzheng" data-description="Voice of Zhongzheng 視覺專案。">
 <img src="design/voiceofzhongzheng.jpg">
 <div class="project-title">Voice of Zhongzheng</div>
 </div>
 </div>
 
-<h3>Editing</h3>
-<div class="projects">
+<!-- Editing -->
+<div class="projects" id="editing">
 <div class="project" data-title="Editing Work 1" data-description="剪輯作品。">
 <img src="editing/video1.jpg">
 <div class="project-title">Editing Work 1</div>
 </div>
-
 <div class="project" data-title="Editing Work 2" data-description="剪輯作品。">
 <img src="editing/video2.jpg">
 <div class="project-title">Editing Work 2</div>
 </div>
 </div>
 
-<h3>3D Modeling</h3>
-<div class="projects">
+<!-- 3D Modeling -->
+<div class="projects" id="3d">
 <div class="project" data-title="3D Project 1" data-description="3D 建模作品。">
 <img src="3d/model1.jpg">
 <div class="project-title">3D Project 1</div>
@@ -244,7 +282,7 @@ z-index:1;
 // mouse background
 const bg = document.getElementById("mouse-bg");
 document.addEventListener("mousemove",(e)=>{
-  bg.style.background = `radial-gradient(circle 120px at ${e.clientX}px ${e.clientY}px,rgba(217,164,65,0.25),transparent 80%)`;
+  bg.style.background = `radial-gradient(circle 120px at ${e.clientX}px ${e.clientY}px,rgba(255,255,255,0.2),transparent 80%)`;
 });
 
 // project panel
@@ -280,6 +318,16 @@ cards.forEach(card=>{
     card.style.transform="rotateX(0) rotateY(0) scale(1)"
   })
 })
+
+// category toggle
+const buttons = document.querySelectorAll('.category-btns button');
+buttons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('.projects').forEach(p=>p.style.display='none');
+    document.getElementById(cat).style.display='block';
+  })
+});
 </script>
 
 </body>
