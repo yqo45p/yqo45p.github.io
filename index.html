@@ -136,7 +136,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,0.55);
 justify-content:center;
 align-items:center;
 z-index:999;
@@ -150,6 +150,8 @@ color:#8C3A3A;
 padding:30px;
 max-width:800px;
 width:90%;
+max-height:85vh;
+overflow-y:auto;
 border-radius:6px;
 text-align:center;
 position:relative;
@@ -159,13 +161,15 @@ flex-direction:column;
 align-items:center;
 }
 
-/* image video */
+/* image */
 
 #panel-img{
-max-width:70%;
+max-width:60%;
 height:auto;
 margin-bottom:20px;
 }
+
+/* video */
 
 #panel-video{
 width:70%;
@@ -202,10 +206,8 @@ text-align:center;
 </nav>
 
 <section id="hero">
-
 <h1>曾珮甄作品集</h1>
 <p>Design / Video / 3D Modeling</p>
-
 </section>
 
 
@@ -283,6 +285,38 @@ data-video="https://www.peopo.org/video/822058/embed">
 <div class="project-title">新聞｜拍攝、剪輯</div>
 </div>
 
+<div class="project"
+data-title="劇情片｜攝影助理"
+data-description="Narrow House"
+data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
+<img src="video/narrowhouse.png">
+<div class="project-title">劇情片｜攝影助理</div>
+</div>
+
+<div class="project"
+data-title="新聞｜攝影、剪輯"
+data-description="Hurt"
+data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
+<img src="video/hurt.jpg">
+<div class="project-title">新聞｜攝影、剪輯</div>
+</div>
+
+<div class="project"
+data-title="新聞｜攝影、剪輯"
+data-description="Crime"
+data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
+<img src="video/crime.jpg">
+<div class="project-title">新聞｜攝影、剪輯</div>
+</div>
+
+<div class="project"
+data-title="新聞｜攝影、剪輯"
+data-description="AIDS"
+data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
+<img src="video/aids.jpg">
+<div class="project-title">新聞｜攝影、剪輯</div>
+</div>
+
 </div>
 
 
@@ -316,15 +350,10 @@ data-description="3D建模作品">
 
 
 <section id="connect">
-
 <h2>Connect</h2>
-
 <p>Email: jane940410@gmail.com</p>
-
 </section>
 
-
-<!-- overlay -->
 
 <div id="overlay">
 
@@ -346,8 +375,6 @@ data-description="3D建模作品">
 
 
 <script>
-
-/* panel */
 
 const projects=document.querySelectorAll(".project")
 const overlay=document.getElementById("overlay")
@@ -385,8 +412,6 @@ panelText.textContent=project.dataset.description
 
 })
 
-/* close */
-
 overlay.onclick=()=>{
 overlay.style.display="none"
 panelVideo.src=""
@@ -401,19 +426,14 @@ document.getElementById("project-panel").onclick=(e)=>{
 e.stopPropagation()
 }
 
-/* category filter */
-
 const buttons=document.querySelectorAll(".category-btns button")
 
 buttons.forEach(btn=>{
 btn.onclick=()=>{
-
 const cat=btn.dataset.cat
-
 document.querySelectorAll(".projects").forEach(p=>{
 p.style.display=(p.id===cat)?"block":"none"
 })
-
 }
 })
 
