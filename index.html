@@ -14,15 +14,16 @@
 body{
     margin:0;
     font-family:'MantouSans',sans-serif;
-    background:#D6CFC4;
+    background: linear-gradient(135deg,#D6CFC4,#FFF8F0);
     color:#87240E;
     overflow-x:hidden;
     scroll-behavior:smooth;
 }
 
+/* 標題 */
 h1{
     font-size:60px;
-    font-weight: normal; /* 讓 h1 不加粗 */
+    font-weight: normal; /* h1 不加粗 */
     color:#87240E;
     margin:0;
 }
@@ -31,16 +32,15 @@ h2{
     font-size:36px;
     color:#87240E;
     margin:0;
-    /* h2 保持粗體 */
 }
 
+/* section */
 section{
     padding:120px 20px;
     text-align:center;
 }
 
 /* navbar */
-
 nav{
     position:fixed;
     top:20px;
@@ -57,7 +57,6 @@ nav a{
 }
 
 /* hero */
-
 #hero{
     height:100vh;
     display:flex;
@@ -67,7 +66,6 @@ nav a{
 }
 
 /* about */
-
 #about p{
     font-size:20px;
     line-height:1.7;
@@ -76,7 +74,6 @@ nav a{
 }
 
 /* category */
-
 .category-btns{
     margin:30px 0;
 }
@@ -91,15 +88,26 @@ nav a{
     font-family:'MantouSans';
     font-size:16px;
     border-radius:4px;
+    transition: all 0.3s ease;
+}
+
+.category-btns button:hover{
+    background:#87240E;
+    color:#D6CFC4;
 }
 
 /* masonry */
-
 .projects{
     column-count:3;
     column-gap:20px;
     max-width:1100px;
     margin:40px auto;
+    transition: opacity 0.4s ease;
+}
+
+.projects.hide{
+    opacity:0;
+    pointer-events:none;
 }
 
 @media (max-width:800px){
@@ -111,15 +119,28 @@ nav a{
     margin-bottom:20px;
     cursor:pointer;
     position:relative;
+    opacity:0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.project.show{
+    opacity:1;
+    transform: translateY(0);
 }
 
 .project img{
     width:100%;
     display:block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover img{
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 /* hover text */
-
 .project-title{
     position:absolute;
     bottom:0;
@@ -137,9 +158,9 @@ nav a{
 }
 
 /* overlay */
-
 #overlay{
     display:none;
+    opacity:0;
     position:fixed;
     top:0;
     left:0;
@@ -149,10 +170,15 @@ nav a{
     justify-content:center;
     align-items:center;
     z-index:999;
+    transition: opacity 0.3s ease;
+}
+
+#overlay.show{
+    display:flex;
+    opacity:1;
 }
 
 /* panel */
-
 #project-panel{
     background:#D6CFC4;
     color:#87240E;
@@ -164,14 +190,18 @@ nav a{
     border-radius:6px;
     text-align:center;
     position:relative;
-
     display:flex;
     flex-direction:column;
     align-items:center;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+#overlay.show #project-panel{
+    transform: scale(1);
 }
 
 /* image */
-
 #panel-img{
     max-width:60%;
     height:auto;
@@ -179,7 +209,6 @@ nav a{
 }
 
 /* video */
-
 #panel-video{
     width:70%;
     height:380px;
@@ -188,7 +217,6 @@ nav a{
 }
 
 /* close */
-
 #panel-close{
     position:absolute;
     top:10px;
@@ -198,7 +226,6 @@ nav a{
 }
 
 /* connect */
-
 #connect{
     padding:60px 20px;
     text-align:center;
@@ -220,9 +247,7 @@ nav a{
 </section>
 
 <section id="work">
-
 <h2>Work</h2>
-
 <div class="category-btns">
 <button data-cat="design">Design</button>
 <button data-cat="video">Video</button>
@@ -232,80 +257,59 @@ nav a{
 <!-- DESIGN -->
 <div class="projects" id="design">
 
-<div class="project"
-data-title="移面之詞主視覺"
-data-description="SHIFT 視覺設計專案">
+<!-- 原本 Design 專案 -->
+<div class="project" data-title="移面之詞主視覺" data-description="SHIFT 視覺設計專案">
 <img src="design/shift.jpg">
 <div class="project-title">移面之詞主視覺</div>
 </div>
 
-<div class="project"
-data-title="第17屆瘋影展海報"
-data-description="Film Festival 海報設計">
+<div class="project" data-title="第17屆瘋影展海報" data-description="Film Festival 海報設計">
 <img src="design/filmfestival.png">
 <div class="project-title">第17屆瘋影展海報</div>
 </div>
 
-<div class="project"
-data-title="中正傳播營海報"
-data-description="Communication Camp 視覺設計">
+<div class="project" data-title="中正傳播營海報" data-description="Communication Camp 視覺設計">
 <img src="design/communicationcamp.jpg">
 <div class="project-title">中正傳播營海報</div>
 </div>
 
-<div class="project"
-data-title="中正之聲2024主視覺"
-data-description="Voice of Zhongzheng 視覺專案">
+<div class="project" data-title="中正之聲2024主視覺" data-description="Voice of Zhongzheng 視覺專案">
 <img src="design/voiceofzhongzheng.jpg">
 <div class="project-title">中正之聲2024主視覺</div>
 </div>
 
 <!-- 新增圖片 -->
-<div class="project"
-data-title="eye"
-data-description="eye 圖片展示">
+<div class="project" data-title="eye" data-description="eye 圖片展示">
 <img src="design/eye.png">
 <div class="project-title">eye</div>
 </div>
 
-<div class="project"
-data-title="fb"
-data-description="fb 圖片展示">
+<div class="project" data-title="fb" data-description="fb 圖片展示">
 <img src="design/fb.png">
 <div class="project-title">fb</div>
 </div>
 
-<div class="project"
-data-title="ghost"
-data-description="ghost 圖片展示">
+<div class="project" data-title="ghost" data-description="ghost 圖片展示">
 <img src="design/ghost.jpg">
 <div class="project-title">ghost</div>
 </div>
 
-<div class="project"
-data-title="introduce"
-data-description="introduce 圖片展示">
+<div class="project" data-title="introduce" data-description="introduce 圖片展示">
 <img src="design/introduce.png">
 <div class="project-title">introduce</div>
 </div>
 
-<div class="project"
-data-title="news"
-data-description="news 圖片展示">
+<div class="project" data-title="news" data-description="news 圖片展示">
 <img src="design/news.png">
 <div class="project-title">news</div>
 </div>
 
-<div class="project"
-data-title="one"
-data-description="one 圖片展示">
+<div class="project" data-title="one" data-description="one 圖片展示">
 <img src="design/one.png">
 <div class="project-title">one</div>
 </div>
 
-<div class="project"
-data-title="temperature"
-data-description="temperature 圖片展示">
+<div class="project" data-title="temperature" data-description="temperature 圖片展示">
 <img src="design/temperature.png">
 <div class="project-title">temperature</div>
 </div>
@@ -314,35 +318,26 @@ data-description="temperature 圖片展示">
 
 <!-- VIDEO -->
 <div class="projects" id="video">
-
-<!-- 影片專案同原本 HTML，不變 -->
-
+<!-- 保留原本影片專案 -->
 </div>
 
 <!-- 3D -->
 <div class="projects" id="3d">
-
-<div class="project"
-data-title="3D Project"
-data-description="3D建模作品">
+<div class="project" data-title="3D Project" data-description="3D建模作品">
 <img src="3d/model1.jpg">
 <div class="project-title">3D Project</div>
 </div>
-
 </div>
 
 </section>
 
 <section id="about">
-
 <h2>About</h2>
-
 <p>
 我是曾珮甄，目前就讀中正大學傳播系三年級，會剪輯、設計及3D建模。  
 我想做的，是把我會的技能融合起來，做出有意思、有力量的作品。  
 同時，我也保持學習新技術和挑戰不同媒介的熱情。
 </p>
-
 </section>
 
 <section id="connect">
@@ -351,25 +346,16 @@ data-description="3D建模作品">
 </section>
 
 <div id="overlay">
-
 <div id="project-panel">
-
 <span id="panel-close">✕</span>
-
 <img id="panel-img">
-
 <iframe id="panel-video" allow="autoplay; fullscreen"></iframe>
-
 <h2 id="panel-title"></h2>
-
 <p id="panel-text"></p>
-
 </div>
-
 </div>
 
 <script>
-
 const projects=document.querySelectorAll(".project")
 const overlay=document.getElementById("overlay")
 const panelImg=document.getElementById("panel-img")
@@ -377,60 +363,57 @@ const panelVideo=document.getElementById("panel-video")
 const panelTitle=document.getElementById("panel-title")
 const panelText=document.getElementById("panel-text")
 
+// Masonry fade-in
+projects.forEach((project,i)=>{
+    setTimeout(()=>{project.classList.add("show")}, i*100)
+})
+
 projects.forEach(project=>{
-
-project.onclick=(e)=>{
-
-overlay.style.display="flex"
-
-const video=project.dataset.video
-
-if(video){
-
-panelImg.style.display="none"
-panelVideo.style.display="block"
-panelVideo.src=video
-
-}else{
-
-panelVideo.style.display="none"
-panelImg.style.display="block"
-panelImg.src=project.querySelector("img").src
-
-}
-
-panelTitle.textContent=project.dataset.title
-panelText.textContent=project.dataset.description
-
-}
-
+    project.onclick=()=>{
+        overlay.classList.add("show")
+        const video=project.dataset.video
+        if(video){
+            panelImg.style.display="none"
+            panelVideo.style.display="block"
+            panelVideo.src=video
+        } else {
+            panelVideo.style.display="none"
+            panelImg.style.display="block"
+            panelImg.src=project.querySelector("img").src
+        }
+        panelTitle.textContent=project.dataset.title
+        panelText.textContent=project.dataset.description
+    }
 })
 
 overlay.onclick=()=>{
-overlay.style.display="none"
-panelVideo.src=""
+    overlay.classList.remove("show")
+    panelVideo.src=""
 }
 
 document.getElementById("panel-close").onclick=()=>{
-overlay.style.display="none"
-panelVideo.src=""
+    overlay.classList.remove("show")
+    panelVideo.src=""
 }
 
 document.getElementById("project-panel").onclick=(e)=>{
-e.stopPropagation()
+    e.stopPropagation()
 }
 
+// 分類切換動畫
 const buttons=document.querySelectorAll(".category-btns button")
-
 buttons.forEach(btn=>{
-btn.onclick=()=>{
-const cat=btn.dataset.cat
-document.querySelectorAll(".projects").forEach(p=>{
-p.style.display=(p.id===cat)?"block":"none"
+    btn.onclick=()=>{
+        const cat=btn.dataset.cat
+        document.querySelectorAll(".projects").forEach(p=>{
+            if(p.id===cat){
+                p.classList.remove("hide")
+            }else{
+                p.classList.add("hide")
+            }
+        })
+    }
 })
-}
-})
-
 </script>
 
 </body>
