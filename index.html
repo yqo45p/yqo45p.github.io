@@ -4,203 +4,200 @@
 <meta charset="UTF-8">
 <title>曾珮甄作品集</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC&display=swap" rel="stylesheet">
+
 <style>
-@font-face {
-    font-family: 'MantouSans';
-    src: url('MantouSans-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 body{
-    margin:0;
-    font-family:'MantouSans',sans-serif;
-    background:#D6CFC4;
-    color:#87240E;
-    overflow-x:hidden;
-    scroll-behavior:smooth;
+margin:0;
+font-family:'Chiron GoRound TC',sans-serif;
+background:#FFFFFF;
+color:#8C3A3A;
+overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
 h1,h2{
-    margin:0;
-    color:#87240E;
+color:#8C3A3A;
+margin:0;
 }
 
-h1{
-    font-size:60px;
-    font-weight:normal; 
-    line-height:1.2;
-}
-
+h1{font-size:60px;}
 h2{font-size:36px;}
 
 section{
-    padding:120px 20px;
-    text-align:center;
+padding:120px 20px;
+text-align:center;
 }
 
 /* navbar */
+
 nav{
-    position:fixed;
-    top:20px;
-    right:20px;
-    display:flex;
-    gap:20px;
-    z-index:10;
+position:fixed;
+top:20px;
+right:20px;
+display:flex;
+gap:20px;
+z-index:10;
 }
 
 nav a{
-    text-decoration:none;
-    color:#87240E;
-    font-size:18px;
+text-decoration:none;
+color:#8C3A3A;
+font-size:18px;
 }
 
 /* hero */
+
 #hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
 /* about */
+
 #about p{
-    font-size:20px;
-    line-height:1.7;
-    max-width:700px;
-    margin:auto;
+font-size:20px;
+line-height:1.7;
+max-width:700px;
+margin:auto;
 }
 
 /* category */
+
 .category-btns{
-    margin:30px 0;
+margin:30px 0;
 }
 
 .category-btns button{
-    background:#D6CFC4;
-    color:#87240E;
-    border:2px solid #87240E;
-    padding:10px 20px;
-    margin:0 5px;
-    cursor:pointer;
-    font-family:'MantouSans';
-    font-size:16px;
-    border-radius:4px;
+background:#FFFFFF;
+color:#8C3A3A;
+border:2px solid #8C3A3A;
+padding:10px 20px;
+margin:0 5px;
+cursor:pointer;
+font-family:'Chiron GoRound TC';
+font-size:16px;
+border-radius:4px;
 }
 
-/* grid layout */
+/* masonry */
+
 .projects{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    max-width:1100px;
-    margin:40px auto;
+column-count:3;
+column-gap:20px;
+max-width:1100px;
+margin:40px auto;
 }
 
 @media (max-width:800px){
-    .projects{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-/* staggered layout */
-.project:nth-child(3n){
-    grid-row:span 2;
-}
-.project:nth-child(5n){
-    grid-row:span 2;
+.projects{column-count:2;}
 }
 
 .project{
-    cursor:pointer;
-    position:relative;
-    overflow:hidden;
+break-inside:avoid;
+margin-bottom:20px;
+cursor:pointer;
+position:relative;
 }
 
 .project img{
-    width:100%;
-    height:auto;
-    display:block;
+width:100%;
+display:block;
 }
 
-/* hover title */
+/* hover text */
+
 .project-title{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:rgba(0,0,0,0.4);
-    padding:10px;
-    color:#FFFFFF;
-    font-weight:normal;
-    text-align:center;
-    opacity:0;
-    transition:opacity 0.3s;
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.4);
+padding:10px;
+opacity:0;
+transition:0.3s;
+color:#FFFFFF;
 }
 
 .project:hover .project-title{
-    opacity:1;
+opacity:1;
 }
 
 /* overlay */
+
 #overlay{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.55);
-    justify-content:center;
-    align-items:center;
-    z-index:999;
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+justify-content:center;
+align-items:center;
+z-index:999;
 }
 
 /* panel */
+
 #project-panel{
-    background:#FFFFFF;
-    padding:30px;
-    max-width:800px;
-    width:90%;
-    max-height:85vh;
-    overflow-y:auto;
-    border-radius:6px;
-    text-align:center;
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+background:#FFFFFF;
+color:#8C3A3A;
+padding:30px;
+max-width:800px;
+width:90%;
+max-height:85vh;
+overflow-y:auto;
+border-radius:6px;
+text-align:center;
+position:relative;
+
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-#panel-img,
-#panel-video{
-    display:block;
-    margin:auto;
-    max-width:70%;
-    height:auto;
-    margin-bottom:20px;
+/* image */
+
+#panel-img{
+max-width:60%;
+height:auto;
+margin-bottom:20px;
 }
 
+/* video */
+
 #panel-video{
-    aspect-ratio:16/9;
-    border:none;
+width:70%;
+height:380px;
+margin-bottom:20px;
+border:none;
 }
 
 /* close */
+
 #panel-close{
-    position:absolute;
-    top:10px;
-    right:15px;
-    font-size:28px;
-    cursor:pointer;
+position:absolute;
+top:10px;
+right:15px;
+font-size:28px;
+cursor:pointer;
 }
 
+/* connect */
+
 #connect{
-    padding:60px 20px;
+padding:60px 20px;
+text-align:center;
 }
+
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -210,106 +207,236 @@ nav a{
 
 <section id="hero">
 <h1>曾珮甄作品集</h1>
-<p>Design / Video / 3D</p>
+<p>Design / Video / 3D Modeling</p>
 </section>
 
+
 <section id="work">
+
 <h2>Work</h2>
 
 <div class="category-btns">
-<button data-cat="video">Video</button>
 <button data-cat="design">Design</button>
-<button data-cat="3d">3D</button>
+<button data-cat="video">Video</button>
+<button data-cat="3d">3D Modeling</button>
 </div>
 
-<!-- VIDEO -->
-<div class="projects" id="video">
-<!-- 影片專案照舊 -->
-</div>
 
 <!-- DESIGN -->
+
 <div class="projects" id="design">
-<!-- Design 新增圖片照舊 -->
+
+<div class="project"
+data-title="移面之詞主視覺"
+data-description="SHIFT 視覺設計專案">
+<img src="design/shift.jpg">
+<div class="project-title">移面之詞主視覺</div>
 </div>
+
+<div class="project"
+data-title="第17屆瘋影展海報"
+data-description="Film Festival 海報設計">
+<img src="design/filmfestival.png">
+<div class="project-title">第17屆瘋影展海報</div>
+</div>
+
+<div class="project"
+data-title="中正傳播營海報"
+data-description="Communication Camp 視覺設計">
+<img src="design/communicationcamp.jpg">
+<div class="project-title">中正傳播營海報</div>
+</div>
+
+<div class="project"
+data-title="中正之聲2024主視覺"
+data-description="Voice of Zhongzheng 視覺專案">
+<img src="design/voiceofzhongzheng.jpg">
+<div class="project-title">中正之聲2024主視覺</div>
+</div>
+
+</div>
+
+
+<!-- VIDEO -->
+
+<div class="projects" id="video">
+
+<div class="project"
+data-title="劇情片｜剪輯"
+data-description="Ravine、場記"
+data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
+<img src="video/ravine.png">
+<div class="project-title">劇情片｜剪輯</div>
+</div>
+
+<div class="project"
+data-title="廣告｜導演"
+data-description="Sony"
+data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
+<img src="video/sony.png">
+<div class="project-title">廣告｜導演</div>
+</div>
+
+<div class="project"
+data-title="新聞｜拍攝、剪輯"
+data-description="Wendan"
+data-video="https://www.peopo.org/video/822058/embed">
+<img src="video/wendan.jpg">
+<div class="project-title">新聞｜拍攝、剪輯</div>
+</div>
+
+<div class="project"
+data-title="劇情片｜攝影助理"
+data-description="Narrow House"
+data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
+<img src="video/narrowhouse.png">
+<div class="project-title">劇情片｜攝影助理</div>
+</div>
+
+<div class="project"
+data-title="新聞｜攝影、剪輯"
+data-description="Hurt"
+data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
+<img src="video/hurt.jpg">
+<div class="project-title">新聞｜攝影、剪輯</div>
+</div>
+
+<div class="project"
+data-title="新聞｜攝影、剪輯"
+data-description="Crime"
+data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
+<img src="video/crime.jpg">
+<div class="project-title">新聞｜攝影、剪輯</div>
+</div>
+
+<div class="project"
+data-title="新聞｜攝影、剪輯"
+data-description="AIDS"
+data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
+<img src="video/aids.jpg">
+<div class="project-title">新聞｜攝影、剪輯</div>
+</div>
+
+</div>
+
 
 <!-- 3D -->
+
 <div class="projects" id="3d">
-<!-- 3D 專案照舊 -->
+
+<div class="project"
+data-title="3D Project"
+data-description="3D建模作品">
+<img src="3d/model1.jpg">
+<div class="project-title">3D Project</div>
+</div>
+
 </div>
 
 </section>
 
+
 <section id="about">
+
 <h2>About</h2>
-<p>我是曾珮甄，目前就讀中正大學傳播系三年級，會剪輯、設計及3D建模。  
+
+<p>
+我是曾珮甄，目前就讀中正大學傳播系三年級，會剪輯、設計及3D建模。  
 我想做的，是把我會的技能融合起來，做出有意思、有力量的作品。  
-同時，我也保持學習新技術和挑戰不同媒介的熱情。</p>
+同時，我也保持學習新技術和挑戰不同媒介的熱情。
+</p>
+
 </section>
+
 
 <section id="connect">
 <h2>Connect</h2>
 <p>Email: jane940410@gmail.com</p>
 </section>
 
+
 <div id="overlay">
+
 <div id="project-panel">
+
 <span id="panel-close">✕</span>
+
 <img id="panel-img">
+
 <iframe id="panel-video" allow="autoplay; fullscreen"></iframe>
+
 <h2 id="panel-title"></h2>
+
 <p id="panel-text"></p>
+
 </div>
+
 </div>
+
 
 <script>
-const projects=document.querySelectorAll(".project");
-const overlay=document.getElementById("overlay");
-const panelImg=document.getElementById("panel-img");
-const panelVideo=document.getElementById("panel-video");
-const panelTitle=document.getElementById("panel-title");
-const panelText=document.getElementById("panel-text");
+
+const projects=document.querySelectorAll(".project")
+const overlay=document.getElementById("overlay")
+const panelImg=document.getElementById("panel-img")
+const panelVideo=document.getElementById("panel-video")
+const panelTitle=document.getElementById("panel-title")
+const panelText=document.getElementById("panel-text")
 
 projects.forEach(project=>{
-    project.onclick=()=>{
-        overlay.style.display="flex";
-        const video=project.dataset.video;
-        if(video){
-            panelImg.style.display="none";
-            panelVideo.style.display="block";
-            panelVideo.src=video;
-        }else{
-            panelVideo.style.display="none";
-            panelImg.style.display="block";
-            panelImg.src=project.querySelector("img").src;
-        }
-        panelTitle.textContent=project.dataset.title;
-        panelText.textContent=project.dataset.description;
-    }
-});
+
+project.onclick=(e)=>{
+
+overlay.style.display="flex"
+
+const video=project.dataset.video
+
+if(video){
+
+panelImg.style.display="none"
+panelVideo.style.display="block"
+panelVideo.src=video
+
+}else{
+
+panelVideo.style.display="none"
+panelImg.style.display="block"
+panelImg.src=project.querySelector("img").src
+
+}
+
+panelTitle.textContent=project.dataset.title
+panelText.textContent=project.dataset.description
+
+}
+
+})
 
 overlay.onclick=()=>{
-    overlay.style.display="none";
-    panelVideo.src="";
+overlay.style.display="none"
+panelVideo.src=""
 }
 
 document.getElementById("panel-close").onclick=()=>{
-    overlay.style.display="none";
-    panelVideo.src="";
+overlay.style.display="none"
+panelVideo.src=""
 }
 
 document.getElementById("project-panel").onclick=(e)=>{
-    e.stopPropagation();
+e.stopPropagation()
 }
 
-const buttons=document.querySelectorAll(".category-btns button");
+const buttons=document.querySelectorAll(".category-btns button")
+
 buttons.forEach(btn=>{
-    btn.onclick=()=>{
-        const cat=btn.dataset.cat;
-        document.querySelectorAll(".projects").forEach(p=>{
-            p.style.display=(p.id===cat)?"grid":"none";
-        })
-    }
+btn.onclick=()=>{
+const cat=btn.dataset.cat
+document.querySelectorAll(".projects").forEach(p=>{
+p.style.display=(p.id===cat)?"block":"none"
 })
+}
+})
+
 </script>
 
 </body>
