@@ -45,6 +45,12 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     font-family:'MantouSans';
     font-size:16px;
     border-radius:4px;
+    transition:0.3s;
+}
+
+.category-btns button.active{
+    background:#87240E;
+    color:#D6CFC4;
 }
 
 /* masonry */
@@ -138,6 +144,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 <h2>Work</h2>
 
 <div class="category-btns">
+  <button data-cat="all" class="active">全部</button>
   <button data-cat="video">Video</button>
   <button data-cat="design">Design</button>
   <button data-cat="3d">3D</button>
@@ -221,14 +228,14 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   </div>
 
   <!-- 3D -->
-  <div class="project" data-cat="3d" data-title="Shixian 3D" data-description="Shixian 3D 系列展示" data-images="d/shixian/shixian2.jpg,d/shixian/shixian3.jpg,d/shixian/shixian4.png,d/shixian/shixian5.png">
+  <div class="project" data-cat="3d" data-title="展場規劃" data-description="Shixian 3D 系列展示" data-images="d/shixian/shixian2.jpg,d/shixian/shixian3.jpg,d/shixian/shixian4.png,d/shixian/shixian5.png">
     <img src="d/shixian/shixian1.jpg">
-    <div class="project-title">Shixian 3D</div>
+    <div class="project-title">展場規劃</div>
   </div>
 
-  <div class="project" data-cat="3d" data-title="Library 3D" data-description="Library 3D 系列展示" data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jpg">
+  <div class="project" data-cat="3d" data-title="展場規劃" data-description="Library 3D 系列展示" data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jpg">
     <img src="d/library/library1.jpg">
-    <div class="project-title">Library 3D</div>
+    <div class="project-title">展場規劃</div>
   </div>
 </div>
 
@@ -266,6 +273,7 @@ const panelTitle=document.getElementById("panel-title")
 const panelText=document.getElementById("panel-text")
 const panelExtraImages=document.getElementById("panel-extra-images")
 
+// 打開面板
 projects.forEach(project=>{
   project.onclick=()=>{
     overlay.style.display="flex"
@@ -312,6 +320,7 @@ document.getElementById("project-panel").onclick=(e)=>{
   e.stopPropagation()
 }
 
+// 分類過濾與按鈕高亮
 const buttons=document.querySelectorAll(".category-btns button")
 const allProjects=document.querySelectorAll("#all-projects .project")
 
@@ -319,9 +328,17 @@ allProjects.forEach(p => p.style.display="block") // 初始全部顯示
 
 buttons.forEach(btn=>{
   btn.onclick=()=>{
+    // 按鈕高亮
+    buttons.forEach(b=>b.classList.remove("active"))
+    btn.classList.add("active")
+
     const cat=btn.dataset.cat
     allProjects.forEach(p=>{
-      p.style.display=(p.dataset.cat===cat)?"block":"none"
+      if(cat==="all"){
+        p.style.display="block"
+      }else{
+        p.style.display=(p.dataset.cat===cat)?"block":"none"
+      }
     })
   }
 })
