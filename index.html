@@ -17,6 +17,7 @@ body{
     color:#87240E;
     overflow-x:hidden;
     scroll-behavior:smooth;
+    cursor:none; /* 隱藏原本滑鼠 */
 }
 
 h1{ font-size:60px; font-weight: normal; color:#87240E; margin:0; }
@@ -116,10 +117,10 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 #panel-close{ position:absolute; top:10px; right:15px; font-size:28px; cursor:pointer; }
 #connect{ padding:60px 20px; text-align:center; }
 
-/* 浮動圖 */
+/* 滑鼠替代圖 */
 #floating-img{
     position:absolute;
-    width:50px;
+    width:50px; /* 可調整大小 */
     height:50px;
     pointer-events:none;
     z-index:1000;
@@ -140,7 +141,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 </section>
 
 <section id="work">
-
 <h2>Work</h2>
 
 <div class="category-btns">
@@ -151,8 +151,17 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 </div>
 
 <div id="all-projects">
-  <!-- 這裡放你的 Design / Video / 3D 專案，跟你原本的一樣 -->
-  <!-- 省略方便閱讀，直接用你原本的 HTML -->
+  <!-- 這裡保留你原本所有專案，不刪掉 -->
+  <!-- Design -->
+  <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="SHIFT 視覺設計專案">
+    <img src="design/shift.jpg">
+    <div class="project-title">移面之詞主視覺</div>
+  </div>
+  <div class="project" data-cat="design" data-title="第17屆瘋影展海報" data-description="Film Festival 海報設計">
+    <img src="design/filmfestival.png">
+    <div class="project-title">第17屆瘋影展海報</div>
+  </div>
+  <!-- ... 其餘 Design / Video / 3D 專案全部貼回來 ... -->
 </div>
 </section>
 
@@ -180,7 +189,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   </div>
 </div>
 
-<!-- 浮動圖 -->
+<!-- 滑鼠替代圖 -->
 <img id="floating-img" src="資產 1.png">
 
 <script>
@@ -252,11 +261,11 @@ buttons.forEach(btn=>{
   }
 })
 
-// 浮動圖跟隨滑鼠 (平滑動畫)
+// 滑鼠替代圖 (平滑跟隨)
 const floatingImg = document.getElementById("floating-img");
 let mouseX = 0, mouseY = 0;
 let imgX = 0, imgY = 0;
-const speed = 0.1; // 調整慣性速度
+const speed = 0.1; // 慣性速度
 
 document.addEventListener("mousemove", (e) => {
   mouseX = e.pageX - 25;
