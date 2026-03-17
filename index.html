@@ -17,7 +17,6 @@ body{
     color:#87240E;
     overflow-x:hidden;
     scroll-behavior:smooth;
-    cursor:none; /* 隱藏原本滑鼠 */
 }
 
 h1{ font-size:60px; font-weight: normal; color:#87240E; margin:0; }
@@ -68,7 +67,18 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     cursor:pointer;
     position:relative;
 }
-.project img{ width:100%; display:block; }
+
+/* ⭐ 黑白 → hover 彩色 */
+.project img{
+    width:100%;
+    display:block;
+    filter:grayscale(100%);
+    transition:0.4s;
+}
+
+.project:hover img{
+    filter:grayscale(0%);
+}
 
 /* hover text */
 .project-title{
@@ -117,16 +127,9 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 #panel-close{ position:absolute; top:10px; right:15px; font-size:28px; cursor:pointer; }
 #connect{ padding:60px 20px; text-align:center; }
 
-/* 滑鼠替代圖 */
-#floating-img{
-    position:absolute;
-    width:50px; /* 可調整大小 */
-    height:50px;
-    pointer-events:none;
-    z-index:1000;
-}
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -136,10 +139,12 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 <section id="hero">
   <h1>曾珮甄作品集</h1>
-  <p>Design / Video / 3D</p>
+  <!-- ⭐ 已修改順序 -->
+  <p>Video / Design / 3D</p>
 </section>
 
 <section id="work">
+
 <h2>Work</h2>
 
 <div class="category-btns">
@@ -150,7 +155,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 </div>
 
 <div id="all-projects">
-  <!-- 這裡放入你原本全部 Design / Video / 3D 專案，確保完整 -->
   <!-- Design -->
   <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="SHIFT 視覺設計專案">
     <img src="design/shift.jpg">
@@ -226,6 +230,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     <img src="video/wendan.jpg">
     <div class="project-title">新聞｜拍攝、剪輯</div>
   </div>
+  <!-- 新增影片 -->
   <div class="project" data-cat="video" data-title="中正傳播營回顧片" data-description="Camp 影片" data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
     <img src="video/camp.png">
     <div class="project-title">中正傳播營回顧片</div>
@@ -256,7 +261,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 <section id="connect">
 <h2>Connect</h2>
-<p>Email: jane940410@gmail.com</p>
+<p>Email: <a href="mailto:jane940410@gmail.com">jane940410@gmail.com</a></p>
 </section>
 
 <!-- overlay -->
@@ -270,9 +275,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     <div id="panel-extra-images"></div>
   </div>
 </div>
-
-<!-- 滑鼠替代圖 -->
-<img id="floating-img" src="x/1.png">
 
 <script>
 // Project 面板
@@ -342,27 +344,6 @@ buttons.forEach(btn=>{
     })
   }
 })
-
-// 滑鼠替代圖 (平滑跟隨)
-const floatingImg = document.getElementById("floating-img");
-let mouseX = 0, mouseY = 0;
-let imgX = 0, imgY = 0;
-const speed = 0.1; // 慣性速度
-
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.pageX - 25;
-  mouseY = e.pageY - 25;
-});
-
-function animate() {
-  imgX += (mouseX - imgX) * speed;
-  imgY += (mouseY - imgY) * speed;
-  floatingImg.style.left = imgX + "px";
-  floatingImg.style.top = imgY + "px";
-  requestAnimationFrame(animate);
-}
-
-animate();
 </script>
 
 </body>
