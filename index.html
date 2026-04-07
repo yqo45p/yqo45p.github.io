@@ -32,9 +32,8 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   height:100vh;
   display:flex;
   flex-direction:column;
-  justify-content:center; /* 垂直置中 */
+  justify-content:center;
   align-items:center;
-  padding-top:0px; /* 控制名字區塊高度 */
 }
 
 /* category */
@@ -119,7 +118,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 #panel-extra-images{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
 #panel-close{ position:absolute; top:10px; right:15px; font-size:28px; cursor:pointer; }
 #connect{ padding:60px 20px; text-align:center; }
-
 </style>
 </head>
 
@@ -131,9 +129,9 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 <section id="hero">
   <div style="display:flex; justify-content:center; align-items:center; gap:25px;">
-    <img src="good/zeng.png" alt="Zeng" class="float-img" style="height:200px; animation-delay:0s;">
-    <img src="good/pei.png" alt="Pei" class="float-img" style="height:200px; animation-delay:0.5s;">
-    <img src="good/zhen.png" alt="Zhen" class="float-img" style="height:200px; animation-delay:1s;">
+    <img src="good/zeng.png" alt="Zeng" style="height:200px;">
+    <img src="good/pei.png" alt="Pei" style="height:200px;">
+    <img src="good/zhen.png" alt="Zhen" style="height:200px;">
   </div>
 </section>
 
@@ -149,95 +147,97 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 </div>
 
 <div id="all-projects">
-  <!-- Design -->
-  <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="SHIFT 視覺設計專案">
-    <img src="design/shift.jpg">
-    <div class="project-title">移面之詞主視覺</div>
-  </div>
-  <div class="project" data-cat="design" data-title="第17屆瘋影展海報" data-description="Film Festival 海報設計">
-    <img src="design/filmfestival.png">
-    <div class="project-title">第17屆瘋影展海報</div>
-  </div>
-  <div class="project" data-cat="design" data-title="中正傳播營海報" data-description="Communication Camp 視覺設計">
-    <img src="design/communicationcamp.jpg">
-    <div class="project-title">中正傳播營海報</div>
-  </div>
-  <div class="project" data-cat="design" data-title="中正之聲2024主視覺" data-description="Voice of Zhongzheng 視覺專案">
-    <img src="design/voiceofzhongzheng.jpg">
-    <div class="project-title">中正之聲2024主視覺</div>
-  </div>
-  <div class="project" data-cat="design" data-title="活動海報設計" data-description="eye 圖片展示">
-    <img src="design/eye.png">
-    <div class="project-title">活動海報設計</div>
-  </div>
-  <div class="project" data-cat="design" data-title="中正E報主視覺" data-description="fb 圖片展示">
-    <img src="design/fb.png">
-    <div class="project-title">中正E報主視覺</div>
-  </div>
-  <div class="project" data-cat="design" data-title="活動海報設計" data-description="ghost 圖片展示">
-    <img src="design/ghost.jpg">
-    <div class="project-title">活動海報設計</div>
-  </div>
-  <div class="project" data-cat="design" data-title="第二十三屆新傳獎海報" data-description="news 圖片展示">
-    <img src="design/news.png">
-    <div class="project-title">第二十三屆新傳獎海報</div>
-  </div>
-  <div class="project" data-cat="design" data-title="活動海報設計" data-description="one 圖片展示">
-    <img src="design/one.png">
-    <div class="project-title">活動海報設計</div>
-  </div>
-  <div class="project" data-cat="design" data-title="專輯封面設計" data-description="temperature 圖片展示">
-    <img src="design/temperature.png">
-    <div class="project-title">專輯封面設計</div>
-  </div>
 
-  <!-- Video -->
-  <div class="project" data-cat="video" data-title="從污名到教育——愛滋風險不分族群" data-description="負責拍攝、剪輯。<br>討論愛滋與性傾向之間的刻板印象，以及社會對男同志的污名，<br>傳遞「風險來自行為而不是身分」的重要性。" data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
-    <img src="video/aids.jpg">
-    <div class="project-title">新聞｜拍攝、剪輯</div>
-  </div>
-  <div class="project" data-cat="video" data-title="新聞｜拍攝、剪輯" data-description="Crime 影片" data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
-    <img src="video/crime.jpg">
-    <div class="project-title">新聞｜拍攝、剪輯</div>
-  </div>
-  <div class="project" data-cat="video" data-title="新聞｜拍攝、剪輯" data-description="Hurt 影片" data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
-    <img src="video/hurt.jpg">
-    <div class="project-title">新聞｜拍攝、剪輯</div>
-  </div>
-  <div class="project" data-cat="video" data-title="劇情片｜攝影助理" data-description="Narrow House 影片" data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
-    <img src="video/narrowhouse.png">
-    <div class="project-title">劇情片｜攝影助理</div>
-  </div>
-  <div class="project" data-cat="video" data-title="劇情片｜剪輯、場記" data-description="Ravine 影片" data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
-    <img src="video/ravine.png">
-    <div class="project-title">劇情片｜剪輯、場記</div>
-  </div>
-  <div class="project" data-cat="video" data-title="廣告｜導演" data-description="Sony 影片" data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
-    <img src="video/sony.png">
-    <div class="project-title">廣告｜導演</div>
-  </div>
-  <div class="project" data-cat="video" data-title="新聞｜拍攝、剪輯" data-description="Wendan 影片" data-video="https://www.youtube.com/embed/7ZRsVUVbRbg?autoplay=1">
-    <img src="video/wendan.jpg">
-    <div class="project-title">新聞｜拍攝、剪輯</div>
-  </div>
-  <div class="project" data-cat="video" data-title="中正傳播營回顧片" data-description="Camp 影片" data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
-    <img src="video/camp.png">
-    <div class="project-title">中正傳播營回顧片</div>
-  </div>
-  <div class="project" data-cat="video" data-title="出去走走" data-description="GoGo 影片" data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
-    <img src="video/gogo.jpg">
-    <div class="project-title">出去走走</div>
-  </div>
+<!-- Design -->
+<div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="SHIFT 視覺設計專案<br>主題色彩與排版設計">
+  <img src="design/shift.jpg">
+  <div class="project-title">移面之詞主視覺</div>
+</div>
+<div class="project" data-cat="design" data-title="第17屆瘋影展海報" data-description="Film Festival 海報設計<br>活動宣傳視覺">
+  <img src="design/filmfestival.png">
+  <div class="project-title">第17屆瘋影展海報</div>
+</div>
+<div class="project" data-cat="design" data-title="中正傳播營海報" data-description="Communication Camp 視覺設計<br>學生營活動宣傳">
+  <img src="design/communicationcamp.jpg">
+  <div class="project-title">中正傳播營海報</div>
+</div>
+<div class="project" data-cat="design" data-title="中正之聲2024主視覺" data-description="Voice of Zhongzheng 視覺專案<br>活動主題呈現">
+  <img src="design/voiceofzhongzheng.jpg">
+  <div class="project-title">中正之聲2024主視覺</div>
+</div>
+<div class="project" data-cat="design" data-title="活動海報設計" data-description="eye 圖片展示<br>社團活動宣傳">
+  <img src="design/eye.png">
+  <div class="project-title">活動海報設計</div>
+</div>
+<div class="project" data-cat="design" data-title="中正E報主視覺" data-description="fb 圖片展示<br>校園電子報主視覺">
+  <img src="design/fb.png">
+  <div class="project-title">中正E報主視覺</div>
+</div>
+<div class="project" data-cat="design" data-title="活動海報設計" data-description="ghost 圖片展示<br>社團活動呈現">
+  <img src="design/ghost.jpg">
+  <div class="project-title">活動海報設計</div>
+</div>
+<div class="project" data-cat="design" data-title="第二十三屆新傳獎海報" data-description="news 圖片展示<br>學生獎項宣傳">
+  <img src="design/news.png">
+  <div class="project-title">第二十三屆新傳獎海報</div>
+</div>
+<div class="project" data-cat="design" data-title="活動海報設計" data-description="one 圖片展示<br>校園活動宣傳">
+  <img src="design/one.png">
+  <div class="project-title">活動海報設計</div>
+</div>
+<div class="project" data-cat="design" data-title="專輯封面設計" data-description="temperature 圖片展示<br>音樂專輯封面設計">
+  <img src="design/temperature.png">
+  <div class="project-title">專輯封面設計</div>
+</div>
 
-  <!-- 3D -->
-  <div class="project" data-cat="3d" data-title="展場規劃" data-description="Shixian 3D 系列展示" data-images="d/shixian/shixian2.jpg,d/shixian/shixian3.jpg,d/shixian/shixian4.png,d/shixian/shixian5.png">
-    <img src="d/shixian/shixian1.jpg">
-    <div class="project-title">展場規劃</div>
-  </div>
-  <div class="project" data-cat="3d" data-title="展場規劃" data-description="Library 3D 系列展示" data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jpg">
-    <img src="d/library/library1.jpg">
-    <div class="project-title">展場規劃</div>
-  </div>
+<!-- Video -->
+<div class="project" data-cat="video" data-title="從污名到教育—愛滋風險不分族群" data-description="負責拍攝、剪輯<br>討論愛滋與性傾向刻板印象<br>傳遞「風險來自行為而不是身分」的重要性" data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
+  <img src="video/aids.jpg">
+  <div class="project-title">新聞｜拍攝、剪輯</div>
+</div>
+<div class="project" data-cat="video" data-title="創傷到馨生—犯保協會的重建之路" data-description="負責拍攝、剪輯<br>介紹犯罪受害者保護協會的重建故事" data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
+  <img src="video/crime.jpg">
+  <div class="project-title">新聞｜拍攝、剪輯</div>
+</div>
+<div class="project" data-cat="video" data-title="新聞｜拍攝、剪輯" data-description="Hurt 影片" data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
+  <img src="video/hurt.jpg">
+  <div class="project-title">新聞｜拍攝、剪輯</div>
+</div>
+<div class="project" data-cat="video" data-title="劇情片｜攝影助理" data-description="Narrow House 影片" data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
+  <img src="video/narrowhouse.png">
+  <div class="project-title">劇情片｜攝影助理</div>
+</div>
+<div class="project" data-cat="video" data-title="劇情片｜剪輯、場記" data-description="Ravine 影片" data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
+  <img src="video/ravine.png">
+  <div class="project-title">劇情片｜剪輯、場記</div>
+</div>
+<div class="project" data-cat="video" data-title="廣告｜導演" data-description="Sony 影片" data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
+  <img src="video/sony.png">
+  <div class="project-title">廣告｜導演</div>
+</div>
+<div class="project" data-cat="video" data-title="新聞｜拍攝、剪輯" data-description="Wendan 影片" data-video="https://www.youtube.com/embed/7ZRsVUVbRbg?autoplay=1">
+  <img src="video/wendan.jpg">
+  <div class="project-title">新聞｜拍攝、剪輯</div>
+</div>
+<div class="project" data-cat="video" data-title="中正傳播營回顧片" data-description="Camp 影片" data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
+  <img src="video/camp.png">
+  <div class="project-title">中正傳播營回顧片</div>
+</div>
+<div class="project" data-cat="video" data-title="出去走走" data-description="GoGo 影片" data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
+  <img src="video/gogo.jpg">
+  <div class="project-title">出去走走</div>
+</div>
+
+<!-- 3D -->
+<div class="project" data-cat="3d" data-title="展場規劃" data-description="Shixian 3D 系列展示<br>展場規劃與設計" data-images="d/shixian/shixian2.jpg,d/shixian/shixian3.jpg,d/shixian/shixian4.png,d/shixian/shixian5.png">
+  <img src="d/shixian/shixian1.jpg">
+  <div class="project-title">展場規劃</div>
+</div>
+<div class="project" data-cat="3d" data-title="展場規劃" data-description="Library 3D 系列展示<br>圖書館展場設計" data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jpg">
+  <img src="d/library/library1.jpg">
+  <div class="project-title">展場規劃</div>
+</div>
+
 </div>
 </section>
 
@@ -274,7 +274,7 @@ projects.forEach(project=>{
     const video=project.dataset.video
     const images=project.dataset.images
     panelTitle.textContent=project.dataset.title
-    panelText.textContent=project.dataset.description
+    panelText.innerHTML=project.dataset.description
     panelExtraImages.innerHTML=""
     if(video){
       panelImg.style.display="none"
