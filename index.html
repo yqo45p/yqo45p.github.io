@@ -31,17 +31,17 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 #hero {
   height: 100vh;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 
-/* 三張圖片（最上層） */
+/* 三張圖片固定在最上方，置於影片之上 */
 .hero-images {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 25px;
-  position: relative;
   z-index: 3;
 }
 
@@ -49,7 +49,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   height: 220px;
 }
 
-/* 背景影片 */
+/* 背景影片完全置中 */
 #hero video {
   position: absolute;
   top: 50%;
