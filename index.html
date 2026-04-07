@@ -9,6 +9,13 @@
     font-family:'MantouSans';
     src:url('MantouSans-Regular.ttf') format('truetype');
 }
+    /* 取消作品標題與面板文字粗體，並允許換行 */
+.project-title,
+#panel-title,
+#panel-text {
+    font-weight: normal;    /* 取消粗體 */
+    white-space: pre-line;  /* 保留換行符號，文字自動換行 */
+}
 
 body{
     margin:0;
