@@ -30,6 +30,15 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 /* hero */
 #hero{ height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
 
+/* 上下自然浮動動畫 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-30px); }
+}
+.float-img {
+  animation: float 4s ease-in-out infinite;
+}
+
 /* category */
 .category-btns{ margin:30px 0; }
 .category-btns button{
@@ -123,10 +132,10 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 </nav>
 
 <section id="hero">
-  <div style="display:flex; justify-content:center; align-items:center; gap:10px;">
-    <img src="good/zeng.png" alt="Zeng" style="height:80px;">
-    <img src="good/pei.png" alt="Pei" style="height:80px;">
-    <img src="good/zhen.png" alt="Zhen" style="height:80px;">
+  <div style="display:flex; justify-content:center; align-items:center; gap:25px;">
+    <img src="good/zeng.png" alt="Zeng" class="float-img" style="height:160px; animation-delay:0s;">
+    <img src="good/pei.png" alt="Pei" class="float-img" style="height:160px; animation-delay:0.5s;">
+    <img src="good/zhen.png" alt="Zhen" class="float-img" style="height:160px; animation-delay:1s;">
   </div>
   <p>Video / Design / 3D</p>
 </section>
