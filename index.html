@@ -13,7 +13,7 @@
 body{
     margin:0;
     font-family:'MantouSans',sans-serif;
-    background:#FFFFFF;
+    background:#D6CFC4;
     color:#87240E;
     overflow-x:hidden;
     scroll-behavior:smooth;
@@ -27,15 +27,60 @@ section{ padding:120px 20px; text-align:center; }
 nav{ position:fixed; top:20px; right:20px; display:flex; gap:20px; z-index:10; }
 nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
-/* hero */
+/* hero 主畫面 */
 #hero{
   height:100vh;
   display:flex;
   flex-direction:column;
-  justify-content:center; /* 垂直置中 */
+  justify-content:center;
   align-items:center;
-  padding-top:0px; /* 控制名字區塊高度 */
+  padding-top:0px;
 }
+
+/* 吊線容器 */
+#hero .hang-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* 畫水平線 */
+#hero .hang-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: #87240E;
+}
+
+/* 每張圖片懸掛線 */
+#hero .hang-container img {
+  display: block;
+  height: 220px;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+/* 每張圖片上方的垂線 */
+#hero .hang-container img::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 30px;
+  background: #87240E;
+}
+
+/* 吊牌風格：左右錯落 + 微旋轉 */
+.hang-1 { transform: translateX(-15px) rotate(-2deg); }
+.hang-2 { transform: translateX(0px) rotate(1deg); }
+.hang-3 { transform: translateX(15px) rotate(-1.5deg); }
 
 /* category */
 .category-btns{ margin:30px 0; }
@@ -119,7 +164,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 #panel-extra-images{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
 #panel-close{ position:absolute; top:10px; right:15px; font-size:28px; cursor:pointer; }
 #connect{ padding:60px 20px; text-align:center; }
-
 </style>
 </head>
 
@@ -130,17 +174,15 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 </nav>
 
 <section id="hero">
-  <div style="display:flex; justify-content:center; align-items:center; gap:25px;">
-    <img src="good/zeng.png" alt="Zeng" class="float-img" style="height:200px; animation-delay:0s;">
-    <img src="good/pei.png" alt="Pei" class="float-img" style="height:200px; animation-delay:0.5s;">
-    <img src="good/zhen.png" alt="Zhen" class="float-img" style="height:200px; animation-delay:1s;">
+  <div class="hang-container">
+    <img src="good/zeng.png" alt="Zeng" class="hang-1">
+    <img src="good/pei.png" alt="Pei" class="hang-2">
+    <img src="good/zhen.png" alt="Zhen" class="hang-3">
   </div>
 </section>
 
 <section id="work">
-
 <h2>Work</h2>
-
 <div class="category-btns">
   <button data-cat="all" class="active">All</button>
   <button data-cat="video">Video</button>
