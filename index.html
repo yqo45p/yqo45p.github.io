@@ -28,7 +28,14 @@ nav{ position:fixed; top:20px; right:20px; display:flex; gap:20px; z-index:10; }
 nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 /* hero */
-#hero{ height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+#hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start; /* 往上對齊 */
+  align-items:center;
+  padding-top:80px; /* 控制名字區塊高度 */
+}
 
 /* 上下自然浮動動畫 */
 @keyframes float {
@@ -137,7 +144,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     <img src="good/pei.png" alt="Pei" class="float-img" style="height:160px; animation-delay:0.5s;">
     <img src="good/zhen.png" alt="Zhen" class="float-img" style="height:160px; animation-delay:1s;">
   </div>
-  <p>Video / Design / 3D</p>
 </section>
 
 <section id="work">
