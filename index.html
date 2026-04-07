@@ -19,6 +19,7 @@ body{
     scroll-behavior:smooth;
 }
 
+h1{ font-size:60px; font-weight: normal; color:#87240E; margin:0; }
 h2{ font-size:36px; color:#87240E; margin:0; }
 section{ padding:120px 20px; text-align:center; }
 
@@ -28,11 +29,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 /* hero */
 #hero{ height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
-#hero video{
-    width:70%;
-    max-width:900px;
-    border-radius:10px;
-}
 
 /* category */
 .category-btns{ margin:30px 0; }
@@ -115,7 +111,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 #panel-video{ width:70%; height:380px; margin-bottom:20px; border:none; }
 #panel-extra-images{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
 #panel-close{ position:absolute; top:10px; right:15px; font-size:28px; cursor:pointer; }
-
 #connect{ padding:60px 20px; text-align:center; }
 
 </style>
@@ -125,15 +120,15 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 <nav>
 <a href="#work">Work</a>
-<a href="#connect">Connect</a>
 </nav>
 
 <section id="hero">
-  <!-- 動畫取代標題 -->
-  <video src="good/name.mp4" autoplay loop muted></video>
+  <h1>曾珮甄作品集</h1>
+  <p>Video / Design / 3D</p>
 </section>
 
 <section id="work">
+
 <h2>Work</h2>
 
 <div class="category-btns">
@@ -172,6 +167,10 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   <div class="project" data-cat="design" data-title="活動海報設計" data-description="ghost 圖片展示">
     <img src="design/ghost.jpg">
     <div class="project-title">活動海報設計</div>
+  </div>
+  <div class="project" data-cat="design" data-title="樂團介紹海報" data-description="introduce 圖片展示">
+    <img src="design/introduce.png">
+    <div class="project-title">樂團介紹海報</div>
   </div>
   <div class="project" data-cat="design" data-title="第二十三屆新傳獎海報" data-description="news 圖片展示">
     <img src="design/news.png">
