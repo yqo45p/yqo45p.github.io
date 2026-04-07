@@ -139,17 +139,17 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 <a href="#work">Work</a>
 </nav>
 
-<section id="hero">
+<section id="hero" style="position:relative; height:100vh; display:flex; justify-content:center; align-items:center; overflow:hidden;">
 
-  <!-- 三張圖（上） -->
-  <div style="display:flex; justify-content:center; align-items:center; gap:25px; margin-bottom:30px;">
+  <!-- 三張圖（上層） -->
+  <div style="display:flex; gap:25px; position:relative; z-index:2;">
     <img src="good/zeng.png" alt="Zeng" style="height:220px;">
     <img src="good/pei.png" alt="Pei" style="height:220px;">
     <img src="good/zhen.png" alt="Zhen" style="height:220px;">
   </div>
 
-  <!-- 影片（下） -->
-  <video controls autoplay muted loop playsinline preload="auto" style="width:70%; max-width:800px;">
+  <!-- 動畫影片（透明，背景） -->
+  <video autoplay muted loop playsinline style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;">
     <source src="good/head.mp4" type="video/mp4">
   </video>
 
