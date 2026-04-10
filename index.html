@@ -19,21 +19,11 @@ body{
     scroll-behavior:smooth;
 }
 
-/* =======================
-   基礎文字
-======================= */
-h1{ font-size:60px; font-weight: normal; margin:0; }
-h2{ font-size:36px; font-weight: normal; margin:0; }
-h3{ font-size:24px; font-weight: normal; margin:0; }
+h1{ font-size:60px; font-weight: normal; color:#87240E; margin:0; }
+h2{ font-size:36px; color:#87240E; margin:0; }
+section{ padding:120px 20px; text-align:center; }
 
-section{
-    padding:120px 20px;
-    text-align:center;
-}
-
-/* =======================
-   navbar
-======================= */
+/* navbar */
 nav{
     position:fixed;
     top:20px;
@@ -48,27 +38,11 @@ nav a{
     font-size:18px;
 }
 
-/* =======================
-   HERO（升級：加宣言層）
-======================= */
+/* hero */
 #hero {
   height: 100vh;
   position: relative;
   overflow: hidden;
-}
-
-.hero-text{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  z-index:5;
-  text-align:center;
-}
-
-.hero-text p{
-  font-size:18px;
-  opacity:0.8;
 }
 
 .hero-images {
@@ -94,45 +68,7 @@ nav a{
   z-index: 1;
 }
 
-/* =======================
-   FEATURED WORK（新增🔥）
-======================= */
-#featured{
-    padding:120px 20px;
-}
-
-.featured-grid{
-    max-width:1000px;
-    margin:60px auto;
-    display:flex;
-    flex-direction:column;
-    gap:60px;
-}
-
-.featured-item{
-    display:flex;
-    gap:30px;
-    align-items:center;
-    text-align:left;
-}
-
-.featured-item img{
-    width:55%;
-    border-radius:6px;
-}
-
-.featured-item h3{
-    font-size:28px;
-    margin-bottom:10px;
-}
-
-.featured-item p{
-    opacity:0.7;
-}
-
-/* =======================
-   category buttons
-======================= */
+/* category */
 .category-btns{
     margin:30px 0;
 }
@@ -155,14 +91,12 @@ nav a{
     color:#D6CFC4;
 }
 
-/* =======================
-   masonry（優化 spacing）
-======================= */
+/* masonry */
 #all-projects{
     column-count:3;
-    column-gap:30px;
-    max-width:1000px;
-    margin:60px auto;
+    column-gap:20px;
+    max-width:1100px;
+    margin:40px auto;
 }
 
 @media (max-width:800px){
@@ -171,41 +105,42 @@ nav a{
 
 .project{
     break-inside:avoid;
-    margin-bottom:25px;
+    margin-bottom:20px;
     cursor:pointer;
     position:relative;
 }
 
-.project img{ width:100%; display:block; }
+.project img{
+    width:100%;
+    display:block;
+}
 
-/* hover（升級感） */
+/* hover */
 .project-title{
     position:absolute;
     bottom:0;
     left:0;
     width:100%;
-    background:rgba(0,0,0,0.5);
-    padding:12px;
+    background:rgba(0,0,0,0.4);
+    padding:10px;
     opacity:0;
     transition:0.3s;
     color:#FFFFFF;
-    font-size:14px;
 }
 
 .project:hover .project-title{
     opacity:1;
 }
 
-/* =======================
-   overlay（加質感）
-======================= */
+/* overlay */
 #overlay{
     display:none;
     position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter: blur(6px);
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
     justify-content:center;
     align-items:center;
     z-index:999;
@@ -219,7 +154,7 @@ nav a{
     width:90%;
     max-height:85vh;
     overflow-y:auto;
-    border-radius:8px;
+    border-radius:6px;
     text-align:center;
     position:relative;
     display:flex;
@@ -229,7 +164,9 @@ nav a{
 
 #panel-img{
     max-width:60%;
+    height:auto;
     margin-bottom:20px;
+    display:block;
 }
 
 #panel-video{
@@ -262,39 +199,28 @@ nav a{
 }
 
 #panel-text{
-    font-size:18px;
+    font-size:19px;
     line-height:1.6;
 }
 
-/* =======================
-   connect（簡化收尾）
-======================= */
 #connect{
-    padding:120px 20px;
+    padding:60px 20px;
     text-align:center;
-    opacity:0.9;
 }
 
-/* =======================
-   mobile
-======================= */
+/* mobile */
 @media (max-width: 800px) {
   #hero { height: 60vh; }
 
   #hero video {
     width: 120%;
     height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .hero-images img { height: 140px; }
-
-  .featured-item{
-    flex-direction:column;
-  }
-
-  .featured-item img{
-    width:100%;
-  }
 }
 </style>
 </head>
@@ -305,14 +231,7 @@ nav a{
 <a href="#work">Work</a>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-
-  <div class="hero-text">
-    <h1>曾珮甄</h1>
-    <p>影像 × 設計 × 空間敘事</p>
-  </div>
-
   <div class="hero-images">
     <img src="good/zeng.png">
     <img src="good/pei.png">
@@ -324,34 +243,8 @@ nav a{
   </video>
 </section>
 
-<!-- FEATURED WORK（新增🔥） -->
-<section id="featured">
-<h2>Featured Work</h2>
-
-<div class="featured-grid">
-
-  <div class="featured-item">
-    <img src="video/aids.jpg">
-    <div>
-      <h3>從污名到教育</h3>
-      <p>紀錄片 / 2025</p>
-    </div>
-  </div>
-
-  <div class="featured-item">
-    <img src="design/shift.jpg">
-    <div>
-      <h3>移面之詞主視覺</h3>
-      <p>視覺設計 / 2026</p>
-    </div>
-  </div>
-
-</div>
-</section>
-
-<!-- WORK -->
 <section id="work">
-<h2>Selected Works</h2>
+<h2>Work</h2>
 
 <div class="category-btns">
   <button data-cat="video" class="active">Video</button>
@@ -361,7 +254,6 @@ nav a{
 
 <div id="all-projects">
 
-<!-- 你的原本作品（完全保留） -->
 <!-- DESIGN -->
 <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026">
   <img src="design/shift.jpg">
@@ -506,10 +398,8 @@ data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jp
 </div>
 </section>
 
-<!-- CONNECT -->
 <section id="connect">
 <h2>Connect</h2>
-<p>Let’s create something together.</p>
 <p>Email: jane940410@gmail.com</p>
 </section>
 
@@ -517,10 +407,14 @@ data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jp
 <div id="overlay">
   <div id="project-panel">
     <span id="panel-close">✕</span>
+
     <img id="panel-img">
+
     <iframe id="panel-video" allow="autoplay; fullscreen"></iframe>
+
     <h2 id="panel-title"></h2>
     <p id="panel-text"></p>
+
     <div id="panel-extra-images"></div>
   </div>
 </div>
@@ -528,6 +422,8 @@ data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jp
 <script>
 const projects = document.querySelectorAll(".project")
 const overlay = document.getElementById("overlay")
+const panel = document.getElementById("project-panel")
+
 const panelImg = document.getElementById("panel-img")
 const panelVideo = document.getElementById("panel-video")
 const panelTitle = document.getElementById("panel-title")
@@ -536,14 +432,19 @@ const panelExtraImages = document.getElementById("panel-extra-images")
 
 projects.forEach(project=>{
   project.onclick=()=>{
+
     overlay.style.display="flex"
 
-    panelTitle.textContent = project.dataset.title
-    panelText.innerHTML = project.dataset.description
+    panelTitle.textContent = project.dataset.title || ""
+    panelText.textContent = project.dataset.description || ""
+
     panelExtraImages.innerHTML = ""
 
     const video = project.dataset.video
     const images = project.dataset.images
+
+    panelImg.src = ""
+    panelVideo.src = ""
 
     if(video){
       panelImg.style.display="none"
@@ -569,12 +470,14 @@ projects.forEach(project=>{
 function closePanel(){
   overlay.style.display="none"
   panelVideo.src=""
+  panelImg.src=""
 }
 
 overlay.onclick=closePanel
 document.getElementById("panel-close").onclick=closePanel
-document.getElementById("project-panel").onclick=(e)=>e.stopPropagation()
+panel.onclick=(e)=>e.stopPropagation()
 
+/* filter */
 const buttons=document.querySelectorAll(".category-btns button")
 const allProjects=document.querySelectorAll(".project")
 
