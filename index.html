@@ -6,212 +6,161 @@
 
 <style>
 @font-face{
-    font-family:'MantouSans';
-    src:url('MantouSans-Regular.ttf') format('truetype');
+  font-family:'MantouSans';
+  src:url('MantouSans-Regular.ttf') format('truetype');
 }
 
 body{
-    margin:0;
-    font-family:'MantouSans',sans-serif;
-    background:#D6CFC4;
-    color:#87240E;
-    overflow-x:hidden;
-    scroll-behavior:smooth;
+  margin:0;
+  font-family:'MantouSans',sans-serif;
+  background:#D6CFC4;
+  color:#87240E;
+  overflow-x:hidden;
 }
 
-h1{ font-size:60px; font-weight: normal; color:#87240E; margin:0; }
-h2{ font-size:36px; color:#87240E; margin:0; }
-section{ padding:120px 20px; text-align:center; }
-
-/* navbar */
-nav{ position:fixed; top:20px; right:20px; display:flex; gap:20px; z-index:10; }
-nav a{ text-decoration:none; color:#87240E; font-size:18px; }
-
-/* hero */
-#hero {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+/* HERO */
+#hero{
+  height:100vh;
+  position:relative;
 }
 
-.hero-images {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 25px;
-  z-index: 3;
+.hero-images{
+  position:absolute;
+  top:50px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:25px;
 }
 
-.hero-images img { height: 220px; }
+.hero-images img{ height:220px; }
 
-#hero video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
-  object-fit: cover;
-  z-index: 1;
+#hero video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:50%;
+  height:50%;
+  object-fit:cover;
 }
 
-/* category */
+/* CATEGORY */
 .category-btns{
-    margin:30px 0;
+  text-align:center;
+  margin:30px 0;
 }
 
 .category-btns button{
-    background:#D6CFC4;
-    color:#87240E;
-    border:2px solid #87240E;
-    padding:10px 20px;
-    margin:0 5px;
-    cursor:pointer;
-    font-family:'MantouSans';
-    font-size:16px;
-    border-radius:4px;
-    transition:0.3s;
+  margin:0 5px;
+  padding:10px 18px;
+  border:2px solid #87240E;
+  background:#D6CFC4;
+  cursor:pointer;
 }
 
 .category-btns button.active{
-    background:#87240E;
-    color:#D6CFC4;
+  background:#87240E;
+  color:#D6CFC4;
 }
 
-/* masonry */
-#all-projects{
-    column-count:3;
-    column-gap:20px;
-    max-width:1100px;
-    margin:40px auto;
+/* ROW */
+.row{
+  margin:50px 0;
 }
 
-@media (max-width:800px){
-  #all-projects{ column-count:2; }
+.row h3{
+  text-align:left;
+  padding-left:20px;
 }
 
+/* CAROUSEL */
+.carousel{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding:10px 20px;
+}
+
+.carousel::-webkit-scrollbar{
+  display:none;
+}
+
+/* CARD */
 .project{
-    break-inside:avoid;
-    margin-bottom:20px;
-    cursor:pointer;
-    position:relative;
+  min-width:220px;
+  height:140px;
+  flex-shrink:0;
+  border-radius:8px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-.project img{ width:100%; display:block; }
+.project img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-/* hover */
+.project:hover{
+  transform:scale(1.15);
+  z-index:10;
+}
+
 .project-title{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:rgba(0,0,0,0.4);
-    padding:10px;
-    opacity:0;
-    transition:0.3s;
-    color:#FFFFFF;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:8px;
+  color:white;
+  background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  opacity:0;
 }
 
 .project:hover .project-title{ opacity:1; }
 
-/* overlay */
+/* OVERLAY */
 #overlay{
-    display:none;
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.55);
-    justify-content:center;
-    align-items:center;
-    z-index:999;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
 }
 
 #project-panel{
-    background:#D6CFC4;
-    color:#87240E;
-    padding:30px;
-    max-width:800px;
-    width:90%;
-    max-height:85vh;
-    overflow-y:auto;
-    border-radius:6px;
-    text-align:center;
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+  background:#D6CFC4;
+  padding:30px;
+  width:80%;
+  max-width:800px;
+  border-radius:10px;
+  position:relative;
 }
 
-#panel-img{
-    max-width:60%;
-    height:auto;
-    margin-bottom:20px;
-}
+#panel-img{ width:60%; display:block; margin:auto; }
 
 #panel-video{
-    width:70%;
-    height:380px;
-    margin-bottom:20px;
-    border:none;
-    display:none;
-}
-
-#panel-extra-images{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:20px;
+  width:100%;
+  height:400px;
+  display:none;
 }
 
 #panel-close{
-    position:absolute;
-    top:10px;
-    right:15px;
-    font-size:28px;
-    cursor:pointer;
-}
-
-#panel-title{
-    font-weight: normal;
-    font-size:28px;
-    margin-bottom:15px;
-}
-
-#panel-text{
-    font-size:19px;
-    line-height:1.6;
-}
-
-#connect{
-    padding:60px 20px;
-    text-align:center;
-}
-
-/* mobile */
-@media (max-width: 800px) {
-  #hero { height: 60vh; }
-
-  #hero video {
-    width: 120%;
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .hero-images img { height: 140px; }
+  position:absolute;
+  top:10px;
+  right:10px;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-<a href="#work">Work</a>
-</nav>
-
+<!-- HERO -->
 <section id="hero">
   <div class="hero-images">
     <img src="good/zeng.png">
@@ -224,209 +173,215 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   </video>
 </section>
 
-<section id="work">
-<h2>Work</h2>
-
+<!-- CATEGORY -->
 <div class="category-btns">
-  <button data-cat="video" class="active">Video</button>
+  <button class="active" data-cat="video">Video</button>
   <button data-cat="design">Design</button>
   <button data-cat="3d">3D</button>
 </div>
 
-<div id="all-projects">
+<!-- ================= VIDEO ================= -->
+<div class="row" data-row="video">
+<h3>Video</h3>
+<div class="carousel">
 
-<!-- DESIGN -->
-<div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026">
-  <img src="design/shift.jpg">
-  <div class="project-title">移面之詞主視覺</div>
-</div>
-
-<div class="project" data-cat="design" data-title="第17屆瘋影展海報" data-description="2025">
-  <img src="design/filmfestival.png">
-  <div class="project-title">第17屆瘋影展海報</div>
-</div>
-
-<div class="project" data-cat="design" data-title="中正傳播營海報" data-description="2024">
-  <img src="design/communicationcamp.jpg">
-  <div class="project-title">中正傳播營海報</div>
-</div>
-
-<div class="project" data-cat="design" data-title="中正之聲2024主視覺" data-description="2024">
-  <img src="design/voiceofzhongzheng.jpg">
-  <div class="project-title">中正之聲2024主視覺</div>
-</div>
-
-<div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
-  <img src="design/eye.png">
-  <div class="project-title">活動海報設計</div>
-</div>
-
-<div class="project" data-cat="design" data-title="中正E報主視覺" data-description="2025">
-  <img src="design/fb.png">
-  <div class="project-title">中正E報主視覺</div>
-</div>
-
-<div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
-  <img src="design/ghost.jpg">
-  <div class="project-title">活動海報設計</div>
-</div>
-
-<div class="project" data-cat="design" data-title="第二十三屆新傳獎海報" data-description="2025">
-  <img src="design/news.png">
-  <div class="project-title">第二十三屆新傳獎海報</div>
-</div>
-
-<div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
-  <img src="design/one.png">
-  <div class="project-title">活動海報設計</div>
-</div>
-
-<div class="project" data-cat="design" data-title="《溫度回收計畫》專輯封面" data-description="2025">
-  <img src="design/temperature.png">
-  <div class="project-title">《溫度回收計畫》專輯封面</div>
-</div>
-
-<!-- VIDEO -->
 <div class="project" data-cat="video"
 data-title="從污名到教育—愛滋風險不分族群"
 data-description="2025｜攝影、剪輯"
 data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
-  <img src="video/aids.jpg">
-  <div class="project-title">從污名到教育—愛滋風險不分族群</div>
+<img src="video/aids.jpg">
+<div class="project-title">從污名到教育</div>
 </div>
 
 <div class="project" data-cat="video"
 data-title="創傷到馨生—犯保協會的重建之路"
 data-description="2025｜攝影、剪輯"
 data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
-  <img src="video/crime.jpg">
-  <div class="project-title">創傷到馨生—犯保協會的重建之路</div>
+<img src="video/crime.jpg">
+<div class="project-title">創傷到馨生</div>
 </div>
 
 <div class="project" data-cat="video"
 data-title="與傷共行—那些尚未說完的事"
-data-description="2025｜攝影、剪輯"
+data-description="2025"
 data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
-  <img src="video/hurt.jpg">
-  <div class="project-title">與傷共行—那些尚未說完的事</div>
+<img src="video/hurt.jpg">
+<div class="project-title">與傷共行</div>
 </div>
 
 <div class="project" data-cat="video"
 data-title="窄房"
 data-description="2025"
 data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
-  <img src="video/narrowhouse.png">
-  <div class="project-title">窄房</div>
+<img src="video/narrowhouse.png">
+<div class="project-title">窄房</div>
 </div>
 
 <div class="project" data-cat="video"
 data-title="山溝"
 data-description="2024"
 data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
-  <img src="video/ravine.png">
-  <div class="project-title">山溝</div>
+<img src="video/ravine.png">
+<div class="project-title">山溝</div>
 </div>
 
 <div class="project" data-cat="video"
 data-title="Sony影視工作坊"
 data-description="2025"
 data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
-  <img src="video/sony.png">
-  <div class="project-title">Sony影視工作坊</div>
+<img src="video/sony.png">
+<div class="project-title">Sony影視工作坊</div>
 </div>
 
 <div class="project" data-cat="video"
 data-title="滿園文旦成廢果"
 data-description="2025"
 data-video="https://www.youtube.com/embed/7ZRsVUVbRbg?autoplay=1">
-  <img src="video/wendan.jpg">
-  <div class="project-title">滿園文旦成廢果</div>
+<img src="video/wendan.jpg">
+<div class="project-title">滿園文旦成廢果</div>
 </div>
 
 <div class="project" data-cat="video"
 data-title="中正傳播營回顧片"
 data-description="2025"
 data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
-  <img src="video/camp.png">
-  <div class="project-title">中正傳播營回顧片</div>
+<img src="video/camp.png">
+<div class="project-title">中正傳播營回顧片</div>
 </div>
 
 <div class="project" data-cat="video"
 data-title="出去走走"
 data-description="2025"
 data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
-  <img src="video/gogo.jpg">
-  <div class="project-title">出去走走</div>
+<img src="video/gogo.jpg">
+<div class="project-title">出去走走</div>
 </div>
 
-<!-- 3D -->
+</div>
+</div>
+
+<!-- ================= DESIGN ================= -->
+<div class="row" data-row="design">
+<h3>Design</h3>
+<div class="carousel">
+
+<div class="project" data-cat="design" data-title="移面之詞主視覺">
+<img src="design/shift.jpg">
+<div class="project-title">移面之詞</div>
+</div>
+
+<div class="project" data-cat="design" data-title="第17屆瘋影展海報">
+<img src="design/filmfestival.png">
+<div class="project-title">瘋影展</div>
+</div>
+
+<div class="project" data-cat="design" data-title="中正傳播營海報">
+<img src="design/communicationcamp.jpg">
+<div class="project-title">傳播營</div>
+</div>
+
+<div class="project" data-cat="design" data-title="中正之聲2024主視覺">
+<img src="design/voiceofzhongzheng.jpg">
+<div class="project-title">中正之聲</div>
+</div>
+
+<div class="project" data-cat="design" data-title="活動海報設計">
+<img src="design/eye.png">
+<div class="project-title">活動海報</div>
+</div>
+
+<div class="project" data-cat="design" data-title="中正E報主視覺">
+<img src="design/fb.png">
+<div class="project-title">E報</div>
+</div>
+
+<div class="project" data-cat="design" data-title="活動海報設計">
+<img src="design/ghost.jpg">
+<div class="project-title">幽靈</div>
+</div>
+
+<div class="project" data-cat="design" data-title="第二十三屆新傳獎海報">
+<img src="design/news.png">
+<div class="project-title">新傳獎</div>
+</div>
+
+<div class="project" data-cat="design" data-title="活動海報設計">
+<img src="design/one.png">
+<div class="project-title">活動</div>
+</div>
+
+<div class="project" data-cat="design" data-title="溫度回收計畫專輯封面">
+<img src="design/temperature.png">
+<div class="project-title">專輯封面</div>
+</div>
+
+</div>
+</div>
+
+<!-- ================= 3D ================= -->
+<div class="row" data-row="3d">
+<h3>3D</h3>
+<div class="carousel">
+
 <div class="project" data-cat="3d"
 data-title="世賢圖書館展場空間規劃"
-data-description="2026"
 data-images="d/shixian/shixian2.jpg,d/shixian/shixian3.jpg,d/shixian/shixian4.png,d/shixian/shixian5.png">
-  <img src="d/shixian/shixian1.jpg">
-  <div class="project-title">世賢圖書館展場規劃</div>
+<img src="d/shixian/shixian1.jpg">
+<div class="project-title">世賢圖書館</div>
 </div>
 
 <div class="project" data-cat="3d"
 data-title="嘉義市圖書館展場規劃"
-data-description="2026"
 data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jpg">
-  <img src="d/library/library1.jpg">
-  <div class="project-title">嘉義市圖書館展場規劃</div>
+<img src="d/library/library1.jpg">
+<div class="project-title">嘉義圖書館</div>
 </div>
 
 </div>
-</section>
+</div>
 
-<section id="connect">
-<h2>Connect</h2>
-<p>Email: jane940410@gmail.com</p>
-</section>
-
-<!-- Overlay -->
+<!-- OVERLAY -->
 <div id="overlay">
-  <div id="project-panel">
-    <span id="panel-close">✕</span>
-    <img id="panel-img">
-    <iframe id="panel-video" allow="autoplay; fullscreen"></iframe>
-    <h2 id="panel-title"></h2>
-    <p id="panel-text"></p>
-    <div id="panel-extra-images"></div>
-  </div>
+<div id="project-panel">
+<span id="panel-close">✕</span>
+<img id="panel-img">
+<iframe id="panel-video"></iframe>
+<h2 id="panel-title"></h2>
+<p id="panel-text"></p>
+<div id="panel-extra-images"></div>
+</div>
 </div>
 
 <script>
-const projects = document.querySelectorAll(".project")
-const overlay = document.getElementById("overlay")
-const panelImg = document.getElementById("panel-img")
-const panelVideo = document.getElementById("panel-video")
-const panelTitle = document.getElementById("panel-title")
-const panelText = document.getElementById("panel-text")
-const panelExtraImages = document.getElementById("panel-extra-images")
+const projects=document.querySelectorAll(".project")
+const overlay=document.getElementById("overlay")
+const panelImg=document.getElementById("panel-img")
+const panelVideo=document.getElementById("panel-video")
+const panelTitle=document.getElementById("panel-title")
+const panelText=document.getElementById("panel-text")
+const panelExtraImages=document.getElementById("panel-extra-images")
 
-// 點作品
-projects.forEach(project=>{
-  project.onclick=()=>{
+projects.forEach(p=>{
+  p.onclick=()=>{
     overlay.style.display="flex"
 
-    panelTitle.textContent = project.dataset.title
-    panelText.innerHTML = project.dataset.description
-    panelExtraImages.innerHTML = ""
+    panelTitle.textContent=p.dataset.title
+    panelText.textContent=p.dataset.description || ""
 
-    const video = project.dataset.video
-    const images = project.dataset.images
+    const video=p.dataset.video
+    const images=p.dataset.images
 
     if(video){
-      panelImg.style.display="none"
       panelVideo.style.display="block"
+      panelImg.style.display="none"
       panelVideo.src=video
     }else{
       panelVideo.style.display="none"
       panelImg.style.display="block"
-      panelImg.src=project.querySelector("img").src
+      panelImg.src=p.querySelector("img").src
     }
 
+    panelExtraImages.innerHTML=""
     if(images){
       images.split(",").forEach(src=>{
         const img=document.createElement("img")
@@ -438,35 +393,29 @@ projects.forEach(project=>{
   }
 })
 
-// 關閉
-function closePanel(){
+document.getElementById("panel-close").onclick=()=>{
   overlay.style.display="none"
   panelVideo.src=""
 }
 
-overlay.onclick=closePanel
-document.getElementById("panel-close").onclick=closePanel
-document.getElementById("project-panel").onclick=(e)=>e.stopPropagation()
-
-// ⭐ 分類：預設 Video
+/* Netflix filter */
 const buttons=document.querySelectorAll(".category-btns button")
-const allProjects=document.querySelectorAll(".project")
-
-function filter(cat){
-  allProjects.forEach(p=>{
-    p.style.display = (p.dataset.cat === cat) ? "block" : "none"
-  })
-}
-
-filter("video")
+const rows=document.querySelectorAll(".row")
 
 buttons.forEach(btn=>{
   btn.onclick=()=>{
     buttons.forEach(b=>b.classList.remove("active"))
     btn.classList.add("active")
-    filter(btn.dataset.cat)
+
+    const cat=btn.dataset.cat
+
+    rows.forEach(r=>{
+      r.style.display = (r.dataset.row===cat) ? "block" : "none"
+    })
   }
 })
+
+document.querySelector('[data-cat="video"]').click()
 </script>
 
 </body>
