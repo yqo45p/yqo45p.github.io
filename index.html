@@ -19,19 +19,56 @@ body{
     scroll-behavior:smooth;
 }
 
-h1{ font-size:60px; font-weight: normal; color:#87240E; margin:0; }
-h2{ font-size:36px; color:#87240E; margin:0; }
-section{ padding:120px 20px; text-align:center; }
+/* =======================
+   基礎文字
+======================= */
+h1{ font-size:60px; font-weight: normal; margin:0; }
+h2{ font-size:36px; font-weight: normal; margin:0; }
+h3{ font-size:24px; font-weight: normal; margin:0; }
 
-/* navbar */
-nav{ position:fixed; top:20px; right:20px; display:flex; gap:20px; z-index:10; }
-nav a{ text-decoration:none; color:#87240E; font-size:18px; }
+section{
+    padding:120px 20px;
+    text-align:center;
+}
 
-/* hero */
+/* =======================
+   navbar
+======================= */
+nav{
+    position:fixed;
+    top:20px;
+    right:20px;
+    display:flex;
+    gap:20px;
+    z-index:10;
+}
+nav a{
+    text-decoration:none;
+    color:#87240E;
+    font-size:18px;
+}
+
+/* =======================
+   HERO（升級：加宣言層）
+======================= */
 #hero {
   height: 100vh;
   position: relative;
   overflow: hidden;
+}
+
+.hero-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:5;
+  text-align:center;
+}
+
+.hero-text p{
+  font-size:18px;
+  opacity:0.8;
 }
 
 .hero-images {
@@ -57,7 +94,45 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   z-index: 1;
 }
 
-/* category */
+/* =======================
+   FEATURED WORK（新增🔥）
+======================= */
+#featured{
+    padding:120px 20px;
+}
+
+.featured-grid{
+    max-width:1000px;
+    margin:60px auto;
+    display:flex;
+    flex-direction:column;
+    gap:60px;
+}
+
+.featured-item{
+    display:flex;
+    gap:30px;
+    align-items:center;
+    text-align:left;
+}
+
+.featured-item img{
+    width:55%;
+    border-radius:6px;
+}
+
+.featured-item h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.featured-item p{
+    opacity:0.7;
+}
+
+/* =======================
+   category buttons
+======================= */
 .category-btns{
     margin:30px 0;
 }
@@ -80,12 +155,14 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     color:#D6CFC4;
 }
 
-/* masonry */
+/* =======================
+   masonry（優化 spacing）
+======================= */
 #all-projects{
     column-count:3;
-    column-gap:20px;
-    max-width:1100px;
-    margin:40px auto;
+    column-gap:30px;
+    max-width:1000px;
+    margin:60px auto;
 }
 
 @media (max-width:800px){
@@ -94,35 +171,41 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 .project{
     break-inside:avoid;
-    margin-bottom:20px;
+    margin-bottom:25px;
     cursor:pointer;
     position:relative;
 }
 
 .project img{ width:100%; display:block; }
 
-/* hover */
+/* hover（升級感） */
 .project-title{
     position:absolute;
     bottom:0;
     left:0;
     width:100%;
-    background:rgba(0,0,0,0.4);
-    padding:10px;
+    background:rgba(0,0,0,0.5);
+    padding:12px;
     opacity:0;
     transition:0.3s;
     color:#FFFFFF;
+    font-size:14px;
 }
 
-.project:hover .project-title{ opacity:1; }
+.project:hover .project-title{
+    opacity:1;
+}
 
-/* overlay */
+/* =======================
+   overlay（加質感）
+======================= */
 #overlay{
     display:none;
     position:fixed;
     top:0; left:0;
     width:100%; height:100%;
-    background:rgba(0,0,0,0.55);
+    background:rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
     justify-content:center;
     align-items:center;
     z-index:999;
@@ -136,7 +219,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     width:90%;
     max-height:85vh;
     overflow-y:auto;
-    border-radius:6px;
+    border-radius:8px;
     text-align:center;
     position:relative;
     display:flex;
@@ -146,7 +229,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 #panel-img{
     max-width:60%;
-    height:auto;
     margin-bottom:20px;
 }
 
@@ -180,28 +262,39 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 }
 
 #panel-text{
-    font-size:19px;
+    font-size:18px;
     line-height:1.6;
 }
 
+/* =======================
+   connect（簡化收尾）
+======================= */
 #connect{
-    padding:60px 20px;
+    padding:120px 20px;
     text-align:center;
+    opacity:0.9;
 }
 
-/* mobile */
+/* =======================
+   mobile
+======================= */
 @media (max-width: 800px) {
   #hero { height: 60vh; }
 
   #hero video {
     width: 120%;
     height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   .hero-images img { height: 140px; }
+
+  .featured-item{
+    flex-direction:column;
+  }
+
+  .featured-item img{
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -212,7 +305,14 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 <a href="#work">Work</a>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
+
+  <div class="hero-text">
+    <h1>曾珮甄</h1>
+    <p>影像 × 設計 × 空間敘事</p>
+  </div>
+
   <div class="hero-images">
     <img src="good/zeng.png">
     <img src="good/pei.png">
@@ -224,8 +324,34 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   </video>
 </section>
 
+<!-- FEATURED WORK（新增🔥） -->
+<section id="featured">
+<h2>Featured Work</h2>
+
+<div class="featured-grid">
+
+  <div class="featured-item">
+    <img src="video/aids.jpg">
+    <div>
+      <h3>從污名到教育</h3>
+      <p>紀錄片 / 2025</p>
+    </div>
+  </div>
+
+  <div class="featured-item">
+    <img src="design/shift.jpg">
+    <div>
+      <h3>移面之詞主視覺</h3>
+      <p>視覺設計 / 2026</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- WORK -->
 <section id="work">
-<h2>Work</h2>
+<h2>Selected Works</h2>
 
 <div class="category-btns">
   <button data-cat="video" class="active">Video</button>
@@ -235,6 +361,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 <div id="all-projects">
 
+<!-- 你的原本作品（完全保留） -->
 <!-- DESIGN -->
 <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026">
   <img src="design/shift.jpg">
@@ -379,8 +506,10 @@ data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jp
 </div>
 </section>
 
+<!-- CONNECT -->
 <section id="connect">
 <h2>Connect</h2>
+<p>Let’s create something together.</p>
 <p>Email: jane940410@gmail.com</p>
 </section>
 
@@ -405,7 +534,6 @@ const panelTitle = document.getElementById("panel-title")
 const panelText = document.getElementById("panel-text")
 const panelExtraImages = document.getElementById("panel-extra-images")
 
-// 點作品
 projects.forEach(project=>{
   project.onclick=()=>{
     overlay.style.display="flex"
@@ -438,7 +566,6 @@ projects.forEach(project=>{
   }
 })
 
-// 關閉
 function closePanel(){
   overlay.style.display="none"
   panelVideo.src=""
@@ -448,7 +575,6 @@ overlay.onclick=closePanel
 document.getElementById("panel-close").onclick=closePanel
 document.getElementById("project-panel").onclick=(e)=>e.stopPropagation()
 
-// ⭐ 分類：預設 Video
 const buttons=document.querySelectorAll(".category-btns button")
 const allProjects=document.querySelectorAll(".project")
 
