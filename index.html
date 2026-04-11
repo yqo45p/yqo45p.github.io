@@ -21,6 +21,7 @@ body{
 
 h1{ font-size:60px; font-weight: normal; color:#87240E; margin:0; }
 h2{ font-size:36px; color:#87240E; margin:0; }
+
 section{ padding:120px 20px; text-align:center; }
 
 /* navbar */
@@ -47,26 +48,34 @@ nav a{
 }
 
 .hero-images {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 25px;
-  z-index: 3;
+  position:absolute;
+  top:50px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:25px;
+  z-index:3;
 }
 
-.hero-images img { height: 220px; }
+.hero-images img{ height:220px; }
 
-#hero video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
-  object-fit: cover;
-  z-index: 1;
+#hero video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:50%;
+  height:50%;
+  object-fit:cover;
+  z-index:1;
+}
+
+/* WORK 電腦圖 */
+#work-computer{
+  display:block;
+  margin:20px auto 50px;
+  transform:scale(2);
+  transform-origin:center;
 }
 
 /* masonry */
@@ -103,7 +112,7 @@ nav a{
     padding:10px;
     opacity:0;
     transition:0.3s;
-    color:#FFFFFF;
+    color:#fff;
 }
 
 .project:hover .project-title{
@@ -180,21 +189,25 @@ nav a{
     line-height:1.6;
 }
 
-/* mobile */
-@media (max-width: 800px) {
-  #hero { height: 60vh; }
-
-  #hero video {
-    width: 120%;
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .hero-images img { height: 140px; }
+#connect{
+    padding:60px 20px;
+    text-align:center;
 }
 
+/* mobile */
+@media (max-width: 800px){
+  #hero{ height:60vh; }
+
+  #hero video{
+    width:120%;
+    height:auto;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+  }
+
+  .hero-images img{ height:140px; }
+}
 </style>
 </head>
 
@@ -204,6 +217,7 @@ nav a{
 <a href="#work">Work</a>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-images">
     <img src="good/zeng.png">
@@ -216,8 +230,13 @@ nav a{
   </video>
 </section>
 
+<!-- WORK -->
 <section id="work">
+
 <h2>Work</h2>
+
+<!-- ⭐ com.webp 已加入（放大2倍） -->
+<img src="good/com.webp" id="work-computer">
 
 <div id="all-projects">
 
@@ -363,12 +382,13 @@ data-description="2026">
 </div>
 </section>
 
+<!-- CONNECT -->
 <section id="connect">
 <h2>Connect</h2>
 <p>Email: jane940410@gmail.com</p>
 </section>
 
-<!-- Overlay -->
+<!-- OVERLAY -->
 <div id="overlay">
   <div id="project-panel">
     <span id="panel-close">✕</span>
@@ -381,23 +401,23 @@ data-description="2026">
 </div>
 
 <script>
-const projects = document.querySelectorAll(".project")
-const overlay = document.getElementById("overlay")
-const panelImg = document.getElementById("panel-img")
-const panelVideo = document.getElementById("panel-video")
-const panelTitle = document.getElementById("panel-title")
-const panelText = document.getElementById("panel-text")
-const panelExtraImages = document.getElementById("panel-extra-images")
+const projects=document.querySelectorAll(".project")
+const overlay=document.getElementById("overlay")
+const panelImg=document.getElementById("panel-img")
+const panelVideo=document.getElementById("panel-video")
+const panelTitle=document.getElementById("panel-title")
+const panelText=document.getElementById("panel-text")
+const panelExtraImages=document.getElementById("panel-extra-images")
 
 projects.forEach(project=>{
   project.onclick=()=>{
     overlay.style.display="flex"
 
-    panelTitle.textContent = project.dataset.title
-    panelText.innerHTML = project.dataset.description || ""
-    panelExtraImages.innerHTML = ""
+    panelTitle.textContent=project.dataset.title
+    panelText.innerHTML=project.dataset.description||""
+    panelExtraImages.innerHTML=""
 
-    const video = project.dataset.video
+    const video=project.dataset.video
 
     if(video){
       panelImg.style.display="none"
@@ -418,7 +438,7 @@ function closePanel(){
 
 overlay.onclick=closePanel
 document.getElementById("panel-close").onclick=closePanel
-document.getElementById("project-panel").onclick=(e)=>e.stopPropagation()
+document.getElementById("project-panel").onclick=e=>e.stopPropagation()
 </script>
 
 </body>
