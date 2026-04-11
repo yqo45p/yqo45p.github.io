@@ -4,217 +4,272 @@
 <meta charset="UTF-8">
 <title>曾珮甄作品集</title>
 
-<link rel="icon" href="good/head.png?v=6">
+<link rel="icon" href="good/head.png?v=3">
 
 <style>
+@font-face{
+  font-family:'MantouSans';
+  src:url('MantouSans-Regular.ttf') format('truetype');
+}
+
 body{
   margin:0;
-  font-family:sans-serif;
+  font-family:'MantouSans',sans-serif;
   background:#D6CFC4;
   color:#87240E;
 }
 
+/* HERO */
+#hero{
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-images{
+  position:absolute;
+  top:50px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:25px;
+}
+
+.hero-images img{ height:220px; }
+
+#hero video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:55%;
+}
+
+/* WORK */
 #work{
   text-align:center;
   padding:80px 20px;
 }
 
 #work img{
-  width:300px;
-  margin:20px;
+  width:360px;
+  display:block;
+  margin:25px auto;
   cursor:pointer;
+  transition:0.3s;
 }
 
-/* overlay */
+#work img:hover{
+  transform:scale(1.04);
+}
+
+/* OVERLAY */
 #overlay{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.55);
   justify-content:center;
   align-items:center;
+  z-index:999;
 }
 
 #panel{
   background:#D6CFC4;
+  padding:25px;
   width:90%;
   max-width:900px;
   max-height:85vh;
   overflow:auto;
-  padding:25px;
 }
 
-#close-area{
-  position:fixed;
-  inset:0;
+#panel-title{
+  text-align:center;
 }
 
-/* grid */
+/* GRID */
+.video-grid{
+  display:none;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
 .masonry{
+  display:none;
   column-count:3;
   column-gap:15px;
 }
 
-.project{
+@media (max-width:900px){
+  .masonry{ column-count:2; }
+}
+@media (max-width:600px){
+  .masonry{ column-count:1; }
+}
+
+.project,.video-item{
   break-inside:avoid;
-  margin-bottom:15px;
+  margin-bottom:10px;
   cursor:pointer;
   position:relative;
 }
 
-.project img{
+.project img,.video-item img{
   width:100%;
 }
 
-.project-title{
+.project-title,.video-title{
   position:absolute;
   bottom:0;
   left:0;
   right:0;
   background:rgba(0,0,0,0.6);
   color:white;
-  padding:5px;
+  padding:6px;
   opacity:0;
 }
 
-.project:hover .project-title{
+.project:hover .project-title,
+.video-item:hover .video-title{
   opacity:1;
-}
-
-/* detail */
-#detail{
-  display:none;
-}
-
-#detail img{
-  width:100%;
-  margin-bottom:15px;
-}
-
-#detail h3{
-  margin:10px 0;
 }
 
 #player{
   width:100%;
-  height:400px;
+  height:420px;
+  display:none;
   border:none;
+}
+
+#close-area{
+  position:fixed;
+  inset:0;
 }
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-images">
+    <img src="good/zeng.png">
+    <img src="good/pei.png">
+    <img src="good/zhen.png">
+  </div>
+
+  <video autoplay muted loop playsinline>
+    <source src="good/head.webm">
+  </video>
+</section>
+
+<!-- WORK -->
 <section id="work">
 <h2>Work</h2>
 
-<img src="good/com.webp" id="btn-video">
-<img src="good/table.webp" id="btn-design">
-<img src="good/ca.webp" id="btn-3d">
+<img src="good/com.webp" id="work-computer">
+<img src="good/table.webp" id="work-table">
+<img src="good/ca.webp" id="work-ca">
 
 </section>
 
+<!-- OVERLAY -->
 <div id="overlay">
 <div id="close-area"></div>
 
 <div id="panel">
-
 <h2 id="panel-title"></h2>
 
-<div id="grid" class="masonry"></div>
+<!-- VIDEO -->
+<div class="video-grid" id="videoGrid">
 
-<div id="detail">
-<h3 id="d-title"></h3>
-<p id="d-desc"></p>
-<img id="d-img">
-<iframe id="player"></iframe>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')"><img src="video/aids.jpg"><div class="video-title">從污名到教育—愛滋風險不分族群</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1')"><img src="video/crime.jpg"><div class="video-title">創傷到馨生—犯保協會的重建之路</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1')"><img src="video/hurt.jpg"><div class="video-title">與傷共行—那些尚未說完的事</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')"><img src="video/narrowhouse.png"><div class="video-title">窄房</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1')"><img src="video/ravine.png"><div class="video-title">山溝</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1')"><img src="video/sony.png"><div class="video-title">Sony收你的創意-影視製作工作坊</div></div>
+<div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048')"><img src="video/wendan.jpg"><div class="video-title">滿園文旦成廢果 農民收成化泡影？</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')"><img src="video/camp.png"><div class="video-title">中正傳播營回顧片</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/iD759dRtgIY?autoplay=1')"><img src="video/gogo.jpg"><div class="video-title">出去走走｜劇情短片</div></div>
+
 </div>
+
+<!-- DESIGN -->
+<div class="masonry" id="designGrid">
+
+<div class="project"><img src="design/shift.jpg"><div class="project-title">移面之詞主視覺</div></div>
+<div class="project"><img src="design/filmfestival.png"><div class="project-title">第17屆瘋影展海報</div></div>
+<div class="project"><img src="design/communicationcamp.jpg"><div class="project-title">中正傳播營海報</div></div>
+<div class="project"><img src="design/voiceofzhongzheng.jpg"><div class="project-title">中正之聲2024主視覺</div></div>
+<div class="project"><img src="design/eye.png"><div class="project-title">活動海報設計</div></div>
+<div class="project"><img src="design/fb.png"><div class="project-title">中正E報主視覺</div></div>
+<div class="project"><img src="design/ghost.jpg"><div class="project-title">活動海報設計</div></div>
+<div class="project"><img src="design/news.png"><div class="project-title">第二十三屆新傳獎海報</div></div>
+<div class="project"><img src="design/one.png"><div class="project-title">活動海報設計</div></div>
+<div class="project"><img src="design/temperature.png"><div class="project-title">《溫度回收計畫》專輯封面</div></div>
+
+</div>
+
+<!-- 3D -->
+<div class="masonry" id="threeDGrid">
+
+<div class="project"><img src="d/shixian/shixian1.jpg"><div class="project-title">世賢圖書館展場空間規劃</div></div>
+<div class="project"><img src="d/library/library1.jpg"><div class="project-title">嘉義市圖書館展場規劃</div></div>
+
+</div>
+
+<iframe id="player"></iframe>
 
 </div>
 </div>
 
 <script>
+const overlay = document.getElementById("overlay")
+const videoGrid = document.getElementById("videoGrid")
+const designGrid = document.getElementById("designGrid")
+const threeDGrid = document.getElementById("threeDGrid")
+const player = document.getElementById("player")
+const panelTitle = document.getElementById("panel-title")
 
-const data = [
-
-/* DESIGN */
-{cat:"design",img:"design/shift.jpg",title:"移面之詞主視覺",desc:"2026 主視覺設計"},
-{cat:"design",img:"design/filmfestival.png",title:"第17屆瘋影展海報",desc:"2025 海報設計"},
-{cat:"design",img:"design/communicationcamp.jpg",title:"中正傳播營海報",desc:"2024 活動設計"},
-{cat:"design",img:"design/voiceofzhongzheng.jpg",title:"中正之聲2024主視覺",desc:"2024 主視覺設計"},
-{cat:"design",img:"design/eye.png",title:"活動海報設計",desc:"2025"},
-{cat:"design",img:"design/fb.png",title:"中正E報主視覺",desc:"2025"},
-{cat:"design",img:"design/ghost.jpg",title:"活動海報設計",desc:"2025"},
-{cat:"design",img:"design/news.png",title:"第二十三屆新傳獎海報",desc:"2025"},
-{cat:"design",img:"design/one.png",title:"活動海報設計",desc:"2025"},
-{cat:"design",img:"design/temperature.png",title:"溫度回收計畫專輯封面",desc:"2025 專輯設計"},
-
-/* VIDEO */
-{cat:"video",img:"video/aids.jpg",title:"從污名到教育—愛滋風險不分族群",desc:"2025｜攝影、剪輯",video:"https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1"},
-{cat:"video",img:"video/crime.jpg",title:"創傷到馨生—犯保協會的重建之路",desc:"2025｜攝影、剪輯",video:"https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1"},
-{cat:"video",img:"video/hurt.jpg",title:"與傷共行—那些尚未說完的事",desc:"2025｜攝影、剪輯",video:"https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1"},
-{cat:"video",img:"video/narrowhouse.png",title:"窄房",desc:"2025｜攝影助理",video:"https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1"},
-{cat:"video",img:"video/ravine.png",title:"山溝",desc:"2024｜剪輯、場記",video:"https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1"},
-{cat:"video",img:"video/sony.png",title:"Sony收你的創意-影視製作工作坊",desc:"2025｜導演",video:"https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1"},
-{cat:"video",img:"video/wendan.jpg",title:"滿園文旦成廢果",desc:"2025｜攝影、剪輯",video:"https://www.peopo.org/news/822048"},
-{cat:"video",img:"video/camp.png",title:"中正傳播營回顧片",desc:"2025｜活動紀錄",video:"https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1"},
-{cat:"video",img:"video/gogo.jpg",title:"出去走走",desc:"2025 劇情短片",video:"https://www.youtube.com/embed/iD759dRtgIY?autoplay=1"},
-
-/* 3D */
-{cat:"3d",img:"d/shixian/shixian1.jpg",title:"世賢圖書館展場空間規劃",desc:"2026 空間設計"},
-{cat:"3d",img:"d/library/library1.jpg",title:"嘉義市圖書館展場規劃",desc:"2026 空間設計"}
-
-]
-
-const overlay=document.getElementById("overlay")
-const grid=document.getElementById("grid")
-const detail=document.getElementById("detail")
-const player=document.getElementById("player")
-
-function render(cat){
-  grid.innerHTML=""
-  grid.style.display="block"
-  detail.style.display="none"
+document.getElementById("work-computer").onclick=()=>{
+  overlay.style.display="flex"
+  videoGrid.style.display="grid"
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
+  player.style.display="none"
   player.src=""
-
-  data.filter(d=>d.cat===cat).forEach(d=>{
-    const el=document.createElement("div")
-    el.className="project"
-
-    el.innerHTML=`
-      <img src="${d.img}">
-      <div class="project-title">${d.title}</div>
-    `
-
-    el.onclick=()=>{
-      grid.style.display="none"
-      detail.style.display="block"
-
-      document.getElementById("d-title").textContent=d.title
-      document.getElementById("d-desc").textContent=d.desc
-      document.getElementById("d-img").src=d.img
-
-      if(d.video){
-        player.style.display="block"
-        player.src=d.video
-      }else{
-        player.style.display="none"
-      }
-    }
-
-    grid.appendChild(el)
-  })
+  panelTitle.textContent="Video"
 }
 
-document.getElementById("btn-video").onclick=()=>{overlay.style.display="flex";render("video")}
-document.getElementById("btn-design").onclick=()=>{overlay.style.display="flex";render("design")}
-document.getElementById("btn-3d").onclick=()=>{overlay.style.display="flex";render("3d")}
+document.getElementById("work-table").onclick=()=>{
+  overlay.style.display="flex"
+  videoGrid.style.display="none"
+  designGrid.style.display="block"
+  threeDGrid.style.display="none"
+  player.style.display="none"
+  panelTitle.textContent="Design"
+}
+
+document.getElementById("work-ca").onclick=()=>{
+  overlay.style.display="flex"
+  videoGrid.style.display="none"
+  designGrid.style.display="none"
+  threeDGrid.style.display="block"
+  player.style.display="none"
+  panelTitle.textContent="3D"
+}
+
+function openVideo(url){
+  videoGrid.style.display="none"
+  player.style.display="block"
+  player.src=url
+}
 
 document.getElementById("close-area").onclick=()=>{
   overlay.style.display="none"
   player.src=""
 }
-
 </script>
 
 </body>
