@@ -72,7 +72,7 @@ body{
   color:#D6CFC4;
 }
 
-/* ⭐ 瀑布流 */
+/* 瀑布流 */
 #all-projects{
   column-count:3;
   column-gap:20px;
@@ -143,15 +143,10 @@ body{
 #panel-title{
   font-size:26px;
   margin-bottom:10px;
+  text-align:center;
 }
 
-#panel-desc{
-  font-size:16px;
-  line-height:1.6;
-  margin-bottom:15px;
-}
-
-/* VIDEO LIST */
+/* VIDEO GRID */
 .video-grid{
   display:none;
   grid-template-columns:repeat(3,1fr);
@@ -226,7 +221,6 @@ body{
   <button onclick="filter('3d')">3D</button>
 </div>
 
-<!-- PROJECT GRID -->
 <div id="all-projects">
 
 <!-- DESIGN -->
@@ -244,8 +238,6 @@ body{
   <img src="design/communicationcamp.jpg">
   <div class="project-title">傳播營</div>
 </div>
-
-<!-- VIDEO will appear inside overlay -->
 
 <!-- 3D -->
 <div class="project" data-cat="3d" data-title="圖書館展場" data-description="空間設計">
@@ -269,9 +261,7 @@ body{
   <div id="panel">
 
     <h2 id="panel-title"></h2>
-    <p id="panel-desc"></p>
 
-    <!-- VIDEO GRID -->
     <div class="video-grid" id="videoGrid">
 
       <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')">
@@ -321,33 +311,25 @@ body{
 
 const overlay = document.getElementById("overlay")
 const closeArea = document.getElementById("close-area")
-
 const videoGrid = document.getElementById("videoGrid")
 const player = document.getElementById("player")
-
 const panelTitle = document.getElementById("panel-title")
-const panelDesc = document.getElementById("panel-desc")
-
 const projects = document.querySelectorAll(".project")
 
-/* com.webp 打開 */
 document.getElementById("work-computer").onclick=()=>{
   overlay.style.display="flex"
   videoGrid.style.display="grid"
   player.style.display="none"
   player.src=""
-  panelTitle.textContent="Video Works"
-  panelDesc.textContent="點擊作品觀看影片（自動播放）"
+  panelTitle.textContent="Video"
 }
 
-/* 打開影片 */
 function openVideo(url){
   videoGrid.style.display="none"
   player.style.display="block"
   player.src=url
 }
 
-/* 點空白關閉 */
 closeArea.onclick=()=>{
   overlay.style.display="none"
   player.src=""
@@ -355,18 +337,15 @@ closeArea.onclick=()=>{
   videoGrid.style.display="grid"
 }
 
-/* project 點擊（有介紹） */
 projects.forEach(p=>{
   p.onclick=()=>{
     overlay.style.display="flex"
     videoGrid.style.display="none"
     player.style.display="none"
     panelTitle.textContent=p.dataset.title
-    panelDesc.textContent=p.dataset.description
   }
 })
 
-/* filter */
 function filter(cat){
   document.querySelectorAll(".project").forEach(p=>{
     p.style.display=p.dataset.cat===cat?"block":"none"
