@@ -418,8 +418,8 @@ body{
 [
 'd/shixian/shixian2.jpg',
 'd/shixian/shixian3.jpg',
-'d/shixian/shixian4.jpg',
-'d/shixian/shixian5.jpg'
+'d/shixian/shixian4.png',
+'d/shixian/shixian5.png'
 ]
 )">
 
@@ -533,6 +533,9 @@ if(current === "3D"){
     player.style.display="none"
     imgViewer.style.display="none"
     intro.style.display="none"
+
+    document.getElementById("moreImages").innerHTML=""
+    document.getElementById("moreImages").style.display="none"
     
     if(current==="VIDEO") videoGrid.style.display="grid"
     if(current==="DESIGN") designGrid.style.display="block"
