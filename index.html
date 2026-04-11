@@ -24,10 +24,22 @@ h2{ font-size:36px; color:#87240E; margin:0; }
 section{ padding:120px 20px; text-align:center; }
 
 /* navbar */
-nav{ position:fixed; top:20px; right:20px; display:flex; gap:20px; z-index:10; }
-nav a{ text-decoration:none; color:#87240E; font-size:18px; }
+nav{
+    position:fixed;
+    top:20px;
+    right:20px;
+    display:flex;
+    gap:20px;
+    z-index:10;
+}
 
-/* ================= HERO ================= */
+nav a{
+    text-decoration:none;
+    color:#87240E;
+    font-size:18px;
+}
+
+/* hero */
 #hero {
   height: 100vh;
   position: relative;
@@ -57,30 +69,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   z-index: 1;
 }
 
-/* ================= CATEGORY ================= */
-.category-btns{
-    margin:30px 0;
-}
-
-.category-btns button{
-    background:#D6CFC4;
-    color:#87240E;
-    border:2px solid #87240E;
-    padding:10px 20px;
-    margin:0 5px;
-    cursor:pointer;
-    font-family:'MantouSans';
-    font-size:16px;
-    border-radius:4px;
-    transition:0.3s;
-}
-
-.category-btns button.active{
-    background:#87240E;
-    color:#D6CFC4;
-}
-
-/* ================= MASONRY ================= */
+/* masonry */
 #all-projects{
     column-count:3;
     column-gap:20px;
@@ -99,8 +88,12 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     position:relative;
 }
 
-.project img{ width:100%; display:block; }
+.project img{
+    width:100%;
+    display:block;
+}
 
+/* hover */
 .project-title{
     position:absolute;
     bottom:0;
@@ -113,19 +106,18 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     color:#FFFFFF;
 }
 
-.project:hover .project-title{ opacity:1; }
-
-/* ================= VIDEO TOGGLE ================= */
-.video-hidden .video-item{
-    display:none !important;
+.project:hover .project-title{
+    opacity:1;
 }
 
-/* ================= OVERLAY ================= */
+/* overlay */
 #overlay{
     display:none;
     position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
     background:rgba(0,0,0,0.55);
     justify-content:center;
     align-items:center;
@@ -188,11 +180,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     line-height:1.6;
 }
 
-#connect{
-    padding:60px 20px;
-    text-align:center;
-}
-
+/* mobile */
 @media (max-width: 800px) {
   #hero { height: 60vh; }
 
@@ -207,10 +195,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   .hero-images img { height: 140px; }
 }
 
-/* ================= VIDEO BUTTON ================= */
-#videoToggle{
-    cursor:pointer;
-}
 </style>
 </head>
 
@@ -235,19 +219,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 <section id="work">
 <h2>Work</h2>
 
-<div class="category-btns">
-  <button data-cat="video" class="active">Video</button>
-  <button data-cat="design">Design</button>
-  <button data-cat="3d">3D</button>
-</div>
-
 <div id="all-projects">
-
-<!-- ⭐ VIDEO 電腦（改成 toggle） -->
-<div class="project video-item" id="videoToggle" data-cat="video">
-  <img src="good/com.webp">
-  <div class="project-title">Video Works</div>
-</div>
 
 <!-- DESIGN -->
 <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026">
@@ -300,50 +272,90 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
   <div class="project-title">《溫度回收計畫》專輯封面</div>
 </div>
 
-<!-- VIDEO（全部保留 + video-item） -->
-<div class="project video-item" data-cat="video" data-title="從污名到教育—愛滋風險不分族群" data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
+<!-- VIDEO -->
+<div class="project" data-cat="video"
+data-title="從污名到教育—愛滋風險不分族群"
+data-description="2025｜攝影、剪輯"
+data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
   <img src="video/aids.jpg">
+  <div class="project-title">從污名到教育—愛滋風險不分族群</div>
 </div>
 
-<div class="project video-item" data-cat="video" data-title="創傷到馨生—犯保協會的重建之路" data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
+<div class="project" data-cat="video"
+data-title="創傷到馨生—犯保協會的重建之路"
+data-description="2025｜攝影、剪輯"
+data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
   <img src="video/crime.jpg">
+  <div class="project-title">創傷到馨生—犯保協會的重建之路</div>
 </div>
 
-<div class="project video-item" data-cat="video" data-title="與傷共行—那些尚未說完的事" data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
+<div class="project" data-cat="video"
+data-title="與傷共行—那些尚未說完的事"
+data-description="2025｜攝影、剪輯"
+data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
   <img src="video/hurt.jpg">
+  <div class="project-title">與傷共行—那些尚未說完的事</div>
 </div>
 
-<div class="project video-item" data-cat="video" data-title="窄房" data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
+<div class="project" data-cat="video"
+data-title="窄房"
+data-description="2025｜攝影助理"
+data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
   <img src="video/narrowhouse.png">
+  <div class="project-title">窄房</div>
 </div>
 
-<div class="project video-item" data-cat="video" data-title="山溝" data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
+<div class="project" data-cat="video"
+data-title="山溝"
+data-description="2024｜剪輯、場記"
+data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
   <img src="video/ravine.png">
+  <div class="project-title">山溝</div>
 </div>
 
-<div class="project video-item" data-cat="video" data-title="Sony收你的創意-影視製作工作坊" data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
+<div class="project" data-cat="video"
+data-title="Sony收你的創意-影視製作工作坊"
+data-description="2025｜導演"
+data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
   <img src="video/sony.png">
+  <div class="project-title">Sony收你的創意-影視製作工作坊</div>
 </div>
 
-<div class="project video-item" data-cat="video" data-title="滿園文旦成廢果 農民收成化泡影？" data-video="https://www.peopo.org/news/822048">
+<div class="project" data-cat="video"
+data-title="滿園文旦成廢果 農民收成化泡影？"
+data-description="2025｜攝影、剪輯"
+data-video="https://www.peopo.org/news/822048">
   <img src="video/wendan.jpg">
+  <div class="project-title">滿園文旦成廢果 農民收成化泡影？</div>
 </div>
 
-<div class="project video-item" data-cat="video" data-title="中正傳播營回顧片" data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
+<div class="project" data-cat="video"
+data-title="中正傳播營回顧片"
+data-description="2025｜活動紀錄"
+data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
   <img src="video/camp.png">
+  <div class="project-title">中正傳播營回顧片</div>
 </div>
 
-<div class="project video-item" data-cat="video" data-title="出去走走｜劇情短片" data-video="https://www.youtube.com/embed/iD759dRtgIY">
+<div class="project" data-cat="video"
+data-title="出去走走｜劇情短片"
+data-description="2025"
+data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
   <img src="video/gogo.jpg">
+  <div class="project-title">出去走走</div>
 </div>
 
 <!-- 3D -->
-<div class="project" data-cat="3d" data-title="世賢圖書館展場空間規劃" data-description="2026">
+<div class="project" data-cat="3d"
+data-title="世賢圖書館展場空間規劃"
+data-description="2026">
   <img src="d/shixian/shixian1.jpg">
   <div class="project-title">世賢圖書館展場規劃</div>
 </div>
 
-<div class="project" data-cat="3d" data-title="嘉義市圖書館展場規劃" data-description="2026">
+<div class="project" data-cat="3d"
+data-title="嘉義市圖書館展場規劃"
+data-description="2026">
   <img src="d/library/library1.jpg">
   <div class="project-title">嘉義市圖書館展場規劃</div>
 </div>
@@ -369,7 +381,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 </div>
 
 <script>
-
 const projects = document.querySelectorAll(".project")
 const overlay = document.getElementById("overlay")
 const panelImg = document.getElementById("panel-img")
@@ -378,7 +389,6 @@ const panelTitle = document.getElementById("panel-title")
 const panelText = document.getElementById("panel-text")
 const panelExtraImages = document.getElementById("panel-extra-images")
 
-// 點作品
 projects.forEach(project=>{
   project.onclick=()=>{
     overlay.style.display="flex"
@@ -401,7 +411,6 @@ projects.forEach(project=>{
   }
 })
 
-// 關閉
 function closePanel(){
   overlay.style.display="none"
   panelVideo.src=""
@@ -410,44 +419,6 @@ function closePanel(){
 overlay.onclick=closePanel
 document.getElementById("panel-close").onclick=closePanel
 document.getElementById("project-panel").onclick=(e)=>e.stopPropagation()
-
-// ⭐ video toggle（com.webp）
-const videoToggle = document.getElementById("videoToggle")
-const allProjects = document.getElementById("all-projects")
-
-allProjects.classList.add("video-hidden")
-
-let open = false
-
-videoToggle.onclick = ()=>{
-  open = !open
-  if(open){
-    allProjects.classList.remove("video-hidden")
-  }else{
-    allProjects.classList.add("video-hidden")
-  }
-}
-
-// category filter（修正版，不影響 video toggle）
-const buttons=document.querySelectorAll(".category-btns button")
-
-buttons.forEach(btn=>{
-  btn.onclick=()=>{
-    buttons.forEach(b=>b.classList.remove("active"))
-    btn.classList.add("active")
-
-    const cat = btn.dataset.cat
-
-    projects.forEach(p=>{
-      if(cat === "video"){
-        p.style.display = p.classList.contains("video-item") || p.id==="videoToggle" ? "block" : "none"
-      }else{
-        p.style.display = (p.dataset.cat === cat) ? "block" : "none"
-      }
-    })
-  }
-})
-
 </script>
 
 </body>
