@@ -72,7 +72,7 @@ body{
   color:#D6CFC4;
 }
 
-/* PROJECT */
+/* PROJECT GRID */
 #all-projects{
   column-count:3;
   column-gap:20px;
@@ -147,8 +147,8 @@ body{
 
 #panel-desc{
   margin-bottom:15px;
-  line-height:1.6;
   opacity:0.8;
+  line-height:1.6;
 }
 
 /* VIDEO */
@@ -195,7 +195,7 @@ body{
 
 <div id="all-projects">
 
-<!-- VIDEO PROJECTS -->
+<!-- PROJECTS -->
 <div class="project" data-cat="video"
 data-title="從污名到教育—愛滋風險不分族群"
 data-description="2025｜攝影、剪輯"
@@ -237,19 +237,19 @@ data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
 </div>
 
 <div class="project" data-cat="video"
-data-title="Sony收你的創意-影視製作工作坊"
+data-title="Sony收你的創意"
 data-description="2025｜導演"
 data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
   <img src="video/sony.png">
-  <div class="project-title">Sony收你的創意-影視製作工作坊</div>
+  <div class="project-title">Sony收你的創意</div>
 </div>
 
 <div class="project" data-cat="video"
-data-title="滿園文旦成廢果 農民收成化泡影？"
+data-title="滿園文旦成廢果"
 data-description="2025｜攝影、剪輯"
 data-video="https://www.peopo.org/news/822048">
   <img src="video/wendan.jpg">
-  <div class="project-title">滿園文旦成廢果 農民收成化泡影？</div>
+  <div class="project-title">滿園文旦成廢果</div>
 </div>
 
 <div class="project" data-cat="video"
@@ -261,7 +261,7 @@ data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
 </div>
 
 <div class="project" data-cat="video"
-data-title="出去走走｜劇情短片"
+data-title="出去走走"
 data-description="2025"
 data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
   <img src="video/gogo.jpg">
@@ -297,6 +297,7 @@ const panelTitle = document.getElementById("panel-title")
 const panelDesc = document.getElementById("panel-desc")
 const projects = document.querySelectorAll(".project")
 
+/* 點作品 */
 projects.forEach(p=>{
   p.onclick=()=>{
 
@@ -305,17 +306,30 @@ projects.forEach(p=>{
     panelTitle.textContent = p.dataset.title
     panelDesc.textContent = p.dataset.description
 
-    player.style.display = "block"
+    player.style.display="block"
     player.src = p.dataset.video
   }
 })
 
+/* 點 com.webp */
+document.getElementById("work-computer").onclick=()=>{
+  overlay.style.display="flex"
+
+  panelTitle.textContent="Video"
+  panelDesc.textContent=""
+
+  player.style.display="none"
+  player.src=""
+}
+
+/* 關閉 */
 closeArea.onclick=()=>{
   overlay.style.display="none"
   player.src=""
   player.style.display="none"
 }
 
+/* filter */
 function filter(cat){
   document.querySelectorAll(".project").forEach(p=>{
     p.style.display = (p.dataset.cat===cat) ? "block" : "none"
