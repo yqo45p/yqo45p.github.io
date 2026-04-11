@@ -304,9 +304,10 @@ document.getElementById("close-area").onclick=()=>{
   }
 
   else if(viewState === "list"){
-    // 列表時：不關閉、不回首頁
-    return
-  }
+  overlay.style.display="none"
+  player.src=""
+  viewState = "home"
+}
 
   else{
     // 主畫面 → 關閉 overlay
