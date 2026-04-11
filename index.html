@@ -2,22 +2,58 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>作品集</title>
+<title>曾珮甄作品集</title>
+
+<link rel="icon" href="good/logo.png?v=3">
 
 <style>
+@font-face{
+  font-family:'MantouSans';
+  src:url('MantouSans-Regular.ttf') format('truetype');
+}
+
 body{
   margin:0;
-  font-family:sans-serif;
+  font-family:'MantouSans',sans-serif;
   background:#D6CFC4;
   color:#87240E;
 }
 
-/* ===== 主頁動畫 ===== */
+/* ================= HERO（完整保留） ================= */
+#hero{
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-images{
+  position:absolute;
+  top:50px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:25px;
+}
+
+.hero-images img{ height:220px; }
+
+#hero video{
+  position:absolute;
+  top:65%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:55%;
+}
+
+/* ================= WORK（完整保留 + 動畫） ================= */
 #work{
+  padding:140px 20px 80px;
   display:flex;
   justify-content:center;
-  gap:60px;
-  padding:120px 20px;
+  gap:70px;
+  flex-wrap:wrap;
+  text-align:center;
+
   animation:fadeIn 1s ease;
 }
 
@@ -29,39 +65,45 @@ body{
 .work-item{
   text-align:center;
   cursor:pointer;
-  transition:0.3s;
+}
+
+.work-text{
+  font-size:28px;
+  letter-spacing:2px;
+  margin-bottom:5px;
 }
 
 .work-item img{
-  width:300px;
+  width:360px;
   transition:0.3s;
-  border-radius:10px;
+  border-radius:8px;
 }
 
-.work-item:hover img{
-  transform:scale(1.08);
-  filter:brightness(1.1);
+.work-item img:hover{
+  transform:scale(1.05);
 }
 
-/* ===== overlay ===== */
+/* ================= OVERLAY ================= */
 #overlay{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.65);
+  background:rgba(0,0,0,0.6);
   justify-content:center;
   align-items:center;
+  z-index:999;
 }
 
-/* ===== panel ===== */
+/* ================= PANEL ================= */
 #panel{
-  width:90%;
-  max-width:950px;
   background:#D6CFC4;
-  padding:20px;
+  width:90%;
+  max-width:900px;
   max-height:85vh;
   overflow:auto;
-  animation:pop 0.3s ease;
+  padding:20px;
+
+  animation:pop 0.25s ease;
 }
 
 @keyframes pop{
@@ -69,28 +111,33 @@ body{
   to{transform:scale(1); opacity:1;}
 }
 
-/* ===== grid ===== */
-.grid{
+#panel-title{
+  text-align:center;
+}
+
+/* ================= GRID ================= */
+.video-grid,
+.masonry{
   display:none;
-  gap:10px;
 }
 
 .video-grid{
   grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
 .masonry{
   column-count:3;
-  column-gap:10px;
+  column-gap:15px;
 }
 
-/* ===== 作品動畫 ===== */
+/* ================= ITEM ================= */
 .item{
   position:relative;
   margin-bottom:10px;
   cursor:pointer;
   overflow:hidden;
-  animation:imgFade 0.4s ease;
+  animation:imgFade 0.3s ease;
 }
 
 @keyframes imgFade{
@@ -108,13 +155,12 @@ body{
   filter:brightness(1.1);
 }
 
-/* title */
 .title{
   position:absolute;
   bottom:0;
   left:0;
   right:0;
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,0.55);
   color:white;
   padding:6px;
   opacity:0;
@@ -125,18 +171,16 @@ body{
   opacity:1;
 }
 
-/* ===== 內容 ===== */
+/* ================= CONTENT ================= */
 #player{
   width:100%;
   height:420px;
   display:none;
-  animation:fadeIn 0.3s;
 }
 
 #imgViewer{
   width:100%;
   display:none;
-  animation:fadeIn 0.3s;
 }
 
 #intro{
@@ -145,7 +189,7 @@ body{
   line-height:1.6;
 }
 
-/* click area */
+/* ================= CLOSE AREA ================= */
 #close-area{
   position:fixed;
   inset:0;
@@ -155,27 +199,39 @@ body{
 
 <body>
 
-<!-- 主頁 -->
+<!-- ================= 主頁（完整保留） ================= -->
+<section id="hero">
+  <div class="hero-images">
+    <img src="good/zeng.png">
+    <img src="good/pei.png">
+    <img src="good/zhen.png">
+  </div>
+
+  <video autoplay muted loop playsinline>
+    <source src="good/head.webm">
+  </video>
+</section>
+
 <section id="work">
 
 <div class="work-item" onclick="openList('VIDEO')">
-<img src="good/ca.webp">
-<p>VIDEO</p>
+  <div class="work-text">VIDEO</div>
+  <img src="good/ca.webp">
 </div>
 
 <div class="work-item" onclick="openList('DESIGN')">
-<img src="good/table.webp">
-<p>DESIGN</p>
+  <div class="work-text">DESIGN</div>
+  <img src="good/table.webp">
 </div>
 
 <div class="work-item" onclick="openList('3D')">
-<img src="good/com.webp">
-<p>3D</p>
+  <div class="work-text">3D</div>
+  <img src="good/com.webp">
 </div>
 
 </section>
 
-<!-- overlay -->
+<!-- ================= OVERLAY ================= -->
 <div id="overlay">
 <div id="close-area"></div>
 
@@ -184,7 +240,7 @@ body{
 <h2 id="title"></h2>
 
 <!-- VIDEO -->
-<div id="videoGrid" class="grid video-grid">
+<div id="videoGrid" class="video-grid">
 
 <div class="item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s')">
 <img src="video/aids.jpg">
@@ -204,7 +260,7 @@ body{
 </div>
 
 <!-- DESIGN -->
-<div id="designGrid" class="grid masonry">
+<div id="designGrid" class="masonry">
 
 <div class="item" onclick="openImage('design/shift.jpg')">
 <img src="design/shift.jpg">
@@ -219,7 +275,7 @@ body{
 </div>
 
 <!-- 3D -->
-<div id="threeDGrid" class="grid masonry">
+<div id="threeDGrid" class="masonry">
 
 <div class="item" onclick="openImage('d/shixian/shixian1.jpg')">
 <img src="d/shixian/shixian1.jpg">
@@ -228,7 +284,7 @@ body{
 
 </div>
 
-<!-- content -->
+<!-- CONTENT -->
 <iframe id="player"></iframe>
 <img id="imgViewer">
 <div id="intro"></div>
@@ -236,6 +292,7 @@ body{
 </div>
 </div>
 
+<!-- ================= JS（完整邏輯） ================= -->
 <script>
 const overlay=document.getElementById("overlay")
 const videoGrid=document.getElementById("videoGrid")
@@ -249,7 +306,7 @@ const title=document.getElementById("title")
 let state="home"
 let current=""
 
-/* 開分類 */
+/* 開作品列表 */
 function openList(type){
 
   overlay.style.display="flex"
@@ -280,7 +337,7 @@ function openVideo(url){
   player.src=url+"?autoplay=1"
 
   intro.style.display="block"
-  intro.innerText="影片作品介紹：紀錄與敘事影像創作"
+  intro.innerText="影片作品介紹：影像敘事與紀錄創作"
 
   videoGrid.style.display="none"
 }
@@ -296,9 +353,10 @@ function openImage(src){
   threeDGrid.style.display="none"
 }
 
-/* 點空白（核心邏輯） */
+/* 點空白（核心規則） */
 document.getElementById("close-area").onclick=()=>{
 
+  // 作品 → 回列表
   if(state==="item"){
 
     player.style.display="none"
@@ -313,6 +371,7 @@ document.getElementById("close-area").onclick=()=>{
     return
   }
 
+  // 列表 → 回主頁
   if(state==="list"){
     overlay.style.display="none"
     state="home"
