@@ -116,6 +116,11 @@ body{
   opacity:1;
 }
 
+/* hide filter fix */
+.hide{
+  display:none !important;
+}
+
 /* OVERLAY */
 #overlay{
   display:none;
@@ -329,10 +334,14 @@ closeArea.onclick=()=>{
   player.style.display="none"
 }
 
-/* filter */
+/* FILTER（已修正） */
 function filter(cat){
   document.querySelectorAll(".project").forEach(p=>{
-    p.style.display = (p.dataset.cat===cat) ? "block" : "none"
+    if(p.dataset.cat === cat){
+      p.classList.remove("hide")
+    }else{
+      p.classList.add("hide")
+    }
   })
 }
 
