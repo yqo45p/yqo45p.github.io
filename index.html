@@ -59,6 +59,16 @@ body{
   cursor:pointer;
   transition:0.3s;
 }
+  .work-item{
+  text-align:center;
+}
+
+.work-text{
+  font-size:18px;
+  letter-spacing:2px;
+  color:#87240E;
+  margin-bottom:10px;
+}
 
 #work img:hover{
   transform:scale(1.04);
@@ -167,9 +177,20 @@ body{
 <!-- WORK -->
 <section id="work">
 
-<img src="good/com.webp" id="work-computer">
-<img src="good/table.webp" id="work-table">
-<img src="good/ca.webp" id="work-ca">
+<div class="work-item" id="work-computer">
+  <div class="work-text">VIDEO</div>
+  <img src="good/com.webp">
+</div>
+
+<div class="work-item" id="work-table">
+  <div class="work-text">DESIGN</div>
+  <img src="good/table.webp">
+</div>
+
+<div class="work-item" id="work-ca">
+  <div class="work-text">3D</div>
+  <img src="good/ca.webp">
+</div>
 
 </section>
 
