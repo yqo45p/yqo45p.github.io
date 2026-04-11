@@ -15,13 +15,13 @@ body{
   font-family:'MantouSans',sans-serif;
   background:#D6CFC4;
   color:#87240E;
+  overflow-x:hidden;
 }
 
 /* HERO */
 #hero{
   height:100vh;
   position:relative;
-  overflow:hidden;
 }
 
 .hero-images{
@@ -49,34 +49,17 @@ body{
   padding:80px 20px;
 }
 
-/* com.webp（中間放大一點） */
+/* com.webp（只微調，不亂放大） */
 #work-computer{
   width:360px;
   display:block;
-  margin:20px auto;
+  margin:25px auto;
   cursor:pointer;
-  transition:0.3s;
+  transition:0.2s;
 }
+#work-computer:hover{ transform:scale(1.04); }
 
-#work-computer:hover{
-  transform:scale(1.04);
-}
-
-/* CATEGORY */
-.category-btns button{
-  margin:5px;
-  padding:8px 16px;
-  border:2px solid #87240E;
-  background:transparent;
-  cursor:pointer;
-}
-
-.category-btns button.active{
-  background:#87240E;
-  color:#D6CFC4;
-}
-
-/* GRID（DESIGN + 3D） */
+/* GRID */
 #all-projects{
   column-count:3;
   column-gap:20px;
@@ -91,18 +74,14 @@ body{
   cursor:pointer;
 }
 
-.project img{
-  width:100%;
-  display:block;
-}
+.project img{ width:100%; display:block; }
 
-/* hover title */
 .project-title{
   position:absolute;
   bottom:0;
   left:0;
   right:0;
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,0.45);
   color:white;
   padding:8px;
   opacity:0;
@@ -113,29 +92,64 @@ body{
   opacity:1;
 }
 
-/* OVERLAY */
+/* OVERLAY（原本作品彈窗） */
 #overlay{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.55);
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 
-/* 電腦視窗 */
-#panel{
-  width:90%;
-  max-width:1100px;
+#project-panel{
   background:#D6CFC4;
-  padding:20px;
+  color:#87240E;
+  padding:30px;
+  max-width:800px;
+  width:90%;
+  max-height:85vh;
+  overflow-y:auto;
+  border-radius:6px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
-/* VIDEO 瀑布流 */
-#video-grid{
-  column-count:3;
+#panel-img{ max-width:60%; }
+#panel-video{ width:70%; height:380px; display:none; border:none; }
+
+/* =========================
+   電腦 UI 視窗
+========================= */
+#computerOverlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  z-index:1000;
+  justify-content:center;
+  align-items:center;
+}
+
+#computerPanel{
+  width:950px;
+  height:80vh;
+  background:#D6CFC4;
+  display:flex;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+/* 左：video瀑布流 */
+#videoArea{
+  flex:1;
+  column-count:2;
   column-gap:15px;
+  padding:15px;
+  overflow-y:auto;
 }
 
 .video-item{
@@ -144,9 +158,7 @@ body{
   cursor:pointer;
 }
 
-.video-item img{
-  width:100%;
-}
+.video-item img{ width:100%; display:block; }
 
 .video-title{
   position:absolute;
@@ -154,31 +166,45 @@ body{
   left:0;
   right:0;
   background:rgba(0,0,0,0.5);
-  color:white;
+  color:#fff;
+  font-size:13px;
   padding:6px;
   opacity:0;
 }
 
-.video-item:hover .video-title{
-  opacity:1;
+.video-item:hover .video-title{ opacity:1; }
+
+/* 右：電腦圖 */
+#computerSide{
+  width:320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#cfc7bb;
 }
 
-/* PLAYER */
+#computerSide img{
+  width:85%;
+}
+
+/* 播放器 */
 #player{
+  position:absolute;
+  inset:0;
   width:100%;
-  height:450px;
+  height:100%;
   border:none;
   display:none;
-  margin-top:10px;
+  background:black;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- HERO（完整保留） -->
+<!-- HERO -->
 <section id="hero">
-
   <div class="hero-images">
     <img src="good/zeng.png">
     <img src="good/pei.png">
@@ -188,7 +214,6 @@ body{
   <video autoplay muted loop playsinline>
     <source src="good/head.webm">
   </video>
-
 </section>
 
 <!-- WORK -->
@@ -198,36 +223,13 @@ body{
 
 <img src="good/com.webp" id="work-computer">
 
-<div class="category-btns">
-  <button class="active" onclick="filter('design')">Design</button>
-  <button onclick="filter('3d')">3D</button>
-</div>
-
-<!-- DESIGN + 3D（全部保留） -->
+<!-- DESIGN + 3D -->
 <div id="all-projects">
 
-<!-- DESIGN -->
-<div class="project" data-cat="design"><img src="design/shift.jpg"><div class="project-title">移面之詞主視覺</div></div>
-<div class="project" data-cat="design"><img src="design/filmfestival.png"><div class="project-title">第17屆瘋影展海報</div></div>
-<div class="project" data-cat="design"><img src="design/communicationcamp.jpg"><div class="project-title">中正傳播營海報</div></div>
-<div class="project" data-cat="design"><img src="design/voiceofzhongzheng.jpg"><div class="project-title">中正之聲2024主視覺</div></div>
-<div class="project" data-cat="design"><img src="design/eye.png"><div class="project-title">活動海報設計</div></div>
-<div class="project" data-cat="design"><img src="design/fb.png"><div class="project-title">中正E報主視覺</div></div>
-<div class="project" data-cat="design"><img src="design/ghost.jpg"><div class="project-title">活動海報設計</div></div>
-<div class="project" data-cat="design"><img src="design/news.png"><div class="project-title">新傳獎海報</div></div>
-<div class="project" data-cat="design"><img src="design/one.png"><div class="project-title">活動海報設計</div></div>
-<div class="project" data-cat="design"><img src="design/temperature.png"><div class="project-title">專輯封面</div></div>
+<div class="project" data-cat="design"><img src="design/shift.jpg"><div class="project-title">Shift</div></div>
+<div class="project" data-cat="design"><img src="design/filmfestival.png"><div class="project-title">Film</div></div>
 
-<!-- 3D -->
-<div class="project" data-cat="3d"><img src="d/shixian/shixian1.jpg"></div>
-<div class="project" data-cat="3d"><img src="d/shixian/shixian2.jpg"></div>
-<div class="project" data-cat="3d"><img src="d/shixian/shixian3.jpg"></div>
-<div class="project" data-cat="3d"><img src="d/shixian/shixian4.png"></div>
-<div class="project" data-cat="3d"><img src="d/shixian/shixian5.png"></div>
-
-<div class="project" data-cat="3d"><img src="d/library/library1.jpg"></div>
-<div class="project" data-cat="3d"><img src="d/library/library2.jpg"></div>
-<div class="project" data-cat="3d"><img src="d/library/library3.jpg"></div>
+<div class="project" data-cat="3d"><img src="d/shixian/shixian1.jpg"><div class="project-title">3D</div></div>
 
 </div>
 </section>
@@ -238,22 +240,25 @@ body{
 <p>Email: jane940410@gmail.com</p>
 </section>
 
-<!-- OVERLAY -->
-<div id="overlay">
-  <div id="panel">
+<!-- =========================
+     電腦 UI（video入口）
+========================= -->
+<div id="computerOverlay">
+  <div id="computerPanel">
 
-    <div id="video-grid">
+    <!-- 左：video瀑布 -->
+    <div id="videoArea">
 
       <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')">
-        <img src="video/aids.jpg"><div class="video-title">愛滋</div>
+        <img src="video/aids.jpg"><div class="video-title">從污名到教育</div>
       </div>
 
       <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1')">
-        <img src="video/crime.jpg"><div class="video-title">犯保</div>
+        <img src="video/crime.jpg"><div class="video-title">創傷到馨生</div>
       </div>
 
       <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1')">
-        <img src="video/hurt.jpg"><div class="video-title">與傷</div>
+        <img src="video/hurt.jpg"><div class="video-title">與傷共行</div>
       </div>
 
       <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')">
@@ -268,6 +273,10 @@ body{
         <img src="video/sony.png"><div class="video-title">Sony</div>
       </div>
 
+      <div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048')">
+        <img src="video/wendan.jpg"><div class="video-title">文旦</div>
+      </div>
+
       <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')">
         <img src="video/camp.png"><div class="video-title">營隊</div>
       </div>
@@ -278,47 +287,54 @@ body{
 
     </div>
 
-    <iframe id="player"></iframe>
+    <!-- 右：電腦 -->
+    <div id="computerSide">
+      <img src="good/com.webp">
+    </div>
 
+    <!-- 播放器 -->
+    <iframe id="player" allow="autoplay"></iframe>
+
+  </div>
+</div>
+
+<!-- 原本作品彈窗 -->
+<div id="overlay">
+  <div id="project-panel">
+    <img id="panel-img">
+    <iframe id="panel-video"></iframe>
   </div>
 </div>
 
 <script>
 
-const overlay = document.getElementById("overlay")
-const grid = document.getElementById("video-grid")
+const computerOverlay = document.getElementById("computerOverlay")
 const player = document.getElementById("player")
+const videoArea = document.getElementById("videoArea")
 
-// 打開電腦
-document.getElementById("work-computer").onclick = () => {
-  overlay.style.display = "flex"
-  grid.style.display = "block"
-  player.style.display = "none"
-  player.src = ""
+/* 開電腦UI */
+document.getElementById("work-computer").onclick = ()=>{
+  computerOverlay.style.display="flex"
 }
 
-// 開影片
+/* 播放影片 */
 function openVideo(url){
-  grid.style.display = "none"
-  player.style.display = "block"
-  player.src = url
+  player.style.display="block"
+  player.src=url
+  videoArea.style.opacity="0"
 }
 
-// 點空白關閉（回清單）
-overlay.onclick = () => {
-  overlay.style.display = "none"
-  player.src = ""
-  grid.style.display = "block"
+/* 點空白回列表（不關閉） */
+computerOverlay.onclick=(e)=>{
+  if(e.target===computerOverlay){
+    player.style.display="none"
+    player.src=""
+    videoArea.style.opacity="1"
+  }
 }
 
-// filter
-function filter(cat){
-  document.querySelectorAll(".project").forEach(p=>{
-    p.style.display = p.dataset.cat === cat ? "block" : "none"
-  })
-}
-
-filter("design")
+/* 防止點內部關掉 */
+document.getElementById("computerPanel").onclick=(e)=>e.stopPropagation()
 
 </script>
 
