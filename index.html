@@ -61,23 +61,26 @@ body{
   transition:0.3s;
 }
 
-.work-item{text-align:center;}
+.work-item{
+  text-align:center;
+}
 
 .work-text{
   font-size:28px;
   letter-spacing:2px;
-  color:#87240E;
   margin-bottom:5px;
 }
 
-#work img:hover{transform:scale(1.04);}
+#work img:hover{
+  transform:scale(1.04);
+}
 
 /* OVERLAY */
 #overlay{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.55);
+  background:rgba(0,0,0,0.6);
   justify-content:center;
   align-items:center;
   z-index:999;
@@ -85,11 +88,11 @@ body{
 
 #panel{
   background:#D6CFC4;
-  padding:25px;
   width:90%;
   max-width:900px;
   max-height:85vh;
   overflow:auto;
+  padding:20px;
 }
 
 #panel-title{
@@ -97,14 +100,17 @@ body{
 }
 
 /* GRID */
-.video-grid{
+.video-grid,
+.masonry{
   display:none;
-  grid-template-columns:repeat(3,1fr);
   gap:10px;
 }
 
+.video-grid{
+  grid-template-columns:repeat(3,1fr);
+}
+
 .masonry{
-  display:none;
   column-count:3;
   column-gap:15px;
 }
@@ -114,11 +120,11 @@ body{
   margin-bottom:10px;
   cursor:pointer;
   position:relative;
-  z-index:2;
 }
 
 .project img,.video-item img{
   width:100%;
+  display:block;
 }
 
 .project-title,.video-title{
@@ -137,7 +143,7 @@ body{
   opacity:1;
 }
 
-/* 顯示區 */
+/* PLAYER */
 #player{
   width:100%;
   height:420px;
@@ -145,17 +151,17 @@ body{
   border:none;
 }
 
-#imgViewer{
-  width:100%;
+/* INTRO */
+#intro{
+  margin-top:10px;
+  font-size:18px;
+  line-height:1.6;
   display:none;
 }
 
-/* 介紹 */
-#infoBox{
-  display:none;
-  margin-top:10px;
-  font-size:18px;
-  color:#333;
+#close-area{
+  position:fixed;
+  inset:0;
 }
 </style>
 </head>
@@ -197,133 +203,130 @@ body{
 
 <!-- OVERLAY -->
 <div id="overlay">
+<div id="close-area"></div>
+
 <div id="panel">
 <h2 id="panel-title"></h2>
 
 <!-- VIDEO -->
 <div class="video-grid" id="videoGrid">
 
-<div class="video-item" onclick="openVideo('D-h27S7wz5s','從污名到教育')">
-<img src="video/aids.jpg"><div class="video-title">愛滋教育</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s')">
+<img src="video/aids.jpg">
+<div class="video-title">愛滋教育紀錄片</div>
+</div>
 
-<div class="video-item" onclick="openVideo('_tzyIj1j39Q','創傷重建')">
-<img src="video/crime.jpg"><div class="video-title">犯保協會</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q')">
+<img src="video/crime.jpg">
+<div class="video-title">創傷與修復</div>
+</div>
 
-<div class="video-item" onclick="openVideo('DDLpt_OMKXY','與傷共行')">
-<img src="video/hurt.jpg"><div class="video-title">心理議題</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY')">
+<img src="video/hurt.jpg">
+<div class="video-title">與傷共行</div>
+</div>
 
 </div>
 
 <!-- DESIGN -->
 <div class="masonry" id="designGrid">
 
-<div class="project" onclick="openImage('design/shift.jpg','移面之詞主視覺')">
-<img src="design/shift.jpg"><div class="project-title">移面之詞</div></div>
+<div class="project" onclick="alert('設計作品：移面之詞')">
+<img src="design/shift.jpg">
+<div class="project-title">移面之詞主視覺</div>
+</div>
 
-<div class="project" onclick="openImage('design/filmfestival.png','影展海報')">
-<img src="design/filmfestival.png"><div class="project-title">瘋影展</div></div>
+<div class="project" onclick="alert('設計作品：影展海報')">
+<img src="design/filmfestival.png">
+<div class="project-title">瘋影展海報</div>
+</div>
 
 </div>
 
 <!-- 3D -->
 <div class="masonry" id="threeDGrid">
 
-<div class="project" onclick="openImage('d/shixian/shixian1.jpg','世賢圖書館')">
-<img src="d/shixian/shixian1.jpg"><div class="project-title">世賢圖書館</div></div>
-
-<div class="project" onclick="openImage('d/library/library1.jpg','嘉義圖書館')">
-<img src="d/library/library1.jpg"><div class="project-title">嘉義圖書館</div></div>
+<div class="project" onclick="alert('3D作品：展場設計')">
+<img src="d/shixian/shixian1.jpg">
+<div class="project-title">世賢圖書館展場</div>
+</div>
 
 </div>
 
-<!-- 顯示 -->
+<!-- PLAYER + INTRO -->
 <iframe id="player"></iframe>
-<img id="imgViewer">
-<div id="infoBox"></div>
+<div id="intro"></div>
 
 </div>
 </div>
 
 <script>
-const overlay=document.getElementById("overlay")
-const videoGrid=document.getElementById("videoGrid")
-const designGrid=document.getElementById("designGrid")
-const threeDGrid=document.getElementById("threeDGrid")
-const player=document.getElementById("player")
-const imgViewer=document.getElementById("imgViewer")
-const infoBox=document.getElementById("infoBox")
+const overlay = document.getElementById("overlay")
+const videoGrid = document.getElementById("videoGrid")
+const designGrid = document.getElementById("designGrid")
+const threeDGrid = document.getElementById("threeDGrid")
+const player = document.getElementById("player")
+const intro = document.getElementById("intro")
+const panelTitle = document.getElementById("panel-title")
 
-let state="home"
-
-/* 開影片 */
-function openVideo(id,title){
-  state="item"
-  overlay.style.display="flex"
-
-  videoGrid.style.display="none"
-  designGrid.style.display="none"
-  threeDGrid.style.display="none"
-
-  imgViewer.style.display="none"
-  player.style.display="block"
-
-  player.src="https://www.youtube.com/embed/"+id+"?autoplay=1"
-  infoBox.style.display="block"
-  infoBox.innerText=title
-}
-
-/* 開圖片 */
-function openImage(src,title){
-  state="item"
-  overlay.style.display="flex"
-
-  videoGrid.style.display="none"
-  designGrid.style.display="none"
-  threeDGrid.style.display="none"
-
-  player.style.display="none"
-  imgViewer.style.display="block"
-
-  imgViewer.src=src
-  infoBox.style.display="block"
-  infoBox.innerText=title
-}
+let state = "home"
 
 /* 打開分類 */
-document.getElementById("work-video").onclick=()=>{
-  overlay.style.display="flex"
-  videoGrid.style.display="grid"
-  designGrid.style.display="none"
-  threeDGrid.style.display="none"
-  panelTitle.textContent="VIDEO"
+document.getElementById("work-video").onclick = () => {
+  overlay.style.display = "flex"
+  videoGrid.style.display = "grid"
+  designGrid.style.display = "none"
+  threeDGrid.style.display = "none"
+  player.style.display = "none"
+  intro.style.display = "none"
+  panelTitle.textContent = "VIDEO"
 }
 
-document.getElementById("work-design").onclick=()=>{
-  overlay.style.display="flex"
-  videoGrid.style.display="none"
-  designGrid.style.display="block"
-  threeDGrid.style.display="none"
-  panelTitle.textContent="DESIGN"
+document.getElementById("work-design").onclick = () => {
+  overlay.style.display = "flex"
+  videoGrid.style.display = "none"
+  designGrid.style.display = "block"
+  threeDGrid.style.display = "none"
+  player.style.display = "none"
+  intro.style.display = "none"
+  panelTitle.textContent = "DESIGN"
 }
 
-document.getElementById("work-3d").onclick=()=>{
-  overlay.style.display="flex"
-  videoGrid.style.display="none"
-  designGrid.style.display="none"
-  threeDGrid.style.display="block"
-  panelTitle.textContent="3D"
+document.getElementById("work-3d").onclick = () => {
+  overlay.style.display = "flex"
+  videoGrid.style.display = "none"
+  designGrid.style.display = "none"
+  threeDGrid.style.display = "block"
+  player.style.display = "none"
+  intro.style.display = "none"
+  panelTitle.textContent = "3D"
 }
 
-/* ⭐ 修好的關閉（重點） */
-document.getElementById("overlay").addEventListener("click",(e)=>{
-  if(e.target.id==="overlay"){
-    overlay.style.display="none"
-    player.src=""
-    imgViewer.src=""
-    infoBox.style.display="none"
-    state="home"
-  }
-})
+/* 點影片 → 自動播放 + 介紹 */
+function openVideo(url){
+  overlay.style.display = "flex"
+  videoGrid.style.display = "none"
+  designGrid.style.display = "none"
+  threeDGrid.style.display = "none"
+
+  player.style.display = "block"
+  player.src = url + "?autoplay=1"
+
+  intro.style.display = "block"
+  intro.innerText = "影片介紹：這是一部影像作品，用於紀錄與敘事創作。"
+
+  panelTitle.textContent = "VIDEO"
+}
+
+/* 關閉 */
+document.getElementById("close-area").onclick = () => {
+  overlay.style.display = "none"
+  player.src = ""
+  player.style.display = "none"
+  intro.style.display = "none"
+
+  state = "home"
+}
 </script>
 
 </body>
