@@ -101,11 +101,11 @@ body{
 }
 
 .video-grid{
+  display:none;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  display:grid;
 }
-
+  
 .masonry{
   column-count:3;
   column-gap:15px;
@@ -208,7 +208,7 @@ body{
 <div id="overlay">
 <div id="close-area"></div>
 
-<div id="panel">
+<div id="panel" onclick="event.stopPropagation()">
 
 <h2 id="title"></h2>
 
@@ -310,6 +310,8 @@ function openVideo(el,url){
   state="item"
 
   videoGrid.style.display="none"
+intro.style.display="none"
+intro.innerText=""
 
   player.style.display="block"
   player.src=url + "?autoplay=1&mute=1"
