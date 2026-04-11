@@ -72,7 +72,7 @@ body{
   color:#D6CFC4;
 }
 
-/* PROJECT GRID */
+/* 瀑布流 */
 #all-projects{
   column-count:3;
   column-gap:20px;
@@ -100,6 +100,7 @@ body{
   display:block;
 }
 
+/* hover title */
 .project-title{
   position:absolute;
   bottom:0;
@@ -114,11 +115,6 @@ body{
 
 .project:hover .project-title{
   opacity:1;
-}
-
-/* hide filter fix */
-.hide{
-  display:none !important;
 }
 
 /* OVERLAY */
@@ -142,21 +138,47 @@ body{
   position:relative;
   max-height:85vh;
   overflow-y:auto;
-  text-align:center;
 }
 
 #panel-title{
   font-size:26px;
   margin-bottom:10px;
+  text-align:center;
 }
 
-#panel-desc{
-  margin-bottom:15px;
-  opacity:0.8;
-  line-height:1.6;
+/* VIDEO GRID */
+.video-grid{
+  display:none;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
-/* VIDEO */
+.video-item{
+  cursor:pointer;
+  position:relative;
+}
+
+.video-item img{
+  width:100%;
+}
+
+.video-title{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  padding:6px;
+  opacity:0;
+  transition:0.3s;
+}
+
+.video-item:hover .video-title{
+  opacity:1;
+}
+
+/* PLAYER */
 #player{
   width:100%;
   height:420px;
@@ -164,7 +186,7 @@ body{
   display:none;
 }
 
-/* CLOSE */
+/* 點空白關閉 */
 #close-area{
   position:fixed;
   inset:0;
@@ -195,82 +217,32 @@ body{
 <img src="good/com.webp" id="work-computer">
 
 <div class="category-btns">
-  <button onclick="filter('video')" class="active">Video</button>
+  <button onclick="filter('design')" class="active">Design</button>
+  <button onclick="filter('3d')">3D</button>
 </div>
 
 <div id="all-projects">
 
-<!-- PROJECTS -->
-<div class="project" data-cat="video"
-data-title="從污名到教育—愛滋風險不分族群"
-data-description="2025｜攝影、剪輯"
-data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
-  <img src="video/aids.jpg">
-  <div class="project-title">從污名到教育—愛滋風險不分族群</div>
+<!-- DESIGN -->
+<div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026 主視覺設計">
+  <img src="design/shift.jpg">
+  <div class="project-title">移面之詞</div>
 </div>
 
-<div class="project" data-cat="video"
-data-title="創傷到馨生—犯保協會的重建之路"
-data-description="2025｜攝影、剪輯"
-data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
-  <img src="video/crime.jpg">
-  <div class="project-title">創傷到馨生—犯保協會的重建之路</div>
+<div class="project" data-cat="design" data-title="瘋影展海報" data-description="2025 海報設計">
+  <img src="design/filmfestival.png">
+  <div class="project-title">瘋影展</div>
 </div>
 
-<div class="project" data-cat="video"
-data-title="與傷共行—那些尚未說完的事"
-data-description="2025｜攝影、剪輯"
-data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
-  <img src="video/hurt.jpg">
-  <div class="project-title">與傷共行—那些尚未說完的事</div>
+<div class="project" data-cat="design" data-title="傳播營海報" data-description="2024 活動設計">
+  <img src="design/communicationcamp.jpg">
+  <div class="project-title">傳播營</div>
 </div>
 
-<div class="project" data-cat="video"
-data-title="窄房"
-data-description="2025｜攝影助理"
-data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
-  <img src="video/narrowhouse.png">
-  <div class="project-title">窄房</div>
-</div>
-
-<div class="project" data-cat="video"
-data-title="山溝"
-data-description="2024｜剪輯、場記"
-data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
-  <img src="video/ravine.png">
-  <div class="project-title">山溝</div>
-</div>
-
-<div class="project" data-cat="video"
-data-title="Sony收你的創意"
-data-description="2025｜導演"
-data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
-  <img src="video/sony.png">
-  <div class="project-title">Sony收你的創意</div>
-</div>
-
-<div class="project" data-cat="video"
-data-title="滿園文旦成廢果"
-data-description="2025｜攝影、剪輯"
-data-video="https://www.peopo.org/news/822048">
-  <img src="video/wendan.jpg">
-  <div class="project-title">滿園文旦成廢果</div>
-</div>
-
-<div class="project" data-cat="video"
-data-title="中正傳播營回顧片"
-data-description="2025｜活動紀錄"
-data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
-  <img src="video/camp.png">
-  <div class="project-title">中正傳播營回顧片</div>
-</div>
-
-<div class="project" data-cat="video"
-data-title="出去走走"
-data-description="2025"
-data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
-  <img src="video/gogo.jpg">
-  <div class="project-title">出去走走</div>
+<!-- 3D -->
+<div class="project" data-cat="3d" data-title="圖書館展場" data-description="空間設計">
+  <img src="d/shixian/shixian1.jpg">
+  <div class="project-title">圖書館展場</div>
 </div>
 
 </div>
@@ -287,9 +259,51 @@ data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
   <div id="close-area"></div>
 
   <div id="panel">
+
     <h2 id="panel-title"></h2>
-    <p id="panel-desc"></p>
+
+    <div class="video-grid" id="videoGrid">
+
+      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')">
+        <img src="video/aids.jpg"><div class="video-title">愛滋</div>
+      </div>
+
+      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1')">
+        <img src="video/crime.jpg"><div class="video-title">犯保</div>
+      </div>
+
+      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1')">
+        <img src="video/hurt.jpg"><div class="video-title">與傷</div>
+      </div>
+
+      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')">
+        <img src="video/narrowhouse.png"><div class="video-title">窄房</div>
+      </div>
+
+      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1')">
+        <img src="video/ravine.png"><div class="video-title">山溝</div>
+      </div>
+
+      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1')">
+        <img src="video/sony.png"><div class="video-title">Sony</div>
+      </div>
+
+      <div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048')">
+        <img src="video/wendan.jpg"><div class="video-title">文旦</div>
+      </div>
+
+      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')">
+        <img src="video/camp.png"><div class="video-title">營隊</div>
+      </div>
+
+      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/iD759dRtgIY?autoplay=1')">
+        <img src="video/gogo.jpg"><div class="video-title">出去走走</div>
+      </div>
+
+    </div>
+
     <iframe id="player"></iframe>
+
   </div>
 </div>
 
@@ -297,55 +311,48 @@ data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
 
 const overlay = document.getElementById("overlay")
 const closeArea = document.getElementById("close-area")
+const videoGrid = document.getElementById("videoGrid")
 const player = document.getElementById("player")
 const panelTitle = document.getElementById("panel-title")
-const panelDesc = document.getElementById("panel-desc")
 const projects = document.querySelectorAll(".project")
 
-/* 點作品 */
-projects.forEach(p=>{
-  p.onclick=()=>{
-
-    overlay.style.display="flex"
-
-    panelTitle.textContent = p.dataset.title
-    panelDesc.textContent = p.dataset.description
-
-    player.style.display="block"
-    player.src = p.dataset.video
-  }
-})
-
-/* 點 com.webp */
 document.getElementById("work-computer").onclick=()=>{
   overlay.style.display="flex"
-
-  panelTitle.textContent="Video"
-  panelDesc.textContent=""
-
+  videoGrid.style.display="grid"
   player.style.display="none"
   player.src=""
+  panelTitle.textContent="Video"
 }
 
-/* 關閉 */
+function openVideo(url){
+  videoGrid.style.display="none"
+  player.style.display="block"
+  player.src=url
+}
+
 closeArea.onclick=()=>{
   overlay.style.display="none"
   player.src=""
   player.style.display="none"
+  videoGrid.style.display="grid"
 }
 
-/* FILTER（已修正） */
+projects.forEach(p=>{
+  p.onclick=()=>{
+    overlay.style.display="flex"
+    videoGrid.style.display="none"
+    player.style.display="none"
+    panelTitle.textContent=p.dataset.title
+  }
+})
+
 function filter(cat){
   document.querySelectorAll(".project").forEach(p=>{
-    if(p.dataset.cat === cat){
-      p.classList.remove("hide")
-    }else{
-      p.classList.add("hide")
-    }
+    p.style.display=p.dataset.cat===cat?"block":"none"
   })
 }
 
-filter("video")
+filter("design")
 
 </script>
 
