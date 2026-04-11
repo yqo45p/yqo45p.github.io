@@ -128,15 +128,25 @@ body{
   opacity:1;
 }
 
-/* DESIGN GRID */
+/* ⭐ DESIGN 瀑布流（重點） */
 #designGrid{
   display:none;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
+  column-count:3;
+  column-gap:15px;
 }
 
-/* PROJECT */
+@media (max-width:900px){
+  #designGrid{ column-count:2; }
+}
+
+@media (max-width:600px){
+  #designGrid{ column-count:1; }
+}
+
+/* project 必須避免被切斷 */
 .project{
+  break-inside: avoid;
+  margin-bottom:15px;
   cursor:pointer;
   position:relative;
 }
@@ -146,6 +156,7 @@ body{
   display:block;
 }
 
+/* hover title */
 .project-title{
   position:absolute;
   bottom:0;
@@ -221,7 +232,7 @@ body{
 
     </div>
 
-    <!-- DESIGN（完整10件作品） -->
+    <!-- DESIGN（瀑布流） -->
     <div class="video-grid" id="designGrid">
 
       <div class="project" data-title="移面之詞主視覺">
@@ -259,9 +270,9 @@ body{
         <div class="project-title">活動海報設計</div>
       </div>
 
-      <div class="project" data-title="第二十三屆新傳獎海報">
+      <div class="project" data-title="新傳獎海報">
         <img src="design/news.png">
-        <div class="project-title">第二十三屆新傳獎海報</div>
+        <div class="project-title">新傳獎海報</div>
       </div>
 
       <div class="project" data-title="活動海報設計">
@@ -269,9 +280,9 @@ body{
         <div class="project-title">活動海報設計</div>
       </div>
 
-      <div class="project" data-title="溫度回收計畫專輯封面">
+      <div class="project" data-title="溫度回收計畫封面">
         <img src="design/temperature.png">
-        <div class="project-title">溫度回收計畫專輯封面</div>
+        <div class="project-title">溫度回收計畫封面</div>
       </div>
 
     </div>
@@ -303,11 +314,11 @@ workComputer.onclick = () => {
   panelTitle.textContent = "Video"
 }
 
-// DESIGN
+// DESIGN（瀑布流）
 workTable.onclick = () => {
   overlay.style.display = "flex"
   videoGrid.style.display = "none"
-  designGrid.style.display = "grid"
+  designGrid.style.display = "block"
   player.style.display = "none"
   panelTitle.textContent = "Design"
 }
