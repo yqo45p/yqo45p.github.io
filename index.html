@@ -49,14 +49,18 @@ body{
   padding:80px 20px;
 }
 
-#work-computer{
+#work-computer, #work-table{
   width:360px;
   display:block;
   margin:25px auto;
   cursor:pointer;
   transition:0.3s;
 }
-#work-computer:hover{ transform:scale(1.04); }
+
+#work-computer:hover,
+#work-table:hover{
+  transform:scale(1.04);
+}
 
 /* CATEGORY */
 .category-btns button{
@@ -70,6 +74,11 @@ body{
 .category-btns button.active{
   background:#87240E;
   color:#D6CFC4;
+}
+
+/* DESIGN AREA */
+#design-area{
+  display:none;
 }
 
 /* 瀑布流 */
@@ -215,37 +224,43 @@ body{
 <h2>Work</h2>
 
 <img src="good/com.webp" id="work-computer">
+<img src="good/table.webp" id="work-table">
 
-<div class="category-btns">
-  <button onclick="filter('design')" class="active">Design</button>
-  <button onclick="filter('3d')">3D</button>
+<!-- DESIGN AREA -->
+<div id="design-area">
+
+  <div class="category-btns">
+    <button onclick="filter('design')" class="active">Design</button>
+    <button onclick="filter('3d')">3D</button>
+  </div>
+
+  <div id="all-projects">
+
+    <!-- DESIGN -->
+    <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026 主視覺設計">
+      <img src="design/shift.jpg">
+      <div class="project-title">移面之詞</div>
+    </div>
+
+    <div class="project" data-cat="design" data-title="瘋影展海報" data-description="2025 海報設計">
+      <img src="design/filmfestival.png">
+      <div class="project-title">瘋影展</div>
+    </div>
+
+    <div class="project" data-cat="design" data-title="傳播營海報" data-description="2024 活動設計">
+      <img src="design/communicationcamp.jpg">
+      <div class="project-title">傳播營</div>
+    </div>
+
+    <!-- 3D -->
+    <div class="project" data-cat="3d" data-title="圖書館展場" data-description="空間設計">
+      <img src="d/shixian/shixian1.jpg">
+      <div class="project-title">圖書館展場</div>
+    </div>
+
+  </div>
 </div>
 
-<div id="all-projects">
-
-<!-- DESIGN -->
-<div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026 主視覺設計">
-  <img src="design/shift.jpg">
-  <div class="project-title">移面之詞</div>
-</div>
-
-<div class="project" data-cat="design" data-title="瘋影展海報" data-description="2025 海報設計">
-  <img src="design/filmfestival.png">
-  <div class="project-title">瘋影展</div>
-</div>
-
-<div class="project" data-cat="design" data-title="傳播營海報" data-description="2024 活動設計">
-  <img src="design/communicationcamp.jpg">
-  <div class="project-title">傳播營</div>
-</div>
-
-<!-- 3D -->
-<div class="project" data-cat="3d" data-title="圖書館展場" data-description="空間設計">
-  <img src="d/shixian/shixian1.jpg">
-  <div class="project-title">圖書館展場</div>
-</div>
-
-</div>
 </section>
 
 <!-- CONNECT -->
@@ -316,39 +331,54 @@ const player = document.getElementById("player")
 const panelTitle = document.getElementById("panel-title")
 const projects = document.querySelectorAll(".project")
 
-document.getElementById("work-computer").onclick=()=>{
-  overlay.style.display="flex"
-  videoGrid.style.display="grid"
-  player.style.display="none"
-  player.src=""
-  panelTitle.textContent="Video"
+const workComputer = document.getElementById("work-computer")
+const workTable = document.getElementById("work-table")
+const designArea = document.getElementById("design-area")
+
+// VIDEO入口
+workComputer.onclick = () => {
+  overlay.style.display = "flex"
+  videoGrid.style.display = "grid"
+  player.style.display = "none"
+  player.src = ""
+  panelTitle.textContent = "Video"
 }
 
+// DESIGN入口（新增）
+workTable.onclick = () => {
+  overlay.style.display = "none"
+  designArea.style.display = "block"
+}
+
+// 打開影片
 function openVideo(url){
-  videoGrid.style.display="none"
-  player.style.display="block"
-  player.src=url
+  videoGrid.style.display = "none"
+  player.style.display = "block"
+  player.src = url
 }
 
-closeArea.onclick=()=>{
-  overlay.style.display="none"
-  player.src=""
-  player.style.display="none"
-  videoGrid.style.display="grid"
+// 關閉
+closeArea.onclick = () => {
+  overlay.style.display = "none"
+  player.src = ""
+  player.style.display = "none"
+  videoGrid.style.display = "grid"
 }
 
+// 點作品
 projects.forEach(p=>{
-  p.onclick=()=>{
-    overlay.style.display="flex"
-    videoGrid.style.display="none"
-    player.style.display="none"
-    panelTitle.textContent=p.dataset.title
+  p.onclick = () => {
+    overlay.style.display = "flex"
+    videoGrid.style.display = "none"
+    player.style.display = "none"
+    panelTitle.textContent = p.dataset.title
   }
 })
 
+// filter
 function filter(cat){
   document.querySelectorAll(".project").forEach(p=>{
-    p.style.display=p.dataset.cat===cat?"block":"none"
+    p.style.display = (p.dataset.cat === cat) ? "block" : "none"
   })
 }
 
