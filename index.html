@@ -59,12 +59,11 @@ body{
   cursor:pointer;
   transition:0.3s;
 }
-
 #work-computer:hover{
   transform:scale(1.03);
 }
 
-/* CATEGORY */
+/* category */
 .category-btns button{
   margin:5px;
   padding:8px 16px;
@@ -78,7 +77,7 @@ body{
   color:#D6CFC4;
 }
 
-/* GRID */
+/* DESIGN + 3D GRID */
 #all-projects{
   column-count:3;
   column-gap:20px;
@@ -125,6 +124,7 @@ body{
   z-index:999;
 }
 
+/* PANEL */
 #panel{
   background:#D6CFC4;
   width:90%;
@@ -135,18 +135,19 @@ body{
   gap:20px;
 }
 
-/* VIDEO LIST */
+/* VIDEO LIST（瀑布流） */
 #videoList{
   width:40%;
   overflow-y:auto;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:10px;
+  column-count:2;
+  column-gap:10px;
 }
 
 .video-item{
-  position:relative;
+  break-inside:avoid;
+  margin-bottom:10px;
   cursor:pointer;
+  position:relative;
 }
 
 .video-item img{
@@ -221,7 +222,7 @@ body{
 
 <div id="all-projects">
 
-<!-- DESIGN（完整保留） -->
+<!-- DESIGN -->
 <div class="project" data-cat="design"><img src="design/shift.jpg"></div>
 <div class="project" data-cat="design"><img src="design/filmfestival.png"></div>
 <div class="project" data-cat="design"><img src="design/communicationcamp.jpg"></div>
@@ -247,19 +248,19 @@ body{
 <div id="overlay">
   <div id="panel">
 
-    <!-- VIDEO LIST（完整9支影片＋介紹） -->
+    <!-- VIDEO LIST（完整9支＋你原本資料） -->
     <div id="videoList">
 
       <div class="video-item" onclick="playVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1','從污名到教育')">
-        <img src="video/aids.jpg"><span>從污名到教育</span>
+        <img src="video/aids.jpg"><span>愛滋</span>
       </div>
 
       <div class="video-item" onclick="playVideo('https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1','創傷到馨生')">
-        <img src="video/crime.jpg"><span>創傷到馨生</span>
+        <img src="video/crime.jpg"><span>犯保</span>
       </div>
 
       <div class="video-item" onclick="playVideo('https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1','與傷共行')">
-        <img src="video/hurt.jpg"><span>與傷共行</span>
+        <img src="video/hurt.jpg"><span>與傷</span>
       </div>
 
       <div class="video-item" onclick="playVideo('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1','窄房')">
@@ -299,29 +300,29 @@ body{
 
 <script>
 
-const overlay = document.getElementById("overlay")
-const player = document.getElementById("player")
-const desc = document.getElementById("desc")
+const overlay=document.getElementById("overlay")
+const player=document.getElementById("player")
+const desc=document.getElementById("desc")
 
 // 開電腦
 document.getElementById("work-computer").onclick=()=>{
   overlay.style.display="flex"
 }
 
-// 播影片 + 自動播放
+// 播影片
 function playVideo(url,title){
-  player.src = url
-  desc.textContent = title
+  player.src=url
+  desc.textContent=title
 }
 
-// 點空白關閉
+// 點空白關閉（回到作品清單）
 overlay.onclick=()=>{
   overlay.style.display="none"
   player.src=""
   desc.textContent=""
 }
 
-// 防止點 panel 也關閉
+// 防止點 panel 直接關閉
 document.getElementById("panel").onclick=(e)=>e.stopPropagation()
 
 // filter
