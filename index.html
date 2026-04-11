@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>曾珮甄作品集</title>
 
+<!-- ⭐ 網站圖示（重點修正） -->
+<link rel="icon" href="good/head.png" type="image/png">
+
 <style>
 @font-face{
   font-family:'MantouSans';
@@ -106,7 +109,32 @@ body{
   gap:10px;
 }
 
-/* ⭐ 瀑布流（Design + 3D 共用） */
+.video-item{
+  cursor:pointer;
+  position:relative;
+}
+
+.video-item img{
+  width:100%;
+}
+
+.video-title{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  padding:6px;
+  opacity:0;
+  transition:0.3s;
+}
+
+.video-item:hover .video-title{
+  opacity:1;
+}
+
+/* ⭐ 瀑布流（Design + 3D） */
 .masonry{
   display:none;
   column-count:3;
@@ -121,7 +149,7 @@ body{
   .masonry{ column-count:1; }
 }
 
-/* PROJECT */
+/* project */
 .project{
   break-inside: avoid;
   margin-bottom:15px;
@@ -150,32 +178,6 @@ body{
   opacity:1;
 }
 
-/* VIDEO ITEM */
-.video-item{
-  cursor:pointer;
-  position:relative;
-}
-
-.video-item img{
-  width:100%;
-}
-
-.video-title{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.5);
-  color:white;
-  padding:6px;
-  opacity:0;
-  transition:0.3s;
-}
-
-.video-item:hover .video-title{
-  opacity:1;
-}
-
 /* PLAYER */
 #player{
   width:100%;
@@ -201,7 +203,7 @@ body{
   </video>
 </section>
 
-<!-- WORK ICONS -->
+<!-- WORK -->
 <section id="work">
 
 <h2>Work</h2>
@@ -236,70 +238,30 @@ body{
 
     </div>
 
-    <!-- DESIGN（瀑布流） -->
+    <!-- DESIGN -->
     <div class="masonry" id="designGrid">
 
-      <div class="project" data-title="移面之詞主視覺">
+      <div class="project">
         <img src="design/shift.jpg">
-        <div class="project-title">移面之詞主視覺</div>
+        <div class="project-title">移面之詞</div>
       </div>
 
-      <div class="project" data-title="第17屆瘋影展海報">
+      <div class="project">
         <img src="design/filmfestival.png">
-        <div class="project-title">第17屆瘋影展海報</div>
-      </div>
-
-      <div class="project" data-title="中正傳播營海報">
-        <img src="design/communicationcamp.jpg">
-        <div class="project-title">中正傳播營海報</div>
-      </div>
-
-      <div class="project" data-title="中正之聲2024主視覺">
-        <img src="design/voiceofzhongzheng.jpg">
-        <div class="project-title">中正之聲2024主視覺</div>
-      </div>
-
-      <div class="project" data-title="活動海報設計">
-        <img src="design/eye.png">
-        <div class="project-title">活動海報設計</div>
-      </div>
-
-      <div class="project" data-title="中正E報主視覺">
-        <img src="design/fb.png">
-        <div class="project-title">中正E報主視覺</div>
-      </div>
-
-      <div class="project" data-title="活動海報設計">
-        <img src="design/ghost.jpg">
-        <div class="project-title">活動海報設計</div>
-      </div>
-
-      <div class="project" data-title="第二十三屆新傳獎海報">
-        <img src="design/news.png">
-        <div class="project-title">第二十三屆新傳獎海報</div>
-      </div>
-
-      <div class="project" data-title="活動海報設計">
-        <img src="design/one.png">
-        <div class="project-title">活動海報設計</div>
-      </div>
-
-      <div class="project" data-title="溫度回收計畫封面">
-        <img src="design/temperature.png">
-        <div class="project-title">溫度回收計畫封面</div>
+        <div class="project-title">瘋影展</div>
       </div>
 
     </div>
 
-    <!-- 3D（瀑布流） -->
+    <!-- 3D -->
     <div class="masonry" id="threeDGrid">
 
-      <div class="project" data-title="3D作品1">
+      <div class="project">
         <img src="3d/1.jpg">
         <div class="project-title">3D作品1</div>
       </div>
 
-      <div class="project" data-title="3D作品2">
+      <div class="project">
         <img src="3d/2.jpg">
         <div class="project-title">3D作品2</div>
       </div>
