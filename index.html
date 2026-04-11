@@ -289,8 +289,27 @@ function openVideo(url){
 }
 
 document.getElementById("close-area").onclick=()=>{
-  overlay.style.display="none"
-  player.src=""
+
+  if(viewState === "item"){
+    // 作品 → 回列表
+    player.style.display="none"
+    videoGrid.style.display="grid"
+    designGrid.style.display="none"
+    threeDGrid.style.display="none"
+    viewState = "list"
+  }
+
+  else if(viewState === "list"){
+    // 列表時：不關閉、不回首頁
+    return
+  }
+
+  else{
+    // 主畫面 → 關閉 overlay
+    overlay.style.display="none"
+    player.src=""
+    viewState = "home"
+  }
 }
 </script>
 
