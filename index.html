@@ -62,6 +62,11 @@ body{
   transform:scale(1.04);
 }
 
+/* DESIGN AREA */
+#design-area{
+  display:none;
+}
+
 /* CATEGORY */
 .category-btns button{
   margin:5px;
@@ -74,11 +79,6 @@ body{
 .category-btns button.active{
   background:#87240E;
   color:#D6CFC4;
-}
-
-/* DESIGN AREA */
-#design-area{
-  display:none;
 }
 
 /* 瀑布流 */
@@ -226,7 +226,7 @@ body{
 <img src="good/com.webp" id="work-computer">
 <img src="good/table.webp" id="work-table">
 
-<!-- DESIGN AREA -->
+<!-- DESIGN AREA（table入口） -->
 <div id="design-area">
 
   <div class="category-btns">
@@ -236,26 +236,54 @@ body{
 
   <div id="all-projects">
 
-    <!-- DESIGN -->
-    <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026 主視覺設計">
+    <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026">
       <img src="design/shift.jpg">
-      <div class="project-title">移面之詞</div>
+      <div class="project-title">移面之詞主視覺</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="瘋影展海報" data-description="2025 海報設計">
+    <div class="project" data-cat="design" data-title="第17屆瘋影展海報" data-description="2025">
       <img src="design/filmfestival.png">
-      <div class="project-title">瘋影展</div>
+      <div class="project-title">第17屆瘋影展海報</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="傳播營海報" data-description="2024 活動設計">
+    <div class="project" data-cat="design" data-title="中正傳播營海報" data-description="2024">
       <img src="design/communicationcamp.jpg">
-      <div class="project-title">傳播營</div>
+      <div class="project-title">中正傳播營海報</div>
     </div>
 
-    <!-- 3D -->
-    <div class="project" data-cat="3d" data-title="圖書館展場" data-description="空間設計">
-      <img src="d/shixian/shixian1.jpg">
-      <div class="project-title">圖書館展場</div>
+    <div class="project" data-cat="design" data-title="中正之聲2024主視覺" data-description="2024">
+      <img src="design/voiceofzhongzheng.jpg">
+      <div class="project-title">中正之聲2024主視覺</div>
+    </div>
+
+    <div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
+      <img src="design/eye.png">
+      <div class="project-title">活動海報設計</div>
+    </div>
+
+    <div class="project" data-cat="design" data-title="中正E報主視覺" data-description="2025">
+      <img src="design/fb.png">
+      <div class="project-title">中正E報主視覺</div>
+    </div>
+
+    <div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
+      <img src="design/ghost.jpg">
+      <div class="project-title">活動海報設計</div>
+    </div>
+
+    <div class="project" data-cat="design" data-title="第二十三屆新傳獎海報" data-description="2025">
+      <img src="design/news.png">
+      <div class="project-title">第二十三屆新傳獎海報</div>
+    </div>
+
+    <div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
+      <img src="design/one.png">
+      <div class="project-title">活動海報設計</div>
+    </div>
+
+    <div class="project" data-cat="design" data-title="《溫度回收計畫》專輯封面" data-description="2025">
+      <img src="design/temperature.png">
+      <div class="project-title">《溫度回收計畫》專輯封面</div>
     </div>
 
   </div>
@@ -329,13 +357,14 @@ const closeArea = document.getElementById("close-area")
 const videoGrid = document.getElementById("videoGrid")
 const player = document.getElementById("player")
 const panelTitle = document.getElementById("panel-title")
-const projects = document.querySelectorAll(".project")
 
 const workComputer = document.getElementById("work-computer")
 const workTable = document.getElementById("work-table")
 const designArea = document.getElementById("design-area")
 
-// VIDEO入口
+const projects = document.querySelectorAll(".project")
+
+// VIDEO
 workComputer.onclick = () => {
   overlay.style.display = "flex"
   videoGrid.style.display = "grid"
@@ -344,20 +373,20 @@ workComputer.onclick = () => {
   panelTitle.textContent = "Video"
 }
 
-// DESIGN入口（新增）
+// DESIGN
 workTable.onclick = () => {
   overlay.style.display = "none"
   designArea.style.display = "block"
 }
 
-// 打開影片
+// OPEN VIDEO
 function openVideo(url){
   videoGrid.style.display = "none"
   player.style.display = "block"
   player.src = url
 }
 
-// 關閉
+// CLOSE
 closeArea.onclick = () => {
   overlay.style.display = "none"
   player.src = ""
@@ -365,7 +394,7 @@ closeArea.onclick = () => {
   videoGrid.style.display = "grid"
 }
 
-// 點作品
+// PROJECT CLICK
 projects.forEach(p=>{
   p.onclick = () => {
     overlay.style.display = "flex"
@@ -375,7 +404,7 @@ projects.forEach(p=>{
   }
 })
 
-// filter
+// FILTER
 function filter(cat){
   document.querySelectorAll(".project").forEach(p=>{
     p.style.display = (p.dataset.cat === cat) ? "block" : "none"
