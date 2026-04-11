@@ -163,9 +163,9 @@ body{
 
 /* ================= CLOSE ================= */
 #close-area{
-  position:fixed;
+  position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.6);
+  background:transparent;
 }
 </style>
 </head>
@@ -283,11 +283,11 @@ let current=""
 /* 開列表 */
 function openList(type){
 
-  overlay.style.display="flex"
-
   videoGrid.style.display="none"
-  designGrid.style.display="none"
-  threeDGrid.style.display="none"
+designGrid.style.display="none"
+threeDGrid.style.display="none"
+
+overlay.style.display="flex"
 
   player.style.display="none"
   player.src=""
@@ -337,7 +337,7 @@ function openImage(src,text){
 }
 
 /* 點空白 */
-document.getElementById("close-area").onclick=()=>{
+document.getElementById("overlay").onclick=()=>{
 
   if(state==="item"){
 
