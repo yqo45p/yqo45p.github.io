@@ -253,6 +253,7 @@ const designGrid = document.getElementById("designGrid")
 const threeDGrid = document.getElementById("threeDGrid")
 const player = document.getElementById("player")
 const panelTitle = document.getElementById("panel-title")
+  let viewState = "home"
 
 document.getElementById("work-computer").onclick=()=>{
   overlay.style.display="flex"
@@ -283,6 +284,7 @@ document.getElementById("work-ca").onclick=()=>{
 }
 
 function openVideo(url){
+  viewState = "item"
   videoGrid.style.display="none"
   player.style.display="block"
   player.src=url
