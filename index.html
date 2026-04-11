@@ -283,11 +283,11 @@ let current=""
 /* 開列表 */
 function openList(type){
 
+  overlay.style.display="flex"
+  
   videoGrid.style.display="none"
-designGrid.style.display="none"
-threeDGrid.style.display="none"
-
-overlay.style.display="flex"
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
 
   player.style.display="none"
   player.src=""
@@ -357,11 +357,6 @@ function openImage(src,text){
   }
 }
 
-  if(state==="list"){
-    overlay.style.display="none"
-    state="home"
-  }
-}
 
 </script>
 
