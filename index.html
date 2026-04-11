@@ -49,14 +49,15 @@ body{
   padding:80px 20px;
 }
 
+/* 電腦圖 */
 #work-computer{
-  width:360px;
+  width:380px;
   display:block;
   margin:25px auto;
   cursor:pointer;
   transition:0.3s;
 }
-#work-computer:hover{ transform:scale(1.04); }
+#work-computer:hover{ transform:scale(1.03); }
 
 /* CATEGORY */
 .category-btns button{
@@ -128,6 +129,7 @@ body{
   z-index:999;
 }
 
+/* panel */
 #panel{
   background:#D6CFC4;
   color:#87240E;
@@ -140,13 +142,20 @@ body{
   overflow-y:auto;
 }
 
+/* title */
 #panel-title{
   font-size:26px;
   margin-bottom:10px;
-  text-align:center;
 }
 
-/* VIDEO GRID */
+/* desc */
+#panel-desc{
+  font-size:16px;
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+/* video grid */
 .video-grid{
   display:none;
   grid-template-columns:repeat(3,1fr);
@@ -178,7 +187,7 @@ body{
   opacity:1;
 }
 
-/* PLAYER */
+/* player */
 #player{
   width:100%;
   height:420px;
@@ -221,28 +230,29 @@ body{
   <button onclick="filter('3d')">3D</button>
 </div>
 
+<!-- PROJECTS -->
 <div id="all-projects">
 
 <!-- DESIGN -->
-<div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026 主視覺設計">
+<div class="project" data-cat="design" data-title="移面之詞" data-description="2026 主視覺">
   <img src="design/shift.jpg">
   <div class="project-title">移面之詞</div>
 </div>
 
-<div class="project" data-cat="design" data-title="瘋影展海報" data-description="2025 海報設計">
+<div class="project" data-cat="design" data-title="瘋影展" data-description="2025 海報">
   <img src="design/filmfestival.png">
   <div class="project-title">瘋影展</div>
 </div>
 
-<div class="project" data-cat="design" data-title="傳播營海報" data-description="2024 活動設計">
+<div class="project" data-cat="design" data-title="傳播營" data-description="2024 活動設計">
   <img src="design/communicationcamp.jpg">
   <div class="project-title">傳播營</div>
 </div>
 
 <!-- 3D -->
-<div class="project" data-cat="3d" data-title="圖書館展場" data-description="空間設計">
+<div class="project" data-cat="3d" data-title="展場設計" data-description="空間作品">
   <img src="d/shixian/shixian1.jpg">
-  <div class="project-title">圖書館展場</div>
+  <div class="project-title">展場設計</div>
 </div>
 
 </div>
@@ -259,9 +269,10 @@ body{
   <div id="close-area"></div>
 
   <div id="panel">
-
     <h2 id="panel-title"></h2>
+    <p id="panel-desc"></p>
 
+    <!-- VIDEO GRID -->
     <div class="video-grid" id="videoGrid">
 
       <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')">
@@ -276,79 +287,63 @@ body{
         <img src="video/hurt.jpg"><div class="video-title">與傷</div>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')">
-        <img src="video/narrowhouse.png"><div class="video-title">窄房</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1')">
-        <img src="video/ravine.png"><div class="video-title">山溝</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1')">
-        <img src="video/sony.png"><div class="video-title">Sony</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048')">
-        <img src="video/wendan.jpg"><div class="video-title">文旦</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')">
-        <img src="video/camp.png"><div class="video-title">營隊</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/iD759dRtgIY?autoplay=1')">
-        <img src="video/gogo.jpg"><div class="video-title">出去走走</div>
-      </div>
-
     </div>
 
     <iframe id="player"></iframe>
-
   </div>
 </div>
 
 <script>
 
-const overlay = document.getElementById("overlay")
-const closeArea = document.getElementById("close-area")
-const videoGrid = document.getElementById("videoGrid")
-const player = document.getElementById("player")
-const panelTitle = document.getElementById("panel-title")
-const projects = document.querySelectorAll(".project")
+const overlay=document.getElementById("overlay")
+const closeArea=document.getElementById("close-area")
+const videoGrid=document.getElementById("videoGrid")
+const player=document.getElementById("player")
 
+const panelTitle=document.getElementById("panel-title")
+const panelDesc=document.getElementById("panel-desc")
+
+const projects=document.querySelectorAll(".project")
+
+/* 點電腦 */
 document.getElementById("work-computer").onclick=()=>{
   overlay.style.display="flex"
   videoGrid.style.display="grid"
   player.style.display="none"
   player.src=""
-  panelTitle.textContent="Video"
+  panelTitle.textContent="Video Works"
+  panelDesc.textContent="點擊影片觀看（自動播放）"
 }
 
-function openVideo(url){
-  videoGrid.style.display="none"
-  player.style.display="block"
-  player.src=url
-}
-
-closeArea.onclick=()=>{
-  overlay.style.display="none"
-  player.src=""
-  player.style.display="none"
-  videoGrid.style.display="grid"
-}
-
+/* 點作品 */
 projects.forEach(p=>{
   p.onclick=()=>{
     overlay.style.display="flex"
     videoGrid.style.display="none"
     player.style.display="none"
+
     panelTitle.textContent=p.dataset.title
+    panelDesc.textContent=p.dataset.description
   }
 })
 
+/* 開影片（自動播放） */
+function openVideo(url){
+  videoGrid.style.display="none"
+  player.style.display="block"
+  player.src=url + "&autoplay=1"
+}
+
+/* 點空白關閉 */
+closeArea.onclick=()=>{
+  overlay.style.display="none"
+  player.src=""
+}
+
+/* filter */
 function filter(cat){
   document.querySelectorAll(".project").forEach(p=>{
-    p.style.display=p.dataset.cat===cat?"block":"none"
+    p.style.display = p.dataset.cat===cat?"block":"none"
   })
 }
 
