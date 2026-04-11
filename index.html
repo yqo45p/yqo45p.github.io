@@ -19,7 +19,7 @@ body{
   color:#87240E;
 }
 
-/* ================= HERO（完整保留） ================= */
+/* ================= HERO ================= */
 #hero{
   height:100vh;
   position:relative;
@@ -45,7 +45,7 @@ body{
   width:55%;
 }
 
-/* ================= WORK（完整保留 + 動畫） ================= */
+/* ================= WORK ================= */
 #work{
   padding:140px 20px 80px;
   display:flex;
@@ -53,30 +53,21 @@ body{
   gap:70px;
   flex-wrap:wrap;
   text-align:center;
-
-  animation:fadeIn 1s ease;
-}
-
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
 }
 
 .work-item{
-  text-align:center;
   cursor:pointer;
+  text-align:center;
 }
 
 .work-text{
   font-size:28px;
-  letter-spacing:2px;
   margin-bottom:5px;
 }
 
 .work-item img{
   width:360px;
   transition:0.3s;
-  border-radius:8px;
 }
 
 .work-item img:hover{
@@ -94,7 +85,6 @@ body{
   z-index:999;
 }
 
-/* ================= PANEL ================= */
 #panel{
   background:#D6CFC4;
   width:90%;
@@ -102,17 +92,6 @@ body{
   max-height:85vh;
   overflow:auto;
   padding:20px;
-
-  animation:pop 0.25s ease;
-}
-
-@keyframes pop{
-  from{transform:scale(0.9); opacity:0;}
-  to{transform:scale(1); opacity:1;}
-}
-
-#panel-title{
-  text-align:center;
 }
 
 /* ================= GRID ================= */
@@ -136,13 +115,6 @@ body{
   position:relative;
   margin-bottom:10px;
   cursor:pointer;
-  overflow:hidden;
-  animation:imgFade 0.3s ease;
-}
-
-@keyframes imgFade{
-  from{opacity:0; transform:scale(0.95);}
-  to{opacity:1; transform:scale(1);}
 }
 
 .item img{
@@ -152,7 +124,6 @@ body{
 
 .item:hover img{
   transform:scale(1.05);
-  filter:brightness(1.1);
 }
 
 .title{
@@ -160,11 +131,10 @@ body{
   bottom:0;
   left:0;
   right:0;
-  background:rgba(0,0,0,0.55);
+  background:rgba(0,0,0,0.5);
   color:white;
   padding:6px;
   opacity:0;
-  transition:0.3s;
 }
 
 .item:hover .title{
@@ -176,6 +146,7 @@ body{
   width:100%;
   height:420px;
   display:none;
+  border:none;
 }
 
 #imgViewer{
@@ -189,7 +160,7 @@ body{
   line-height:1.6;
 }
 
-/* ================= CLOSE AREA ================= */
+/* ================= CLOSE ================= */
 #close-area{
   position:fixed;
   inset:0;
@@ -199,7 +170,7 @@ body{
 
 <body>
 
-<!-- ================= 主頁（完整保留） ================= -->
+<!-- ================= HERO ================= -->
 <section id="hero">
   <div class="hero-images">
     <img src="good/zeng.png">
@@ -212,6 +183,7 @@ body{
   </video>
 </section>
 
+<!-- ================= WORK ================= -->
 <section id="work">
 
 <div class="work-item" onclick="openList('VIDEO')">
@@ -244,7 +216,7 @@ body{
 
 <div class="item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s')">
 <img src="video/aids.jpg">
-<div class="title">愛滋紀錄</div>
+<div class="title">愛滋教育影片</div>
 </div>
 
 <div class="item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q')">
@@ -292,8 +264,9 @@ body{
 </div>
 </div>
 
-<!-- ================= JS（完整邏輯） ================= -->
+<!-- ================= JS ================= -->
 <script>
+
 const overlay=document.getElementById("overlay")
 const videoGrid=document.getElementById("videoGrid")
 const designGrid=document.getElementById("designGrid")
@@ -306,7 +279,7 @@ const title=document.getElementById("title")
 let state="home"
 let current=""
 
-/* 開作品列表 */
+/* OPEN LIST */
 function openList(type){
 
   overlay.style.display="flex"
@@ -334,10 +307,10 @@ function openVideo(url){
   state="item"
 
   player.style.display="block"
-  player.src=url+"?autoplay=1"
+  player.src=url   // ✔ 正確
 
   intro.style.display="block"
-  intro.innerText="影片作品介紹：影像敘事與紀錄創作"
+  intro.innerText="影片作品介紹：影像紀錄與敘事創作"
 
   videoGrid.style.display="none"
 }
@@ -353,10 +326,9 @@ function openImage(src){
   threeDGrid.style.display="none"
 }
 
-/* 點空白（核心規則） */
+/* CLOSE AREA */
 document.getElementById("close-area").onclick=()=>{
 
-  // 作品 → 回列表
   if(state==="item"){
 
     player.style.display="none"
@@ -371,12 +343,12 @@ document.getElementById("close-area").onclick=()=>{
     return
   }
 
-  // 列表 → 回主頁
   if(state==="list"){
     overlay.style.display="none"
     state="home"
   }
 }
+
 </script>
 
 </body>
