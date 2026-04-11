@@ -4,17 +4,10 @@
 <meta charset="UTF-8">
 <title>曾珮甄作品集</title>
 
-<link rel="icon" href="good/logo.png?v=3">
-
 <style>
-@font-face{
-  font-family:'MantouSans';
-  src:url('MantouSans-Regular.ttf') format('truetype');
-}
-
 body{
   margin:0;
-  font-family:'MantouSans',sans-serif;
+  font-family:sans-serif;
   background:#D6CFC4;
   color:#87240E;
 }
@@ -26,53 +19,23 @@ body{
   overflow:hidden;
 }
 
-.hero-images{
-  position:absolute;
-  top:50px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:25px;
-}
-
-.hero-images img{ height:220px; }
-
-#hero video{
-  position:absolute;
-  top:65%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:55%;
-}
-
 /* WORK */
 #work{
-  padding:140px 20px 80px;
   display:flex;
   justify-content:center;
   gap:70px;
-  flex-wrap:wrap;
+  padding:120px 20px;
   text-align:center;
 }
 
-#work img{
-  width:360px;
+.work-item img{
+  width:320px;
   cursor:pointer;
-  transition:0.3s;
-}
-  .work-item{
-  text-align:center;
 }
 
 .work-text{
-  font-size:28px;
-  letter-spacing:2px;
-  color:#87240E;
-  margin-bottom:5px;
-}
-
-#work img:hover{
-  transform:scale(1.04);
+  font-size:24px;
+  margin-bottom:6px;
 }
 
 /* OVERLAY */
@@ -80,72 +43,44 @@ body{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.55);
+  background:rgba(0,0,0,0.6);
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 
+/* PANEL */
 #panel{
   background:#D6CFC4;
-  padding:25px;
   width:90%;
   max-width:900px;
-  max-height:85vh;
-  overflow:auto;
-}
-
-#panel-title{
-  text-align:center;
-}
-
-/* GRID */
-.video-grid{
-  display:none;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.masonry{
-  display:none;
-  column-count:3;
-  column-gap:15px;
-}
-
-@media (max-width:900px){
-  .masonry{ column-count:2; }
-}
-@media (max-width:600px){
-  .masonry{ column-count:1; }
-}
-
-.project,.video-item{
-  break-inside:avoid;
-  margin-bottom:10px;
-  cursor:pointer;
+  padding:20px;
   position:relative;
 }
 
-.project img,.video-item img{
+/* GRIDS */
+.video-grid,.masonry{
+  display:none;
+}
+
+.video-grid{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.masonry{
+  column-count:3;
+}
+
+.video-item,.project{
+  cursor:pointer;
+  margin-bottom:10px;
+}
+
+.video-item img,.project img{
   width:100%;
 }
 
-.project-title,.video-title{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.6);
-  color:white;
-  padding:6px;
-  opacity:0;
-}
-
-.project:hover .project-title,
-.video-item:hover .video-title{
-  opacity:1;
-}
-
+/* VIEWERS */
 #player{
   width:100%;
   height:420px;
@@ -153,51 +88,35 @@ body{
   border:none;
 }
 
+#imgViewer{
+  width:100%;
+  display:none;
+}
+
+/* 點空白 */
 #close-area{
-  document.getElementById("close-area").onclick=()=>{
-
-  overlay.style.display="none"
-
-  player.src=""
-  imgViewer.src=""
-
-  player.style.display="none"
-  imgViewer.style.display="none"
-
-  viewState="home"
+  position:fixed;
+  inset:0;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-images">
-    <img src="good/zeng.png">
-    <img src="good/pei.png">
-    <img src="good/zhen.png">
-  </div>
-
-  <video autoplay muted loop playsinline>
-    <source src="good/head.webm">
-  </video>
-</section>
-
 <!-- WORK -->
 <section id="work">
 
-<div class="work-item" id="work-computer">
+<div class="work-item" id="btnVideo">
   <div class="work-text">VIDEO</div>
   <img src="good/ca.webp">
 </div>
 
-<div class="work-item" id="work-table">
+<div class="work-item" id="btnDesign">
   <div class="work-text">DESIGN</div>
   <img src="good/table.webp">
 </div>
 
-<div class="work-item" id="work-ca">
+<div class="work-item" id="btn3D">
   <div class="work-text">3D</div>
   <img src="good/com.webp">
 </div>
@@ -209,148 +128,142 @@ body{
 <div id="close-area"></div>
 
 <div id="panel">
-<h2 id="panel-title"></h2>
 
 <!-- VIDEO -->
 <div class="video-grid" id="videoGrid">
+  <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s')">
+    <img src="video/aids.jpg">
+  </div>
 
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')"><img src="video/aids.jpg"><div class="video-title">從污名到教育—愛滋風險不分族群</div></div>
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1')"><img src="video/crime.jpg"><div class="video-title">創傷到馨生—犯保協會的重建之路</div></div>
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1')"><img src="video/hurt.jpg"><div class="video-title">與傷共行—那些尚未說完的事</div></div>
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')"><img src="video/narrowhouse.png"><div class="video-title">窄房</div></div>
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1')"><img src="video/ravine.png"><div class="video-title">山溝</div></div>
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1')"><img src="video/sony.png"><div class="video-title">Sony收你的創意-影視製作工作坊</div></div>
-<div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048')"><img src="video/wendan.jpg"><div class="video-title">滿園文旦成廢果 農民收成化泡影？</div></div>
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')"><img src="video/camp.png"><div class="video-title">中正傳播營回顧片</div></div>
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/iD759dRtgIY?autoplay=1')"><img src="video/gogo.jpg"><div class="video-title">出去走走｜劇情短片</div></div>
-
+  <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q')">
+    <img src="video/crime.jpg">
+  </div>
 </div>
 
 <!-- DESIGN -->
 <div class="masonry" id="designGrid">
-<div class="project" onclick="openImage('design/shift.jpg')">
 
-<div class="project"><img src="design/shift.jpg"><div class="project-title">移面之詞主視覺</div></div>
-<div class="project"><img src="design/filmfestival.png"><div class="project-title">第17屆瘋影展海報</div></div>
-<div class="project"><img src="design/communicationcamp.jpg"><div class="project-title">中正傳播營海報</div></div>
-<div class="project"><img src="design/voiceofzhongzheng.jpg"><div class="project-title">中正之聲2024主視覺</div></div>
-<div class="project"><img src="design/eye.png"><div class="project-title">活動海報設計</div></div>
-<div class="project"><img src="design/fb.png"><div class="project-title">中正E報主視覺</div></div>
-<div class="project"><img src="design/ghost.jpg"><div class="project-title">活動海報設計</div></div>
-<div class="project"><img src="design/news.png"><div class="project-title">第二十三屆新傳獎海報</div></div>
-<div class="project"><img src="design/one.png"><div class="project-title">活動海報設計</div></div>
-<div class="project"><img src="design/temperature.png"><div class="project-title">《溫度回收計畫》專輯封面</div></div>
+  <div class="project" onclick="openImage('design/shift.jpg')">
+    <img src="design/shift.jpg">
+  </div>
+
+  <div class="project" onclick="openImage('design/filmfestival.png')">
+    <img src="design/filmfestival.png">
+  </div>
 
 </div>
 
 <!-- 3D -->
 <div class="masonry" id="threeDGrid">
-<div class="project" onclick="openImage('d/shixian/shixian1.jpg')">
-<div class="project"><img src="d/shixian/shixian1.jpg"><div class="project-title">世賢圖書館展場空間規劃</div></div>
-<div class="project"><img src="d/library/library1.jpg"><div class="project-title">嘉義市圖書館展場規劃</div></div>
+
+  <div class="project" onclick="openImage('d/shixian/shixian1.jpg')">
+    <img src="d/shixian/shixian1.jpg">
+  </div>
+
+  <div class="project" onclick="openImage('d/library/library1.jpg')">
+    <img src="d/library/library1.jpg">
+  </div>
 
 </div>
-  
-<img id="imgViewer" style="display:none;width:100%;">
-<iframe id="player" allow="autoplay; fullscreen"></iframe>
-  
+
+<iframe id="player" allow="autoplay"></iframe>
+<img id="imgViewer">
 
 </div>
 </div>
 
 <script>
-const overlay = document.getElementById("overlay")
-const videoGrid = document.getElementById("videoGrid")
-const designGrid = document.getElementById("designGrid")
-const threeDGrid = document.getElementById("threeDGrid")
-const player = document.getElementById("player")
-const panelTitle = document.getElementById("panel-title")
-  let viewState = "home"
-const imgViewer = document.getElementById("imgViewer")
 
-function openImage(src){
-  viewState = "item"
+const overlay=document.getElementById("overlay")
+const videoGrid=document.getElementById("videoGrid")
+const designGrid=document.getElementById("designGrid")
+const threeDGrid=document.getElementById("threeDGrid")
+const player=document.getElementById("player")
+const imgViewer=document.getElementById("imgViewer")
 
-  overlay.style.display = "flex"
+let state="home"
+let current=""
 
-  videoGrid.style.display = "none"
-  designGrid.style.display = "none"
-  threeDGrid.style.display = "none"
-
-  player.style.display = "none"
-  player.src = ""
-
-  imgViewer.style.display = "block"
-  imgViewer.src = src
-}
-
-document.getElementById("work-computer").onclick=()=>{
+/* 開分類 */
+function openList(type){
   overlay.style.display="flex"
-  videoGrid.style.display="grid"
-  designGrid.style.display="none"
-  threeDGrid.style.display="none"
-  player.style.display="none"
-  player.src=""
-  panelTitle.textContent="Video"
-}
 
-document.getElementById("work-table").onclick=()=>{
-  overlay.style.display="flex"
-  videoGrid.style.display="none"
-  designGrid.style.display="block"
-  threeDGrid.style.display="none"
-  player.style.display="none"
-  player.src=""
-  panelTitle.textContent="Design"
-}
-
-document.getElementById("work-ca").onclick=()=>{
-  overlay.style.display="flex"
   videoGrid.style.display="none"
   designGrid.style.display="none"
-  threeDGrid.style.display="block"
+  threeDGrid.style.display="none"
+
   player.style.display="none"
-  player.src=""
-  panelTitle.textContent="3D"
+  imgViewer.style.display="none"
+
+  if(type==="video") videoGrid.style.display="grid"
+  if(type==="design") designGrid.style.display="block"
+  if(type==="3d") threeDGrid.style.display="block"
+
+  state="list"
 }
 
+document.getElementById("btnVideo").onclick=()=>openList("video")
+document.getElementById("btnDesign").onclick=()=>openList("design")
+document.getElementById("btn3D").onclick=()=>openList("3d")
+
+/* 開影片 */
 function openVideo(url){
-  viewState = "item"
-
   overlay.style.display="flex"
 
   videoGrid.style.display="none"
   designGrid.style.display="none"
   threeDGrid.style.display="none"
 
+  imgViewer.style.display="none"
   player.style.display="block"
-  player.src = url + "?autoplay=1&mute=1"
+
+  player.src=url+"?autoplay=1&mute=1"
+
+  state="item"
+  current="video"
 }
 
+/* 開圖片 */
+function openImage(src){
+  overlay.style.display="flex"
+
+  videoGrid.style.display="none"
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
+
+  player.style.display="none"
+  imgViewer.style.display="block"
+
+  imgViewer.src=src
+
+  state="item"
+  current="image"
+}
+
+/* 點空白（關鍵） */
 document.getElementById("close-area").onclick=()=>{
 
-  if(viewState === "item"){
-    // 作品 → 回列表
+  // 作品 → 回列表
+  if(state==="item"){
     player.style.display="none"
-    videoGrid.style.display="grid"
-    designGrid.style.display="none"
-    threeDGrid.style.display="none"
-    viewState = "list"
+    imgViewer.style.display="none"
+
+    if(current==="video") videoGrid.style.display="grid"
+    if(current==="image") designGrid.style.display="block"
+
+    state="list"
+    return
   }
 
-  else if(viewState === "list"){
-  overlay.style.display="none"
-  player.src=""
-  viewState = "home"
-}
-
-  else{
-    // 主畫面 → 關閉 overlay
+  // 列表 → 回主頁
+  if(state==="list"){
     overlay.style.display="none"
     player.src=""
-    viewState = "home"
+    state="home"
+    return
   }
 }
+
 </script>
 
 </body>
