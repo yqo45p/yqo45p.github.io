@@ -62,70 +62,6 @@ body{
   transform:scale(1.04);
 }
 
-/* DESIGN AREA（重點：一開始不顯示） */
-#design-area{
-  display:none;
-}
-
-/* CATEGORY */
-.category-btns button{
-  margin:5px;
-  padding:8px 16px;
-  border:2px solid #87240E;
-  background:transparent;
-  cursor:pointer;
-}
-
-.category-btns button.active{
-  background:#87240E;
-  color:#D6CFC4;
-}
-
-/* 瀑布流 */
-#all-projects{
-  column-count:3;
-  column-gap:20px;
-  max-width:1100px;
-  margin:30px auto;
-}
-
-@media (max-width:900px){
-  #all-projects{ column-count:2; }
-}
-
-@media (max-width:600px){
-  #all-projects{ column-count:1; }
-}
-
-.project{
-  break-inside:avoid;
-  margin-bottom:20px;
-  cursor:pointer;
-  position:relative;
-}
-
-.project img{
-  width:100%;
-  display:block;
-}
-
-/* hover title */
-.project-title{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.55);
-  color:white;
-  padding:8px;
-  opacity:0;
-  transition:0.3s;
-}
-
-.project:hover .project-title{
-  opacity:1;
-}
-
 /* OVERLAY */
 #overlay{
   display:none;
@@ -153,6 +89,11 @@ body{
   font-size:26px;
   margin-bottom:10px;
   text-align:center;
+}
+
+#close-area{
+  position:fixed;
+  inset:0;
 }
 
 /* VIDEO GRID */
@@ -187,18 +128,46 @@ body{
   opacity:1;
 }
 
+/* DESIGN GRID */
+#designGrid{
+  display:none;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+/* PROJECT */
+.project{
+  cursor:pointer;
+  position:relative;
+}
+
+.project img{
+  width:100%;
+  display:block;
+}
+
+.project-title{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.55);
+  color:white;
+  padding:8px;
+  opacity:0;
+  transition:0.3s;
+}
+
+.project:hover .project-title{
+  opacity:1;
+}
+
 /* PLAYER */
 #player{
   width:100%;
   height:420px;
   border:none;
   display:none;
-}
-
-/* 點空白關閉 */
-#close-area{
-  position:fixed;
-  inset:0;
 }
 </style>
 </head>
@@ -226,76 +195,6 @@ body{
 <img src="good/com.webp" id="work-computer">
 <img src="good/table.webp" id="work-table">
 
-<!-- DESIGN AREA（table入口才顯示） -->
-<div id="design-area">
-
-  <div class="category-btns">
-    <button onclick="filter('design')" class="active">Design</button>
-    <button onclick="filter('3d')">3D</button>
-  </div>
-
-  <div id="all-projects">
-
-    <!-- DESIGN -->
-    <div class="project" data-cat="design" data-title="移面之詞主視覺">
-      <img src="design/shift.jpg">
-      <div class="project-title">移面之詞主視覺</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="第17屆瘋影展海報">
-      <img src="design/filmfestival.png">
-      <div class="project-title">第17屆瘋影展海報</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="中正傳播營海報">
-      <img src="design/communicationcamp.jpg">
-      <div class="project-title">中正傳播營海報</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="中正之聲2024主視覺">
-      <img src="design/voiceofzhongzheng.jpg">
-      <div class="project-title">中正之聲2024主視覺</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="活動海報設計">
-      <img src="design/eye.png">
-      <div class="project-title">活動海報設計</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="中正E報主視覺">
-      <img src="design/fb.png">
-      <div class="project-title">中正E報主視覺</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="活動海報設計">
-      <img src="design/ghost.jpg">
-      <div class="project-title">活動海報設計</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="第二十三屆新傳獎海報">
-      <img src="design/news.png">
-      <div class="project-title">第二十三屆新傳獎海報</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="活動海報設計">
-      <img src="design/one.png">
-      <div class="project-title">活動海報設計</div>
-    </div>
-
-    <div class="project" data-cat="design" data-title="溫度回收計畫專輯封面">
-      <img src="design/temperature.png">
-      <div class="project-title">溫度回收計畫專輯封面</div>
-    </div>
-
-  </div>
-</div>
-
-</section>
-
-<!-- CONNECT -->
-<section id="connect">
-<h2>Connect</h2>
-<p>Email: jane940410@gmail.com</p>
 </section>
 
 <!-- OVERLAY -->
@@ -303,9 +202,9 @@ body{
   <div id="close-area"></div>
 
   <div id="panel">
-
     <h2 id="panel-title"></h2>
 
+    <!-- VIDEO -->
     <div class="video-grid" id="videoGrid">
 
       <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')">
@@ -322,6 +221,61 @@ body{
 
     </div>
 
+    <!-- DESIGN（完整10件作品） -->
+    <div class="video-grid" id="designGrid">
+
+      <div class="project" data-title="移面之詞主視覺">
+        <img src="design/shift.jpg">
+        <div class="project-title">移面之詞主視覺</div>
+      </div>
+
+      <div class="project" data-title="第17屆瘋影展海報">
+        <img src="design/filmfestival.png">
+        <div class="project-title">第17屆瘋影展海報</div>
+      </div>
+
+      <div class="project" data-title="中正傳播營海報">
+        <img src="design/communicationcamp.jpg">
+        <div class="project-title">中正傳播營海報</div>
+      </div>
+
+      <div class="project" data-title="中正之聲2024主視覺">
+        <img src="design/voiceofzhongzheng.jpg">
+        <div class="project-title">中正之聲2024主視覺</div>
+      </div>
+
+      <div class="project" data-title="活動海報設計">
+        <img src="design/eye.png">
+        <div class="project-title">活動海報設計</div>
+      </div>
+
+      <div class="project" data-title="中正E報主視覺">
+        <img src="design/fb.png">
+        <div class="project-title">中正E報主視覺</div>
+      </div>
+
+      <div class="project" data-title="活動海報設計">
+        <img src="design/ghost.jpg">
+        <div class="project-title">活動海報設計</div>
+      </div>
+
+      <div class="project" data-title="第二十三屆新傳獎海報">
+        <img src="design/news.png">
+        <div class="project-title">第二十三屆新傳獎海報</div>
+      </div>
+
+      <div class="project" data-title="活動海報設計">
+        <img src="design/one.png">
+        <div class="project-title">活動海報設計</div>
+      </div>
+
+      <div class="project" data-title="溫度回收計畫專輯封面">
+        <img src="design/temperature.png">
+        <div class="project-title">溫度回收計畫專輯封面</div>
+      </div>
+
+    </div>
+
     <iframe id="player"></iframe>
 
   </div>
@@ -332,64 +286,46 @@ body{
 const overlay = document.getElementById("overlay")
 const closeArea = document.getElementById("close-area")
 const videoGrid = document.getElementById("videoGrid")
+const designGrid = document.getElementById("designGrid")
 const player = document.getElementById("player")
 const panelTitle = document.getElementById("panel-title")
 
 const workComputer = document.getElementById("work-computer")
 const workTable = document.getElementById("work-table")
-const designArea = document.getElementById("design-area")
 
-const projects = document.querySelectorAll(".project")
-
-// VIDEO入口
+// VIDEO
 workComputer.onclick = () => {
   overlay.style.display = "flex"
   videoGrid.style.display = "grid"
+  designGrid.style.display = "none"
   player.style.display = "none"
   player.src = ""
   panelTitle.textContent = "Video"
 }
 
-// DESIGN入口（關鍵）
+// DESIGN
 workTable.onclick = () => {
-  overlay.style.display = "none"
+  overlay.style.display = "flex"
   videoGrid.style.display = "none"
+  designGrid.style.display = "grid"
   player.style.display = "none"
-
-  designArea.style.display = "block"
   panelTitle.textContent = "Design"
 }
 
-// 開影片
+// OPEN VIDEO
 function openVideo(url){
   videoGrid.style.display = "none"
   player.style.display = "block"
   player.src = url
 }
 
-// 關閉
+// CLOSE
 closeArea.onclick = () => {
   overlay.style.display = "none"
   player.src = ""
   player.style.display = "none"
   videoGrid.style.display = "grid"
-}
-
-// 點作品
-projects.forEach(p=>{
-  p.onclick = () => {
-    overlay.style.display = "flex"
-    videoGrid.style.display = "none"
-    player.style.display = "none"
-    panelTitle.textContent = p.dataset.title
-  }
-})
-
-// filter
-function filter(cat){
-  document.querySelectorAll(".project").forEach(p=>{
-    p.style.display = (p.dataset.cat === cat) ? "block" : "none"
-  })
+  designGrid.style.display = "none"
 }
 
 </script>
