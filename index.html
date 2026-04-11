@@ -12,7 +12,7 @@
   src:url('MantouSans-Regular.ttf') format('truetype');
 }
   #moreImages{
-  display:grid;
+  display:none;   /* 🔥 加這行 */
   grid-template-columns:repeat(2,1fr);
   gap:10px;
   margin-top:20px;
@@ -470,6 +470,8 @@ function openList(type){
   current=type
   state="list"
 
+  document.getElementById("moreImages").style.display = "none"
+
   if(type==="VIDEO") videoGrid.style.display="grid"
   if(type==="DESIGN") designGrid.style.display="block"
   if(type==="3D") threeDGrid.style.display="block"
@@ -509,7 +511,13 @@ function openImage(src,text,more=[]){
   intro.innerText=text
 
   const box = document.getElementById("moreImages")
-  box.innerHTML=""
+box.innerHTML=""
+
+if(current === "3D"){
+  box.style.display = "grid"
+}else{
+  box.style.display = "none"
+}
 
   more.forEach(img=>{
     const el=document.createElement("img")
