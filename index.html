@@ -25,37 +25,48 @@ h2{ font-size:36px; color:#87240E; margin:0; }
 section{ padding:120px 20px; text-align:center; }
 
 /* navbar */
-nav{ position:fixed; top:20px; right:20px; display:flex; gap:20px; z-index:10; }
-nav a{ text-decoration:none; color:#87240E; font-size:18px; }
+nav{
+    position:fixed;
+    top:20px;
+    right:20px;
+    display:flex;
+    gap:20px;
+    z-index:10;
+}
+
+nav a{
+    text-decoration:none;
+    color:#87240E;
+    font-size:18px;
+}
 
 /* hero */
 #hero {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-images {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 25px;
-  z-index: 3;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 25px;
+    z-index: 3;
 }
 
 .hero-images img { height: 220px; }
 
 #hero video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
-  object-fit: cover;
-  z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
 }
 
 /* buttons */
@@ -73,7 +84,6 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     font-family:'MantouSans';
     font-size:16px;
     border-radius:4px;
-    transition:0.3s;
 }
 
 .category-btns button.active{
@@ -100,7 +110,10 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     position:relative;
 }
 
-.project img{ width:100%; display:block; }
+.project img{
+    width:100%;
+    display:block;
+}
 
 /* hover */
 .project-title{
@@ -112,15 +125,21 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
     padding:10px;
     opacity:0;
     transition:0.3s;
-    color:#FFFFFF;
+    color:#fff;
 }
 
 .project:hover .project-title{ opacity:1; }
 
-/* ⭐ VIDEO 電腦入口 */
+/* ⭐ 電腦圖 */
 .video-hub img{
     object-fit:contain;
     background:#D6CFC4;
+    cursor:pointer;
+}
+
+/* ⭐ VIDEO 預設隱藏（核心） */
+.project[data-cat="video"]{
+    display:none;
 }
 
 /* overlay */
@@ -217,6 +236,7 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 </section>
 
 <section id="work">
+
 <h2>Work</h2>
 
 <div class="category-btns">
@@ -227,8 +247,8 @@ nav a{ text-decoration:none; color:#87240E; font-size:18px; }
 
 <div id="all-projects">
 
-<!-- ⭐ VIDEO 電腦入口（新增） -->
-<div class="project video-hub" data-cat="hub">
+<!-- ⭐ 電腦入口（唯一開關） -->
+<div class="project video-hub" id="videoToggle">
   <img src="good/com.webp">
   <div class="project-title">Video Works</div>
 </div>
@@ -313,7 +333,7 @@ data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
 
 <div class="project" data-cat="video"
 data-title="窄房"
-data-description="2025｜攝影助理"
+data-description="2025"
 data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
   <img src="video/narrowhouse.png">
   <div class="project-title">窄房</div>
@@ -321,7 +341,7 @@ data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
 
 <div class="project" data-cat="video"
 data-title="山溝"
-data-description="2024｜剪輯、場記"
+data-description="2024"
 data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
   <img src="video/ravine.png">
   <div class="project-title">山溝</div>
@@ -329,7 +349,7 @@ data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
 
 <div class="project" data-cat="video"
 data-title="Sony工作坊"
-data-description="2025｜導演"
+data-description="2025"
 data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
   <img src="video/sony.png">
   <div class="project-title">Sony工作坊</div>
@@ -398,6 +418,22 @@ data-images="d/library/library2.jpg,d/library/library3.jpg,d/library/library4.jp
 </div>
 
 <script>
+const videoToggle = document.getElementById("videoToggle")
+const videoProjects = document.querySelectorAll('.project[data-cat="video"]')
+
+// ⭐ 電腦開關 video（不影響其他作品）
+videoToggle.onclick = () => {
+
+  const isHidden = videoProjects[0].style.display === "none" || videoProjects[0].style.display === ""
+
+  videoProjects.forEach(p=>{
+    p.style.display = isHidden ? "block" : "none"
+  })
+
+  videoToggle.scrollIntoView({behavior:"smooth"})
+}
+
+// popup
 const projects=document.querySelectorAll(".project")
 const overlay=document.getElementById("overlay")
 const panelImg=document.getElementById("panel-img")
@@ -406,28 +442,10 @@ const panelTitle=document.getElementById("panel-title")
 const panelText=document.getElementById("panel-text")
 const panelExtra=document.getElementById("panel-extra-images")
 
-const buttons=document.querySelectorAll(".category-btns button")
-
-// 點作品
 projects.forEach(p=>{
   p.onclick=()=>{
 
-    // ⭐ 電腦入口 → 切 video
-    if(p.classList.contains("video-hub")){
-      buttons.forEach(b=>b.classList.remove("active"))
-      document.querySelector('[data-cat="video"]').classList.add("active")
-
-      projects.forEach(item=>{
-        if(item.classList.contains("video-hub")){
-          item.style.display="block"
-        }else{
-          item.style.display = (item.dataset.cat==="video") ? "block" : "none"
-        }
-      })
-
-      document.getElementById("work").scrollIntoView({behavior:"smooth"})
-      return
-    }
+    if(p.id === "videoToggle") return
 
     overlay.style.display="flex"
     panelTitle.textContent=p.dataset.title
@@ -455,7 +473,7 @@ projects.forEach(p=>{
   }
 })
 
-// 關閉
+// close
 function closePanel(){
   overlay.style.display="none"
   panelVideo.src=""
@@ -463,28 +481,6 @@ function closePanel(){
 
 overlay.onclick=closePanel
 document.getElementById("panel-close").onclick=closePanel
-
-// filter
-function filter(cat){
-  projects.forEach(p=>{
-    if(p.classList.contains("video-hub")){
-      p.style.display="block"
-    }else{
-      p.style.display = (p.dataset.cat===cat) ? "block" : "none"
-    }
-  })
-}
-
-buttons.forEach(btn=>{
-  btn.onclick=()=>{
-    buttons.forEach(b=>b.classList.remove("active"))
-    btn.classList.add("active")
-    filter(btn.dataset.cat)
-  }
-})
-
-// default
-filter("video")
 </script>
 
 </body>
