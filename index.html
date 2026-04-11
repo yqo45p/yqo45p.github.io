@@ -23,6 +23,7 @@ body{
 #hero{
   height:100vh;
   position:relative;
+  overflow:hidden;
 }
 
 .hero-images{
@@ -52,14 +53,14 @@ body{
 
 #work img{
   width:360px;
-  margin:20px auto;
   display:block;
+  margin:25px auto;
   cursor:pointer;
   transition:0.3s;
 }
 
 #work img:hover{
-  transform:scale(1.05);
+  transform:scale(1.04);
 }
 
 /* OVERLAY */
@@ -77,25 +78,13 @@ body{
   background:#D6CFC4;
   padding:25px;
   width:90%;
-  max-width:950px;
+  max-width:900px;
   max-height:85vh;
   overflow:auto;
 }
 
 #panel-title{
   text-align:center;
-  font-size:26px;
-}
-
-#panel-text{
-  text-align:center;
-  font-size:18px;
-  margin-top:10px;
-}
-
-#close-area{
-  position:fixed;
-  inset:0;
 }
 
 /* GRID */
@@ -111,8 +100,12 @@ body{
   column-gap:15px;
 }
 
-@media(max-width:900px){.masonry{column-count:2;}}
-@media(max-width:600px){.masonry{column-count:1;}}
+@media (max-width:900px){
+  .masonry{ column-count:2; }
+}
+@media (max-width:600px){
+  .masonry{ column-count:1; }
+}
 
 .project,.video-item{
   break-inside:avoid;
@@ -121,7 +114,9 @@ body{
   position:relative;
 }
 
-.project img,.video-item img{width:100%;}
+.project img,.video-item img{
+  width:100%;
+}
 
 .project-title,.video-title{
   position:absolute;
@@ -145,6 +140,11 @@ body{
   display:none;
   border:none;
 }
+
+#close-area{
+  position:fixed;
+  inset:0;
+}
 </style>
 </head>
 
@@ -165,7 +165,6 @@ body{
 
 <!-- WORK -->
 <section id="work">
-
 <h2>Work</h2>
 
 <img src="good/com.webp" id="work-computer">
@@ -179,91 +178,68 @@ body{
 <div id="close-area"></div>
 
 <div id="panel">
-
 <h2 id="panel-title"></h2>
-<p id="panel-text"></p>
 
-<!-- VIDEO GRID -->
+<!-- VIDEO -->
 <div class="video-grid" id="videoGrid">
 
-<div class="video-item" data-title="愛滋風險不分族群" data-description="2025｜攝影剪輯"
-data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
-<img src="video/aids.jpg"><div class="video-title">愛滋</div></div>
-
-<div class="video-item" data-title="犯保重建之路" data-description="2025"
-data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
-<img src="video/crime.jpg"><div class="video-title">犯保</div></div>
-
-<div class="video-item" data-title="與傷共行" data-description="2025"
-data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
-<img src="video/hurt.jpg"><div class="video-title">與傷</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')"><img src="video/aids.jpg"><div class="video-title">從污名到教育—愛滋風險不分族群</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1')"><img src="video/crime.jpg"><div class="video-title">創傷到馨生—犯保協會的重建之路</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1')"><img src="video/hurt.jpg"><div class="video-title">與傷共行—那些尚未說完的事</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')"><img src="video/narrowhouse.png"><div class="video-title">窄房</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1')"><img src="video/ravine.png"><div class="video-title">山溝</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1')"><img src="video/sony.png"><div class="video-title">Sony收你的創意-影視製作工作坊</div></div>
+<div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048')"><img src="video/wendan.jpg"><div class="video-title">滿園文旦成廢果 農民收成化泡影？</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')"><img src="video/camp.png"><div class="video-title">中正傳播營回顧片</div></div>
+<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/iD759dRtgIY?autoplay=1')"><img src="video/gogo.jpg"><div class="video-title">出去走走｜劇情短片</div></div>
 
 </div>
 
-<!-- DESIGN（完整 10+ 作品） -->
+<!-- DESIGN -->
 <div class="masonry" id="designGrid">
 
-<div class="project" data-title="移面之詞主視覺" data-description="2026 主視覺設計">
-<img src="design/shift.jpg"><div class="project-title">移面之詞</div></div>
-
-<div class="project" data-title="瘋影展海報" data-description="2025 海報設計">
-<img src="design/filmfestival.png"><div class="project-title">瘋影展</div></div>
-
-<div class="project" data-title="傳播營海報" data-description="2024 活動設計">
-<img src="design/communicationcamp.jpg"><div class="project-title">傳播營</div></div>
-
-<div class="project" data-title="中正之聲" data-description="2024 視覺設計">
-<img src="design/voiceofzhongzheng.jpg"><div class="project-title">中正之聲</div></div>
-
-<div class="project" data-title="活動海報" data-description="2025">
-<img src="design/eye.png"><div class="project-title">活動海報</div></div>
-
-<div class="project" data-title="E報主視覺" data-description="2025">
-<img src="design/fb.png"><div class="project-title">E報</div></div>
-
-<div class="project" data-title="新傳獎海報" data-description="2025">
-<img src="design/news.png"><div class="project-title">新傳獎</div></div>
-
-<div class="project" data-title="專輯封面" data-description="2025">
-<img src="design/temperature.png"><div class="project-title">專輯</div></div>
-
-<div class="project" data-title="活動設計" data-description="2025">
-<img src="design/ghost.jpg"><div class="project-title">活動</div></div>
-
-<div class="project" data-title="活動設計" data-description="2025">
-<img src="design/one.png"><div class="project-title">活動</div></div>
+<div class="project"><img src="design/shift.jpg"><div class="project-title">移面之詞主視覺</div></div>
+<div class="project"><img src="design/filmfestival.png"><div class="project-title">第17屆瘋影展海報</div></div>
+<div class="project"><img src="design/communicationcamp.jpg"><div class="project-title">中正傳播營海報</div></div>
+<div class="project"><img src="design/voiceofzhongzheng.jpg"><div class="project-title">中正之聲2024主視覺</div></div>
+<div class="project"><img src="design/eye.png"><div class="project-title">活動海報設計</div></div>
+<div class="project"><img src="design/fb.png"><div class="project-title">中正E報主視覺</div></div>
+<div class="project"><img src="design/ghost.jpg"><div class="project-title">活動海報設計</div></div>
+<div class="project"><img src="design/news.png"><div class="project-title">第二十三屆新傳獎海報</div></div>
+<div class="project"><img src="design/one.png"><div class="project-title">活動海報設計</div></div>
+<div class="project"><img src="design/temperature.png"><div class="project-title">《溫度回收計畫》專輯封面</div></div>
 
 </div>
 
-<!-- 3D（完整） -->
+<!-- 3D -->
 <div class="masonry" id="threeDGrid">
 
-<div class="project" data-title="世賢圖書館展場" data-description="2026 空間設計">
-<img src="d/shixian/shixian1.jpg"><div class="project-title">世賢</div></div>
-
-<div class="project" data-title="嘉義圖書館展場" data-description="2026 空間設計">
-<img src="d/library/library1.jpg"><div class="project-title">嘉義</div></div>
+<div class="project"><img src="d/shixian/shixian1.jpg"><div class="project-title">世賢圖書館展場空間規劃</div></div>
+<div class="project"><img src="d/library/library1.jpg"><div class="project-title">嘉義市圖書館展場規劃</div></div>
 
 </div>
+
+<iframe id="player"></iframe>
 
 </div>
 </div>
 
 <script>
-const overlay=document.getElementById("overlay")
-const panelTitle=document.getElementById("panel-title")
-const panelText=document.getElementById("panel-text")
+const overlay = document.getElementById("overlay")
+const videoGrid = document.getElementById("videoGrid")
+const designGrid = document.getElementById("designGrid")
+const threeDGrid = document.getElementById("threeDGrid")
+const player = document.getElementById("player")
+const panelTitle = document.getElementById("panel-title")
 
-const videoGrid=document.getElementById("videoGrid")
-const designGrid=document.getElementById("designGrid")
-const threeDGrid=document.getElementById("threeDGrid")
-
-// 入口
 document.getElementById("work-computer").onclick=()=>{
   overlay.style.display="flex"
   videoGrid.style.display="grid"
   designGrid.style.display="none"
   threeDGrid.style.display="none"
+  player.style.display="none"
+  player.src=""
+  panelTitle.textContent="Video"
 }
 
 document.getElementById("work-table").onclick=()=>{
@@ -271,6 +247,8 @@ document.getElementById("work-table").onclick=()=>{
   videoGrid.style.display="none"
   designGrid.style.display="block"
   threeDGrid.style.display="none"
+  player.style.display="none"
+  panelTitle.textContent="Design"
 }
 
 document.getElementById("work-ca").onclick=()=>{
@@ -278,35 +256,19 @@ document.getElementById("work-ca").onclick=()=>{
   videoGrid.style.display="none"
   designGrid.style.display="none"
   threeDGrid.style.display="block"
+  player.style.display="none"
+  panelTitle.textContent="3D"
 }
 
-// ⭐ 點作品（100%正常）
-document.querySelectorAll(".project, .video-item").forEach(item=>{
-  item.onclick=()=>{
+function openVideo(url){
+  videoGrid.style.display="none"
+  player.style.display="block"
+  player.src=url
+}
 
-    panelTitle.textContent=item.dataset.title||""
-    panelText.textContent=item.dataset.description||""
-
-    videoGrid.style.display="none"
-    designGrid.style.display="none"
-    threeDGrid.style.display="none"
-
-    const video=item.dataset.video
-
-    if(video){
-      let iframe=document.createElement("iframe")
-      iframe.src=video
-      iframe.width="100%"
-      iframe.height="420"
-      iframe.style.border="none"
-      panelText.appendChild(iframe)
-    }
-  }
-})
-
-// 關閉
 document.getElementById("close-area").onclick=()=>{
   overlay.style.display="none"
+  player.src=""
 }
 </script>
 
