@@ -43,13 +43,15 @@ body{
   width:55%;
 }
 
-/* WORK */
+/* WORK ICONS */
 #work{
   text-align:center;
   padding:80px 20px;
 }
 
-#work-computer, #work-table{
+#work-computer,
+#work-table,
+#work-ca{
   width:360px;
   display:block;
   margin:25px auto;
@@ -58,7 +60,8 @@ body{
 }
 
 #work-computer:hover,
-#work-table:hover{
+#work-table:hover,
+#work-ca:hover{
   transform:scale(1.04);
 }
 
@@ -78,7 +81,7 @@ body{
   color:#87240E;
   padding:25px;
   width:90%;
-  max-width:850px;
+  max-width:900px;
   border-radius:6px;
   position:relative;
   max-height:85vh;
@@ -103,6 +106,51 @@ body{
   gap:10px;
 }
 
+/* ⭐ 瀑布流（Design + 3D 共用） */
+.masonry{
+  display:none;
+  column-count:3;
+  column-gap:15px;
+}
+
+@media (max-width:900px){
+  .masonry{ column-count:2; }
+}
+
+@media (max-width:600px){
+  .masonry{ column-count:1; }
+}
+
+/* PROJECT */
+.project{
+  break-inside: avoid;
+  margin-bottom:15px;
+  cursor:pointer;
+  position:relative;
+}
+
+.project img{
+  width:100%;
+  display:block;
+}
+
+.project-title{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.55);
+  color:white;
+  padding:8px;
+  opacity:0;
+  transition:0.3s;
+}
+
+.project:hover .project-title{
+  opacity:1;
+}
+
+/* VIDEO ITEM */
 .video-item{
   cursor:pointer;
   position:relative;
@@ -125,51 +173,6 @@ body{
 }
 
 .video-item:hover .video-title{
-  opacity:1;
-}
-
-/* ⭐ DESIGN 瀑布流（重點） */
-#designGrid{
-  display:none;
-  column-count:3;
-  column-gap:15px;
-}
-
-@media (max-width:900px){
-  #designGrid{ column-count:2; }
-}
-
-@media (max-width:600px){
-  #designGrid{ column-count:1; }
-}
-
-/* project 必須避免被切斷 */
-.project{
-  break-inside: avoid;
-  margin-bottom:15px;
-  cursor:pointer;
-  position:relative;
-}
-
-.project img{
-  width:100%;
-  display:block;
-}
-
-/* hover title */
-.project-title{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.55);
-  color:white;
-  padding:8px;
-  opacity:0;
-  transition:0.3s;
-}
-
-.project:hover .project-title{
   opacity:1;
 }
 
@@ -198,13 +201,14 @@ body{
   </video>
 </section>
 
-<!-- WORK -->
+<!-- WORK ICONS -->
 <section id="work">
 
 <h2>Work</h2>
 
 <img src="good/com.webp" id="work-computer">
 <img src="good/table.webp" id="work-table">
+<img src="good/ca.webp" id="work-ca">
 
 </section>
 
@@ -233,7 +237,7 @@ body{
     </div>
 
     <!-- DESIGN（瀑布流） -->
-    <div class="video-grid" id="designGrid">
+    <div class="masonry" id="designGrid">
 
       <div class="project" data-title="移面之詞主視覺">
         <img src="design/shift.jpg">
@@ -270,9 +274,9 @@ body{
         <div class="project-title">活動海報設計</div>
       </div>
 
-      <div class="project" data-title="新傳獎海報">
+      <div class="project" data-title="第二十三屆新傳獎海報">
         <img src="design/news.png">
-        <div class="project-title">新傳獎海報</div>
+        <div class="project-title">第二十三屆新傳獎海報</div>
       </div>
 
       <div class="project" data-title="活動海報設計">
@@ -287,6 +291,21 @@ body{
 
     </div>
 
+    <!-- 3D（瀑布流） -->
+    <div class="masonry" id="threeDGrid">
+
+      <div class="project" data-title="3D作品1">
+        <img src="3d/1.jpg">
+        <div class="project-title">3D作品1</div>
+      </div>
+
+      <div class="project" data-title="3D作品2">
+        <img src="3d/2.jpg">
+        <div class="project-title">3D作品2</div>
+      </div>
+
+    </div>
+
     <iframe id="player"></iframe>
 
   </div>
@@ -296,34 +315,50 @@ body{
 
 const overlay = document.getElementById("overlay")
 const closeArea = document.getElementById("close-area")
+
 const videoGrid = document.getElementById("videoGrid")
 const designGrid = document.getElementById("designGrid")
+const threeDGrid = document.getElementById("threeDGrid")
+
 const player = document.getElementById("player")
 const panelTitle = document.getElementById("panel-title")
 
 const workComputer = document.getElementById("work-computer")
 const workTable = document.getElementById("work-table")
+const workCa = document.getElementById("work-ca")
 
 // VIDEO
 workComputer.onclick = () => {
   overlay.style.display = "flex"
   videoGrid.style.display = "grid"
   designGrid.style.display = "none"
+  threeDGrid.style.display = "none"
   player.style.display = "none"
   player.src = ""
   panelTitle.textContent = "Video"
 }
 
-// DESIGN（瀑布流）
+// DESIGN
 workTable.onclick = () => {
   overlay.style.display = "flex"
   videoGrid.style.display = "none"
   designGrid.style.display = "block"
+  threeDGrid.style.display = "none"
   player.style.display = "none"
   panelTitle.textContent = "Design"
 }
 
-// OPEN VIDEO
+// 3D
+workCa.onclick = () => {
+  overlay.style.display = "flex"
+  videoGrid.style.display = "none"
+  designGrid.style.display = "none"
+  threeDGrid.style.display = "block"
+  player.style.display = "none"
+  panelTitle.textContent = "3D"
+}
+
+// VIDEO PLAYER
 function openVideo(url){
   videoGrid.style.display = "none"
   player.style.display = "block"
@@ -337,6 +372,7 @@ closeArea.onclick = () => {
   player.style.display = "none"
   videoGrid.style.display = "grid"
   designGrid.style.display = "none"
+  threeDGrid.style.display = "none"
 }
 
 </script>
