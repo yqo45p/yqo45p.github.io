@@ -49,7 +49,6 @@ body{
   padding:80px 20px;
 }
 
-/* 電腦入口 */
 #work-computer{
   width:420px;
   display:block;
@@ -57,73 +56,38 @@ body{
   cursor:pointer;
   transition:0.3s;
 }
-#work-computer:hover{ transform:scale(1.05); }
 
-/* GRID */
-#all-projects{
-  column-count:3;
-  column-gap:20px;
-  max-width:1100px;
-  margin:auto;
+#work-computer:hover{
+  transform:scale(1.05);
 }
 
-.project{
-  break-inside:avoid;
-  margin-bottom:20px;
-  position:relative;
-  cursor:pointer;
-}
-
-.project img{
-  width:100%;
-  display:block;
-}
-
-.project-title{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  background:rgba(0,0,0,0.5);
-  color:white;
-  padding:8px;
-  opacity:0;
-  transition:0.3s;
-}
-
-.project:hover .project-title{
-  opacity:1;
-}
-
-/* OVERLAY */
+/* ===== 電腦視窗 ===== */
 #overlay{
   display:none;
   position:fixed;
   inset:0;
   background:rgba(0,0,0,0.6);
-  z-index:999;
   justify-content:center;
   align-items:center;
+  z-index:10;
 }
 
-/* 電腦視窗 */
-#videoWindow{
+#window{
   width:920px;
   height:600px;
   background:#D6CFC4;
   display:flex;
   gap:20px;
   padding:20px;
-  border-radius:8px;
 }
 
-/* 左側影片列表 */
-#videoList{
+/* 左側列表 */
+#list{
   width:320px;
   overflow-y:auto;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:10px;
 }
 
 .video-item{
@@ -142,18 +106,16 @@ body{
   left:0;
   right:0;
   background:rgba(0,0,0,0.5);
-  color:#fff;
+  color:white;
   padding:6px;
-  font-size:14px;
   opacity:0;
-  transition:0.3s;
 }
 
 .video-item:hover span{
   opacity:1;
 }
 
-/* 右側播放器 */
+/* 右側播放 */
 #playerBox{
   flex:1;
   background:black;
@@ -163,6 +125,39 @@ body{
   width:100%;
   height:100%;
   border:none;
+}
+
+/* ===== 第二層作品視窗 ===== */
+#detailOverlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#detailBox{
+  width:750px;
+  background:#D6CFC4;
+  padding:20px;
+  border-radius:8px;
+}
+
+#detailBox iframe{
+  width:100%;
+  height:360px;
+  border:none;
+}
+
+#title{
+  font-size:22px;
+  margin:10px 0;
+}
+
+#desc{
+  font-size:16px;
 }
 </style>
 </head>
@@ -187,89 +182,55 @@ body{
 
 <h2>Work</h2>
 
-<img src="good/com.webp" id="work-computer">
+<img src="good/com.webp" id="computer">
 
-<div id="all-projects">
-
-<!-- DESIGN（完整10個） -->
-<div class="project"><img src="design/shift.jpg"><div class="project-title">移面之詞主視覺</div></div>
-<div class="project"><img src="design/filmfestival.png"><div class="project-title">第17屆瘋影展海報</div></div>
-<div class="project"><img src="design/communicationcamp.jpg"><div class="project-title">中正傳播營海報</div></div>
-<div class="project"><img src="design/voiceofzhongzheng.jpg"><div class="project-title">中正之聲2024</div></div>
-<div class="project"><img src="design/eye.png"><div class="project-title">活動海報</div></div>
-<div class="project"><img src="design/fb.png"><div class="project-title">中正E報</div></div>
-<div class="project"><img src="design/ghost.jpg"><div class="project-title">活動海報</div></div>
-<div class="project"><img src="design/news.png"><div class="project-title">新傳獎海報</div></div>
-<div class="project"><img src="design/one.png"><div class="project-title">活動海報</div></div>
-<div class="project"><img src="design/temperature.png"><div class="project-title">專輯封面</div></div>
-
-<!-- 3D（完整） -->
-<div class="project">
-  <img src="d/shixian/shixian1.jpg">
-  <div class="project-title">世賢圖書館展場</div>
-</div>
-
-<div class="project">
-  <img src="d/library/library1.jpg">
-  <div class="project-title">嘉義圖書館展場</div>
-</div>
-
-</div>
 </section>
 
-<!-- CONNECT -->
-<section id="connect">
-<h2>Connect</h2>
-<p>Email: jane940410@gmail.com</p>
-</section>
-
-<!-- OVERLAY -->
+<!-- 電腦視窗 -->
 <div id="overlay">
+  <div id="window">
 
-  <div id="videoWindow">
+    <div id="list">
 
-    <!-- VIDEO LIST（完整9支） -->
-    <div id="videoList">
-
-      <div class="video-item" onclick="play('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')">
-        <img src="video/aids.jpg"><span>從污名到教育</span>
+      <!-- VIDEO 完整9支 -->
+      <div class="video-item" data-title="從污名到教育" data-desc="2025｜攝影剪輯" data-video="https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1">
+        <img src="video/aids.jpg"><span>愛滋</span>
       </div>
 
-      <div class="video-item" onclick="play('https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1')">
-        <img src="video/crime.jpg"><span>創傷到馨生</span>
+      <div class="video-item" data-title="創傷到馨生" data-desc="2025｜攝影剪輯" data-video="https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1">
+        <img src="video/crime.jpg"><span>犯保</span>
       </div>
 
-      <div class="video-item" onclick="play('https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1')">
-        <img src="video/hurt.jpg"><span>與傷共行</span>
+      <div class="video-item" data-title="與傷共行" data-desc="2025" data-video="https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1">
+        <img src="video/hurt.jpg"><span>與傷</span>
       </div>
 
-      <div class="video-item" onclick="play('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')">
+      <div class="video-item" data-title="窄房" data-desc="2025" data-video="https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1">
         <img src="video/narrowhouse.png"><span>窄房</span>
       </div>
 
-      <div class="video-item" onclick="play('https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1')">
+      <div class="video-item" data-title="山溝" data-desc="2024" data-video="https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1">
         <img src="video/ravine.png"><span>山溝</span>
       </div>
 
-      <div class="video-item" onclick="play('https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1')">
-        <img src="video/sony.png"><span>Sony工作坊</span>
+      <div class="video-item" data-title="Sony工作坊" data-desc="2025" data-video="https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1">
+        <img src="video/sony.png"><span>Sony</span>
       </div>
 
-      <div class="video-item" onclick="play('https://www.peopo.org/news/822048')">
-        <img src="video/wendan.jpg"><span>文旦新聞</span>
+      <div class="video-item" data-title="文旦新聞" data-desc="2025" data-video="https://www.peopo.org/news/822048">
+        <img src="video/wendan.jpg"><span>文旦</span>
       </div>
 
-      <div class="video-item" onclick="play('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')">
-        <img src="video/camp.png"><span>傳播營</span>
+      <div class="video-item" data-title="傳播營" data-desc="2025" data-video="https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1">
+        <img src="video/camp.png"><span>營隊</span>
       </div>
 
-      <div class="video-item" onclick="play('https://www.youtube.com/embed/iD759dRtgIY?autoplay=1')">
+      <div class="video-item" data-title="出去走走" data-desc="2025" data-video="https://www.youtube.com/embed/iD759dRtgIY?autoplay=1">
         <img src="video/gogo.jpg"><span>出去走走</span>
       </div>
 
     </div>
 
-    <!-- PLAYER -->
     <div id="playerBox">
       <iframe id="player"></iframe>
     </div>
@@ -277,32 +238,54 @@ body{
   </div>
 </div>
 
+<!-- 第二層作品視窗 -->
+<div id="detailOverlay">
+  <div id="detailBox">
+    <iframe id="frame"></iframe>
+    <div id="title"></div>
+    <div id="desc"></div>
+  </div>
+</div>
+
 <script>
 
+const computer=document.getElementById("computer")
 const overlay=document.getElementById("overlay")
-const player=document.getElementById("player")
-const workComputer=document.getElementById("work-computer")
+
+const detailOverlay=document.getElementById("detailOverlay")
+const frame=document.getElementById("frame")
+const title=document.getElementById("title")
+const desc=document.getElementById("desc")
 
 /* 開電腦 */
-workComputer.onclick=()=>{
+computer.onclick=()=>{
   overlay.style.display="flex"
 }
 
-/* 播放影片 */
-function play(url){
-  player.src=url
+/* 點影片 → 打開詳細視窗 */
+document.querySelectorAll(".video-item").forEach(item=>{
+  item.onclick=(e)=>{
+    e.stopPropagation()
+
+    frame.src=item.dataset.video
+    title.textContent=item.dataset.title
+    desc.textContent=item.dataset.desc
+
+    detailOverlay.style.display="flex"
+  }
+})
+
+/* 點空白關詳細 */
+detailOverlay.onclick=()=>{
+  detailOverlay.style.display="none"
+  frame.src=""
 }
 
-/* 點空白關閉 */
+/* 點空白關電腦 */
 overlay.onclick=()=>{
   overlay.style.display="none"
-  player.src=""
 }
-
-/* 防止內部點擊關閉 */
-document.getElementById("videoWindow").onclick=(e)=>{
-  e.stopPropagation()
-}
+document.getElementById("window").onclick=(e)=>e.stopPropagation()
 
 </script>
 
