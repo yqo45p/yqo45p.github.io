@@ -335,7 +335,8 @@ intro.innerText=""
   player.src=url + "?autoplay=1&mute=1"
 
   intro.style.display="block"
-  intro.innerText=el.querySelector(".title").innerText + "｜影片作品介紹"
+  intro.innerHTML =
+  `<b>${el.dataset.title}</b><br><br>${el.dataset.intro}`
 }
 
 /* 🖼 圖片 */
