@@ -335,9 +335,7 @@ function openImage(src,text){
   intro.style.display="block"
   intro.innerText=text
 }
-
-/* 點空白 */
-document.getElementById("overlay").onclick=()=>{
+  document.getElementById("close-area").onclick=()=>{
 
   if(state==="item"){
 
@@ -352,6 +350,12 @@ document.getElementById("overlay").onclick=()=>{
     state="list"
     return
   }
+
+  if(state==="list"){
+    overlay.style.display="none"
+    state="home"
+  }
+}
 
   if(state==="list"){
     overlay.style.display="none"
