@@ -241,7 +241,8 @@ body{
 
 </div>
 
-<iframe id="player"></iframe>
+<iframe id="player" allow="autoplay; fullscreen"></iframe>
+  
 
 </div>
 </div>
@@ -287,9 +288,15 @@ document.getElementById("work-ca").onclick=()=>{
 
 function openVideo(url){
   viewState = "item"
+
+  overlay.style.display="flex"
+
   videoGrid.style.display="none"
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
+
   player.style.display="block"
-  player.src=url
+  player.src = url + "?autoplay=1&mute=1"
 }
 
 document.getElementById("close-area").onclick=()=>{
