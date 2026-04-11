@@ -51,16 +51,13 @@ body{
 
 /* 電腦入口 */
 #work-computer{
-  width:440px;
+  width:420px;
   display:block;
-  margin:30px auto 20px;
+  margin:30px auto;
   cursor:pointer;
   transition:0.3s;
 }
-
-#work-computer:hover{
-  transform:scale(1.05);
-}
+#work-computer:hover{ transform:scale(1.05); }
 
 /* GRID */
 #all-projects{
@@ -73,8 +70,8 @@ body{
 .project{
   break-inside:avoid;
   margin-bottom:20px;
-  cursor:pointer;
   position:relative;
+  cursor:pointer;
 }
 
 .project img{
@@ -82,34 +79,51 @@ body{
   display:block;
 }
 
+.project-title{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  padding:8px;
+  opacity:0;
+  transition:0.3s;
+}
+
+.project:hover .project-title{
+  opacity:1;
+}
+
 /* OVERLAY */
 #overlay{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.55);
+  background:rgba(0,0,0,0.6);
+  z-index:999;
   justify-content:center;
   align-items:center;
-  z-index:999;
 }
 
-#panel{
+/* 電腦視窗 */
+#videoWindow{
+  width:920px;
+  height:600px;
   background:#D6CFC4;
-  color:#87240E;
-  padding:30px;
-  width:90%;
-  max-width:900px;
-  max-height:85vh;
-  overflow-y:auto;
-  border-radius:6px;
-  position:relative;
+  display:flex;
+  gap:20px;
+  padding:20px;
+  border-radius:8px;
 }
 
-/* VIDEO GRID */
-.video-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+/* 左側影片列表 */
+#videoList{
+  width:320px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
 .video-item{
@@ -122,30 +136,34 @@ body{
   display:block;
 }
 
-.video-title{
+.video-item span{
   position:absolute;
   bottom:0;
   left:0;
   right:0;
   background:rgba(0,0,0,0.5);
-  color:white;
-  padding:8px;
+  color:#fff;
+  padding:6px;
+  font-size:14px;
   opacity:0;
   transition:0.3s;
 }
 
-.video-item:hover .video-title{
+.video-item:hover span{
   opacity:1;
 }
 
-/* PLAYER */
-#player{
-  width:100%;
-  height:420px;
-  border:none;
-  display:none;
+/* 右側播放器 */
+#playerBox{
+  flex:1;
+  background:black;
 }
 
+#player{
+  width:100%;
+  height:100%;
+  border:none;
+}
 </style>
 </head>
 
@@ -169,30 +187,32 @@ body{
 
 <h2>Work</h2>
 
-<!-- 電腦入口 -->
 <img src="good/com.webp" id="work-computer">
 
-<!-- DESIGN + 3D（完整） -->
 <div id="all-projects">
 
-<!-- DESIGN -->
-<div class="project" data-cat="design"><img src="design/shift.jpg"></div>
-<div class="project" data-cat="design"><img src="design/filmfestival.png"></div>
-<div class="project" data-cat="design"><img src="design/communicationcamp.jpg"></div>
-<div class="project" data-cat="design"><img src="design/voiceofzhongzheng.jpg"></div>
-<div class="project" data-cat="design"><img src="design/eye.png"></div>
-<div class="project" data-cat="design"><img src="design/fb.png"></div>
-<div class="project" data-cat="design"><img src="design/ghost.jpg"></div>
-<div class="project" data-cat="design"><img src="design/news.png"></div>
-<div class="project" data-cat="design"><img src="design/one.png"></div>
-<div class="project" data-cat="design"><img src="design/temperature.png"></div>
+<!-- DESIGN（完整10個） -->
+<div class="project"><img src="design/shift.jpg"><div class="project-title">移面之詞主視覺</div></div>
+<div class="project"><img src="design/filmfestival.png"><div class="project-title">第17屆瘋影展海報</div></div>
+<div class="project"><img src="design/communicationcamp.jpg"><div class="project-title">中正傳播營海報</div></div>
+<div class="project"><img src="design/voiceofzhongzheng.jpg"><div class="project-title">中正之聲2024</div></div>
+<div class="project"><img src="design/eye.png"><div class="project-title">活動海報</div></div>
+<div class="project"><img src="design/fb.png"><div class="project-title">中正E報</div></div>
+<div class="project"><img src="design/ghost.jpg"><div class="project-title">活動海報</div></div>
+<div class="project"><img src="design/news.png"><div class="project-title">新傳獎海報</div></div>
+<div class="project"><img src="design/one.png"><div class="project-title">活動海報</div></div>
+<div class="project"><img src="design/temperature.png"><div class="project-title">專輯封面</div></div>
 
-<!-- 3D -->
-<div class="project" data-cat="3d"><img src="d/shixian/shixian1.jpg"></div>
-<div class="project" data-cat="3d"><img src="d/shixian/shixian2.jpg"></div>
-<div class="project" data-cat="3d"><img src="d/shixian/shixian3.jpg"></div>
-<div class="project" data-cat="3d"><img src="d/shixian/shixian4.png"></div>
-<div class="project" data-cat="3d"><img src="d/shixian/shixian5.png"></div>
+<!-- 3D（完整） -->
+<div class="project">
+  <img src="d/shixian/shixian1.jpg">
+  <div class="project-title">世賢圖書館展場</div>
+</div>
+
+<div class="project">
+  <img src="d/library/library1.jpg">
+  <div class="project-title">嘉義圖書館展場</div>
+</div>
 
 </div>
 </section>
@@ -205,97 +225,83 @@ body{
 
 <!-- OVERLAY -->
 <div id="overlay">
-  <div id="panel">
 
-    <!-- VIDEO GRID -->
-    <div class="video-grid" id="videoGrid">
+  <div id="videoWindow">
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s')">
-        <img src="video/aids.jpg"><div class="video-title">愛滋</div>
+    <!-- VIDEO LIST（完整9支） -->
+    <div id="videoList">
+
+      <div class="video-item" onclick="play('https://www.youtube.com/embed/D-h27S7wz5s?autoplay=1')">
+        <img src="video/aids.jpg"><span>從污名到教育</span>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q')">
-        <img src="video/crime.jpg"><div class="video-title">犯保</div>
+      <div class="video-item" onclick="play('https://www.youtube.com/embed/_tzyIj1j39Q?autoplay=1')">
+        <img src="video/crime.jpg"><span>創傷到馨生</span>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY')">
-        <img src="video/hurt.jpg"><div class="video-title">與傷</div>
+      <div class="video-item" onclick="play('https://www.youtube.com/embed/DDLpt_OMKXY?autoplay=1')">
+        <img src="video/hurt.jpg"><span>與傷共行</span>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk')">
-        <img src="video/narrowhouse.png"><div class="video-title">窄房</div>
+      <div class="video-item" onclick="play('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')">
+        <img src="video/narrowhouse.png"><span>窄房</span>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ANlh-9-dZR8')">
-        <img src="video/ravine.png"><div class="video-title">山溝</div>
+      <div class="video-item" onclick="play('https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1')">
+        <img src="video/ravine.png"><span>山溝</span>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/YSA-ws8PeJo')">
-        <img src="video/sony.png"><div class="video-title">Sony</div>
+      <div class="video-item" onclick="play('https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1')">
+        <img src="video/sony.png"><span>Sony工作坊</span>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc')">
-        <img src="video/camp.png"><div class="video-title">營隊</div>
+      <div class="video-item" onclick="play('https://www.peopo.org/news/822048')">
+        <img src="video/wendan.jpg"><span>文旦新聞</span>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/iD759dRtgIY')">
-        <img src="video/gogo.jpg"><div class="video-title">出去走走</div>
+      <div class="video-item" onclick="play('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')">
+        <img src="video/camp.png"><span>傳播營</span>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048')">
-        <img src="video/wendan.jpg"><div class="video-title">文旦</div>
+      <div class="video-item" onclick="play('https://www.youtube.com/embed/iD759dRtgIY?autoplay=1')">
+        <img src="video/gogo.jpg"><span>出去走走</span>
       </div>
 
     </div>
 
     <!-- PLAYER -->
-    <iframe id="player" allow="autoplay"></iframe>
+    <div id="playerBox">
+      <iframe id="player"></iframe>
+    </div>
 
   </div>
 </div>
 
 <script>
 
-const overlay = document.getElementById("overlay")
-const player = document.getElementById("player")
-const videoGrid = document.getElementById("videoGrid")
-
-let mode = "grid"
+const overlay=document.getElementById("overlay")
+const player=document.getElementById("player")
+const workComputer=document.getElementById("work-computer")
 
 /* 開電腦 */
-document.getElementById("work-computer").onclick=()=>{
+workComputer.onclick=()=>{
   overlay.style.display="flex"
-  showGrid()
 }
 
-/* 顯示清單 */
-function showGrid(){
-  mode="grid"
-  videoGrid.style.display="grid"
-  player.style.display="none"
+/* 播放影片 */
+function play(url){
+  player.src=url
+}
+
+/* 點空白關閉 */
+overlay.onclick=()=>{
+  overlay.style.display="none"
   player.src=""
 }
 
-/* 播放影片（autoplay） */
-function openVideo(url){
-  mode="play"
-  videoGrid.style.display="none"
-  player.style.display="block"
-
-  player.src = url.includes("autoplay")
-    ? url
-    : url + "?autoplay=1"
-}
-
-/* ⭐ 點空白處返回 */
-overlay.onclick=(e)=>{
-  if(e.target===overlay){
-    if(mode==="play"){
-      showGrid()
-    }else{
-      overlay.style.display="none"
-    }
-  }
+/* 防止內部點擊關閉 */
+document.getElementById("videoWindow").onclick=(e)=>{
+  e.stopPropagation()
 }
 
 </script>
