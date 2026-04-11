@@ -37,6 +37,14 @@ body{
 
 .hero-images img{ height:220px; }
 
+#hero video{
+  position:absolute;
+  top:65%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:55%;
+}
+
 /* WORK */
 #work{
   padding:140px 20px 80px;
@@ -53,12 +61,16 @@ body{
   transition:0.3s;
 }
 
+.work-item{text-align:center;}
+
 .work-text{
   font-size:28px;
   letter-spacing:2px;
   color:#87240E;
   margin-bottom:5px;
 }
+
+#work img:hover{transform:scale(1.04);}
 
 /* OVERLAY */
 #overlay{
@@ -82,25 +94,21 @@ body{
 
 #panel-title{
   text-align:center;
-  margin-bottom:10px;
 }
 
 /* GRID */
-.video-grid,.masonry{
-  display:none;
-}
-
 .video-grid{
+  display:none;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
 }
 
 .masonry{
+  display:none;
   column-count:3;
   column-gap:15px;
 }
 
-/* ITEMS */
 .project,.video-item{
   break-inside:avoid;
   margin-bottom:10px;
@@ -108,12 +116,9 @@ body{
   position:relative;
 }
 
-.project img,.video-item img{
-  width:100%;
-  display:block;
-}
+.project img,.video-item img{width:100%;}
 
-.title{
+.project-title,.video-title{
   position:absolute;
   bottom:0;
   left:0;
@@ -124,8 +129,8 @@ body{
   opacity:0;
 }
 
-.project:hover .title,
-.video-item:hover .title{
+.project:hover .project-title,
+.video-item:hover .video-title{
   opacity:1;
 }
 
@@ -142,17 +147,20 @@ body{
   display:none;
 }
 
-/* CLOSE */
-#close-area{
-  position:fixed;
-  inset:0;
+/* 作品介紹 */
+#infoBox{
+  display:none;
+  padding:10px;
+  color:#333;
+  font-size:18px;
+  margin-top:10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO（完整保留） -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-images">
     <img src="good/zeng.png">
@@ -165,7 +173,7 @@ body{
   </video>
 </section>
 
-<!-- WORK（完整保留） -->
+<!-- WORK -->
 <section id="work">
 
 <div class="work-item" id="work-video">
@@ -187,70 +195,46 @@ body{
 
 <!-- OVERLAY -->
 <div id="overlay">
-<div id="close-area"></div>
-
 <div id="panel">
 <h2 id="panel-title"></h2>
 
-<!-- VIDEO（完整9個不刪） -->
+<!-- VIDEO -->
 <div class="video-grid" id="videoGrid">
 
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s','愛滋風險教育')">
-<img src="video/aids.jpg"><div class="title">愛滋風險教育</div></div>
+<div class="video-item" onclick="openVideo('D-h27S7wz5s','愛滋風險教育')">
+<img src="video/aids.jpg"><div class="video-title">愛滋教育</div></div>
 
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q','犯保重建')">
-<img src="video/crime.jpg"><div class="title">犯保重建</div></div>
+<div class="video-item" onclick="openVideo('_tzyIj1j39Q','犯保協會重建')">
+<img src="video/crime.jpg"><div class="video-title">創傷重建</div></div>
 
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY','與傷共行')">
-<img src="video/hurt.jpg"><div class="title">與傷共行</div></div>
-
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk','窄房')">
-<img src="video/narrowhouse.png"><div class="title">窄房</div></div>
-
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ANlh-9-dZR8','山溝')">
-<img src="video/ravine.png"><div class="title">山溝</div></div>
-
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/YSA-ws8PeJo','Sony')">
-<img src="video/sony.png"><div class="title">Sony工作坊</div></div>
-
-<div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048','文旦')">
-<img src="video/wendan.jpg"><div class="title">文旦新聞</div></div>
-
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc','傳播營')">
-<img src="video/camp.png"><div class="title">傳播營</div></div>
-
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/iD759dRtgIY','出去走走')">
-<img src="video/gogo.jpg"><div class="title">出去走走</div></div>
+<div class="video-item" onclick="openVideo('DDLpt_OMKXY','與傷共行')">
+<img src="video/hurt.jpg"><div class="video-title">心理創傷</div></div>
 
 </div>
 
-<!-- DESIGN（完整保留10個） -->
+<!-- DESIGN -->
 <div class="masonry" id="designGrid">
 
-<div class="project"><img src="design/shift.jpg"><div class="title">移面之詞</div></div>
-<div class="project"><img src="design/filmfestival.png"><div class="title">瘋影展</div></div>
-<div class="project"><img src="design/communicationcamp.jpg"><div class="title">傳播營</div></div>
-<div class="project"><img src="design/voiceofzhongzheng.jpg"><div class="title">中正之聲</div></div>
-<div class="project"><img src="design/eye.png"><div class="title">活動海報</div></div>
-<div class="project"><img src="design/fb.png"><div class="title">中正E報</div></div>
-<div class="project"><img src="design/ghost.jpg"><div class="title">活動</div></div>
-<div class="project"><img src="design/news.png"><div class="title">新傳獎</div></div>
-<div class="project"><img src="design/one.png"><div class="title">活動</div></div>
-<div class="project"><img src="design/temperature.png"><div class="title">專輯</div></div>
+<div class="project" onclick="openImage('design/shift.jpg','移面之詞主視覺')">
+<img src="design/shift.jpg"><div class="project-title">移面之詞</div></div>
+
+<div class="project" onclick="openImage('design/filmfestival.png','影展海報設計')">
+<img src="design/filmfestival.png"><div class="project-title">瘋影展</div></div>
 
 </div>
 
-<!-- 3D（完整保留2個） -->
+<!-- 3D -->
 <div class="masonry" id="threeDGrid">
 
-<div class="project"><img src="d/shixian/shixian1.jpg"><div class="title">世賢圖書館</div></div>
-<div class="project"><img src="d/library/library1.jpg"><div class="title">嘉義圖書館</div></div>
+<div class="project" onclick="openImage('d/shixian/shixian1.jpg','圖書館展場設計')">
+<img src="d/shixian/shixian1.jpg"><div class="project-title">世賢圖書館</div></div>
 
 </div>
 
-<!-- 顯示區 -->
-<iframe id="player" allow="autoplay"></iframe>
+<iframe id="player"></iframe>
 <img id="imgViewer">
+
+<div id="infoBox"></div>
 
 </div>
 </div>
@@ -262,31 +246,14 @@ const designGrid=document.getElementById("designGrid")
 const threeDGrid=document.getElementById("threeDGrid")
 const player=document.getElementById("player")
 const imgViewer=document.getElementById("imgViewer")
+const infoBox=document.getElementById("infoBox")
 const panelTitle=document.getElementById("panel-title")
 
-let viewState="home"
+let state="home"
 
-/* WORK */
-document.getElementById("work-video").onclick=()=>{
-  overlay.style.display="flex"
-  panelTitle.textContent="VIDEO"
-  videoGrid.style.display="grid"
-}
-
-document.getElementById("work-design").onclick=()=>{
-  overlay.style.display="flex"
-  panelTitle.textContent="DESIGN"
-  designGrid.style.display="block"
-}
-
-document.getElementById("work-3d").onclick=()=>{
-  overlay.style.display="flex"
-  panelTitle.textContent="3D"
-  threeDGrid.style.display="block"
-}
-
-/* VIDEO */
-function openVideo(url,title){
+/* 開影片 */
+function openVideo(id,title){
+  state="item"
   overlay.style.display="flex"
 
   videoGrid.style.display="none"
@@ -296,35 +263,61 @@ function openVideo(url,title){
   imgViewer.style.display="none"
   player.style.display="block"
 
-  panelTitle.textContent="作品介紹：" + title
-  player.src=url + "?autoplay=1"
+  player.src="https://www.youtube.com/embed/"+id+"?autoplay=1"
+  infoBox.style.display="block"
+  infoBox.textContent=title
 }
 
-/* IMAGE（design / 3D） */
-document.querySelectorAll(".project").forEach(el=>{
-  el.onclick=()=>{
-    const img=el.querySelector("img").src
-    const title=el.querySelector(".title").innerText
+/* 開圖片 */
+function openImage(src,title){
+  state="item"
+  overlay.style.display="flex"
 
-    overlay.style.display="flex"
+  videoGrid.style.display="none"
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
 
-    videoGrid.style.display="none"
-    designGrid.style.display="none"
-    threeDGrid.style.display="none"
+  player.style.display="none"
+  player.src=""
 
-    player.style.display="none"
-    imgViewer.style.display="block"
+  imgViewer.style.display="block"
+  imgViewer.src=src
 
-    imgViewer.src=img
-    panelTitle.textContent="作品介紹：" + title
-  }
-})
+  infoBox.style.display="block"
+  infoBox.textContent=title
+}
 
-/* CLOSE */
-document.getElementById("close-area").onclick=()=>{
+/* 打開分類 */
+document.getElementById("work-video").onclick=()=>{
+  overlay.style.display="flex"
+  videoGrid.style.display="grid"
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
+  panelTitle.textContent="Video"
+}
+
+document.getElementById("work-design").onclick=()=>{
+  overlay.style.display="flex"
+  videoGrid.style.display="none"
+  designGrid.style.display="block"
+  threeDGrid.style.display="none"
+  panelTitle.textContent="Design"
+}
+
+document.getElementById("work-3d").onclick=()=>{
+  overlay.style.display="flex"
+  videoGrid.style.display="none"
+  designGrid.style.display="none"
+  threeDGrid.style.display="block"
+  panelTitle.textContent="3D"
+}
+
+/* 點空白關閉 */
+document.getElementById("overlay").onclick=()=>{
   overlay.style.display="none"
   player.src=""
   imgViewer.src=""
+  state="home"
 }
 </script>
 
