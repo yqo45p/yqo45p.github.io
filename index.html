@@ -2,106 +2,75 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<title>曾珮甄作品集</title>
-
-<link rel="icon" href="good/logo.png?v=3">
+<title>作品集</title>
 
 <style>
-@font-face{
-  font-family:'MantouSans';
-  src:url('MantouSans-Regular.ttf') format('truetype');
-}
-
 body{
   margin:0;
-  font-family:'MantouSans',sans-serif;
+  font-family:sans-serif;
   background:#D6CFC4;
   color:#87240E;
 }
 
-/* HERO */
-#hero{
-  height:100vh;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero-images{
-  position:absolute;
-  top:50px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:25px;
-}
-
-.hero-images img{ height:220px; }
-
-#hero video{
-  position:absolute;
-  top:65%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:55%;
-}
-
-/* WORK */
+/* ===== 主頁動畫 ===== */
 #work{
-  padding:140px 20px 80px;
   display:flex;
   justify-content:center;
-  gap:70px;
-  flex-wrap:wrap;
-  text-align:center;
+  gap:60px;
+  padding:120px 20px;
+  animation:fadeIn 1s ease;
 }
 
-#work img{
-  width:360px;
-  cursor:pointer;
-  transition:0.3s;
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 .work-item{
   text-align:center;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-.work-text{
-  font-size:28px;
-  letter-spacing:2px;
-  margin-bottom:5px;
+.work-item img{
+  width:300px;
+  transition:0.3s;
+  border-radius:10px;
 }
 
-#work img:hover{
-  transform:scale(1.04);
+.work-item:hover img{
+  transform:scale(1.08);
+  filter:brightness(1.1);
 }
 
-/* OVERLAY */
+/* ===== overlay ===== */
 #overlay{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.65);
   justify-content:center;
   align-items:center;
-  z-index:999;
 }
 
+/* ===== panel ===== */
 #panel{
-  background:#D6CFC4;
   width:90%;
-  max-width:900px;
+  max-width:950px;
+  background:#D6CFC4;
+  padding:20px;
   max-height:85vh;
   overflow:auto;
-  padding:20px;
+  animation:pop 0.3s ease;
 }
 
-#panel-title{
-  text-align:center;
+@keyframes pop{
+  from{transform:scale(0.9); opacity:0;}
+  to{transform:scale(1); opacity:1;}
 }
 
-/* GRID */
-.video-grid,
-.masonry{
+/* ===== grid ===== */
+.grid{
   display:none;
   gap:10px;
 }
@@ -112,53 +81,71 @@ body{
 
 .masonry{
   column-count:3;
-  column-gap:15px;
+  column-gap:10px;
 }
 
-.project,.video-item{
-  break-inside:avoid;
+/* ===== 作品動畫 ===== */
+.item{
+  position:relative;
   margin-bottom:10px;
   cursor:pointer;
-  position:relative;
+  overflow:hidden;
+  animation:imgFade 0.4s ease;
 }
 
-.project img,.video-item img{
+@keyframes imgFade{
+  from{opacity:0; transform:scale(0.95);}
+  to{opacity:1; transform:scale(1);}
+}
+
+.item img{
   width:100%;
-  display:block;
+  transition:0.3s;
 }
 
-.project-title,.video-title{
+.item:hover img{
+  transform:scale(1.05);
+  filter:brightness(1.1);
+}
+
+/* title */
+.title{
   position:absolute;
   bottom:0;
   left:0;
   right:0;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.5);
   color:white;
   padding:6px;
   opacity:0;
+  transition:0.3s;
 }
 
-.project:hover .project-title,
-.video-item:hover .video-title{
+.item:hover .title{
   opacity:1;
 }
 
-/* PLAYER */
+/* ===== 內容 ===== */
 #player{
   width:100%;
   height:420px;
   display:none;
-  border:none;
+  animation:fadeIn 0.3s;
 }
 
-/* INTRO */
-#intro{
-  margin-top:10px;
-  font-size:18px;
-  line-height:1.6;
+#imgViewer{
+  width:100%;
   display:none;
+  animation:fadeIn 0.3s;
 }
 
+#intro{
+  display:none;
+  margin-top:10px;
+  line-height:1.6;
+}
+
+/* click area */
 #close-area{
   position:fixed;
   inset:0;
@@ -168,164 +155,168 @@ body{
 
 <body>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-images">
-    <img src="good/zeng.png">
-    <img src="good/pei.png">
-    <img src="good/zhen.png">
-  </div>
-
-  <video autoplay muted loop playsinline>
-    <source src="good/head.webm">
-  </video>
-</section>
-
-<!-- WORK -->
+<!-- 主頁 -->
 <section id="work">
 
-<div class="work-item" id="work-video">
-  <div class="work-text">VIDEO</div>
-  <img src="good/ca.webp">
+<div class="work-item" onclick="openList('VIDEO')">
+<img src="good/ca.webp">
+<p>VIDEO</p>
 </div>
 
-<div class="work-item" id="work-design">
-  <div class="work-text">DESIGN</div>
-  <img src="good/table.webp">
+<div class="work-item" onclick="openList('DESIGN')">
+<img src="good/table.webp">
+<p>DESIGN</p>
 </div>
 
-<div class="work-item" id="work-3d">
-  <div class="work-text">3D</div>
-  <img src="good/com.webp">
+<div class="work-item" onclick="openList('3D')">
+<img src="good/com.webp">
+<p>3D</p>
 </div>
 
 </section>
 
-<!-- OVERLAY -->
+<!-- overlay -->
 <div id="overlay">
 <div id="close-area"></div>
 
 <div id="panel">
-<h2 id="panel-title"></h2>
+
+<h2 id="title"></h2>
 
 <!-- VIDEO -->
-<div class="video-grid" id="videoGrid">
+<div id="videoGrid" class="grid video-grid">
 
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s')">
+<div class="item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s')">
 <img src="video/aids.jpg">
-<div class="video-title">愛滋教育紀錄片</div>
+<div class="title">愛滋紀錄</div>
 </div>
 
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q')">
+<div class="item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q')">
 <img src="video/crime.jpg">
-<div class="video-title">創傷與修復</div>
+<div class="title">創傷修復</div>
 </div>
 
-<div class="video-item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY')">
+<div class="item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY')">
 <img src="video/hurt.jpg">
-<div class="video-title">與傷共行</div>
+<div class="title">與傷共行</div>
 </div>
 
 </div>
 
 <!-- DESIGN -->
-<div class="masonry" id="designGrid">
+<div id="designGrid" class="grid masonry">
 
-<div class="project" onclick="alert('設計作品：移面之詞')">
+<div class="item" onclick="openImage('design/shift.jpg')">
 <img src="design/shift.jpg">
-<div class="project-title">移面之詞主視覺</div>
+<div class="title">移面之詞</div>
 </div>
 
-<div class="project" onclick="alert('設計作品：影展海報')">
+<div class="item" onclick="openImage('design/filmfestival.png')">
 <img src="design/filmfestival.png">
-<div class="project-title">瘋影展海報</div>
+<div class="title">影展海報</div>
 </div>
 
 </div>
 
 <!-- 3D -->
-<div class="masonry" id="threeDGrid">
+<div id="threeDGrid" class="grid masonry">
 
-<div class="project" onclick="alert('3D作品：展場設計')">
+<div class="item" onclick="openImage('d/shixian/shixian1.jpg')">
 <img src="d/shixian/shixian1.jpg">
-<div class="project-title">世賢圖書館展場</div>
+<div class="title">展場設計</div>
 </div>
 
 </div>
 
-<!-- PLAYER + INTRO -->
+<!-- content -->
 <iframe id="player"></iframe>
+<img id="imgViewer">
 <div id="intro"></div>
 
 </div>
 </div>
 
 <script>
-const overlay = document.getElementById("overlay")
-const videoGrid = document.getElementById("videoGrid")
-const designGrid = document.getElementById("designGrid")
-const threeDGrid = document.getElementById("threeDGrid")
-const player = document.getElementById("player")
-const intro = document.getElementById("intro")
-const panelTitle = document.getElementById("panel-title")
+const overlay=document.getElementById("overlay")
+const videoGrid=document.getElementById("videoGrid")
+const designGrid=document.getElementById("designGrid")
+const threeDGrid=document.getElementById("threeDGrid")
+const player=document.getElementById("player")
+const imgViewer=document.getElementById("imgViewer")
+const intro=document.getElementById("intro")
+const title=document.getElementById("title")
 
-let state = "home"
+let state="home"
+let current=""
 
-/* 打開分類 */
-document.getElementById("work-video").onclick = () => {
-  overlay.style.display = "flex"
-  videoGrid.style.display = "grid"
-  designGrid.style.display = "none"
-  threeDGrid.style.display = "none"
-  player.style.display = "none"
-  intro.style.display = "none"
-  panelTitle.textContent = "VIDEO"
+/* 開分類 */
+function openList(type){
+
+  overlay.style.display="flex"
+
+  videoGrid.style.display="none"
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
+
+  player.style.display="none"
+  imgViewer.style.display="none"
+  intro.style.display="none"
+
+  current=type
+  state="list"
+
+  if(type==="VIDEO") videoGrid.style.display="grid"
+  if(type==="DESIGN") designGrid.style.display="block"
+  if(type==="3D") threeDGrid.style.display="block"
+
+  title.innerText=type
 }
 
-document.getElementById("work-design").onclick = () => {
-  overlay.style.display = "flex"
-  videoGrid.style.display = "none"
-  designGrid.style.display = "block"
-  threeDGrid.style.display = "none"
-  player.style.display = "none"
-  intro.style.display = "none"
-  panelTitle.textContent = "DESIGN"
-}
-
-document.getElementById("work-3d").onclick = () => {
-  overlay.style.display = "flex"
-  videoGrid.style.display = "none"
-  designGrid.style.display = "none"
-  threeDGrid.style.display = "block"
-  player.style.display = "none"
-  intro.style.display = "none"
-  panelTitle.textContent = "3D"
-}
-
-/* 點影片 → 自動播放 + 介紹 */
+/* VIDEO */
 function openVideo(url){
-  overlay.style.display = "flex"
-  videoGrid.style.display = "none"
-  designGrid.style.display = "none"
-  threeDGrid.style.display = "none"
+  state="item"
 
-  player.style.display = "block"
-  player.src = url + "?autoplay=1"
+  player.style.display="block"
+  player.src=url+"?autoplay=1"
 
-  intro.style.display = "block"
-  intro.innerText = "影片介紹：這是一部影像作品，用於紀錄與敘事創作。"
+  intro.style.display="block"
+  intro.innerText="影片作品介紹：紀錄與敘事影像創作"
 
-  panelTitle.textContent = "VIDEO"
+  videoGrid.style.display="none"
 }
 
-/* 關閉 */
-document.getElementById("close-area").onclick = () => {
-  overlay.style.display = "none"
-  player.src = ""
-  player.style.display = "none"
-  intro.style.display = "none"
+/* IMAGE */
+function openImage(src){
+  state="item"
 
-  state = "home"
+  imgViewer.style.display="block"
+  imgViewer.src=src
+
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
+}
+
+/* 點空白（核心邏輯） */
+document.getElementById("close-area").onclick=()=>{
+
+  if(state==="item"){
+
+    player.style.display="none"
+    imgViewer.style.display="none"
+    intro.style.display="none"
+
+    if(current==="VIDEO") videoGrid.style.display="grid"
+    if(current==="DESIGN") designGrid.style.display="block"
+    if(current==="3D") threeDGrid.style.display="block"
+
+    state="list"
+    return
+  }
+
+  if(state==="list"){
+    overlay.style.display="none"
+    state="home"
+  }
 }
 </script>
 
