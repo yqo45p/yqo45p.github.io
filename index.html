@@ -62,7 +62,7 @@ body{
   transform:scale(1.04);
 }
 
-/* DESIGN AREA */
+/* DESIGN AREA（重點：一開始不顯示） */
 #design-area{
   display:none;
 }
@@ -226,7 +226,7 @@ body{
 <img src="good/com.webp" id="work-computer">
 <img src="good/table.webp" id="work-table">
 
-<!-- DESIGN AREA（table入口） -->
+<!-- DESIGN AREA（table入口才顯示） -->
 <div id="design-area">
 
   <div class="category-btns">
@@ -236,54 +236,55 @@ body{
 
   <div id="all-projects">
 
-    <div class="project" data-cat="design" data-title="移面之詞主視覺" data-description="2026">
+    <!-- DESIGN -->
+    <div class="project" data-cat="design" data-title="移面之詞主視覺">
       <img src="design/shift.jpg">
       <div class="project-title">移面之詞主視覺</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="第17屆瘋影展海報" data-description="2025">
+    <div class="project" data-cat="design" data-title="第17屆瘋影展海報">
       <img src="design/filmfestival.png">
       <div class="project-title">第17屆瘋影展海報</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="中正傳播營海報" data-description="2024">
+    <div class="project" data-cat="design" data-title="中正傳播營海報">
       <img src="design/communicationcamp.jpg">
       <div class="project-title">中正傳播營海報</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="中正之聲2024主視覺" data-description="2024">
+    <div class="project" data-cat="design" data-title="中正之聲2024主視覺">
       <img src="design/voiceofzhongzheng.jpg">
       <div class="project-title">中正之聲2024主視覺</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
+    <div class="project" data-cat="design" data-title="活動海報設計">
       <img src="design/eye.png">
       <div class="project-title">活動海報設計</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="中正E報主視覺" data-description="2025">
+    <div class="project" data-cat="design" data-title="中正E報主視覺">
       <img src="design/fb.png">
       <div class="project-title">中正E報主視覺</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
+    <div class="project" data-cat="design" data-title="活動海報設計">
       <img src="design/ghost.jpg">
       <div class="project-title">活動海報設計</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="第二十三屆新傳獎海報" data-description="2025">
+    <div class="project" data-cat="design" data-title="第二十三屆新傳獎海報">
       <img src="design/news.png">
       <div class="project-title">第二十三屆新傳獎海報</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="活動海報設計" data-description="2025">
+    <div class="project" data-cat="design" data-title="活動海報設計">
       <img src="design/one.png">
       <div class="project-title">活動海報設計</div>
     </div>
 
-    <div class="project" data-cat="design" data-title="《溫度回收計畫》專輯封面" data-description="2025">
+    <div class="project" data-cat="design" data-title="溫度回收計畫專輯封面">
       <img src="design/temperature.png">
-      <div class="project-title">《溫度回收計畫》專輯封面</div>
+      <div class="project-title">溫度回收計畫專輯封面</div>
     </div>
 
   </div>
@@ -319,30 +320,6 @@ body{
         <img src="video/hurt.jpg"><div class="video-title">與傷</div>
       </div>
 
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ODA4hvMLTbk?autoplay=1')">
-        <img src="video/narrowhouse.png"><div class="video-title">窄房</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/ANlh-9-dZR8?autoplay=1')">
-        <img src="video/ravine.png"><div class="video-title">山溝</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/YSA-ws8PeJo?autoplay=1')">
-        <img src="video/sony.png"><div class="video-title">Sony</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.peopo.org/news/822048')">
-        <img src="video/wendan.jpg"><div class="video-title">文旦</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/k5CRxQ0rPTc?autoplay=1')">
-        <img src="video/camp.png"><div class="video-title">營隊</div>
-      </div>
-
-      <div class="video-item" onclick="openVideo('https://www.youtube.com/embed/iD759dRtgIY?autoplay=1')">
-        <img src="video/gogo.jpg"><div class="video-title">出去走走</div>
-      </div>
-
     </div>
 
     <iframe id="player"></iframe>
@@ -364,7 +341,7 @@ const designArea = document.getElementById("design-area")
 
 const projects = document.querySelectorAll(".project")
 
-// VIDEO
+// VIDEO入口
 workComputer.onclick = () => {
   overlay.style.display = "flex"
   videoGrid.style.display = "grid"
@@ -373,20 +350,24 @@ workComputer.onclick = () => {
   panelTitle.textContent = "Video"
 }
 
-// DESIGN
+// DESIGN入口（關鍵）
 workTable.onclick = () => {
   overlay.style.display = "none"
+  videoGrid.style.display = "none"
+  player.style.display = "none"
+
   designArea.style.display = "block"
+  panelTitle.textContent = "Design"
 }
 
-// OPEN VIDEO
+// 開影片
 function openVideo(url){
   videoGrid.style.display = "none"
   player.style.display = "block"
   player.src = url
 }
 
-// CLOSE
+// 關閉
 closeArea.onclick = () => {
   overlay.style.display = "none"
   player.src = ""
@@ -394,7 +375,7 @@ closeArea.onclick = () => {
   videoGrid.style.display = "grid"
 }
 
-// PROJECT CLICK
+// 點作品
 projects.forEach(p=>{
   p.onclick = () => {
     overlay.style.display = "flex"
@@ -404,14 +385,12 @@ projects.forEach(p=>{
   }
 })
 
-// FILTER
+// filter
 function filter(cat){
   document.querySelectorAll(".project").forEach(p=>{
     p.style.display = (p.dataset.cat === cat) ? "block" : "none"
   })
 }
-
-filter("design")
 
 </script>
 
