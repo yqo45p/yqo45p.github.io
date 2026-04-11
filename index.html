@@ -103,6 +103,7 @@ body{
 .video-grid{
   grid-template-columns:repeat(3,1fr);
   gap:10px;
+  display:grid;
 }
 
 .masonry{
@@ -214,17 +215,17 @@ body{
 <!-- VIDEO -->
 <div id="videoGrid" class="video-grid">
 
-<div class="item" onclick="openVideo('https://www.youtube.com/embed/D-h27S7wz5s')">
+<div class="item" onclick="openVideo(this,'https://www.youtube.com/embed/D-h27S7wz5s')">
 <img src="video/aids.jpg">
-<div class="title">愛滋教育影片</div>
+<div class="title">愛滋紀錄</div>
 </div>
 
-<div class="item" onclick="openVideo('https://www.youtube.com/embed/_tzyIj1j39Q')">
+<div class="item" onclick="openVideo(this,'https://www.youtube.com/embed/_tzyIj1j39Q')">
 <img src="video/crime.jpg">
 <div class="title">創傷修復</div>
 </div>
 
-<div class="item" onclick="openVideo('https://www.youtube.com/embed/DDLpt_OMKXY')">
+<div class="item" onclick="openVideo(this,'https://www.youtube.com/embed/DDLpt_OMKXY')">
 <img src="video/hurt.jpg">
 <div class="title">與傷共行</div>
 </div>
@@ -234,12 +235,12 @@ body{
 <!-- DESIGN -->
 <div id="designGrid" class="masonry">
 
-<div class="item" onclick="openImage('design/shift.jpg')">
+<div class="item" onclick="openImage('design/shift.jpg','移面之詞主視覺')">
 <img src="design/shift.jpg">
 <div class="title">移面之詞</div>
 </div>
 
-<div class="item" onclick="openImage('design/filmfestival.png')">
+<div class="item" onclick="openImage('design/filmfestival.png','影展海報設計')">
 <img src="design/filmfestival.png">
 <div class="title">影展海報</div>
 </div>
@@ -249,7 +250,7 @@ body{
 <!-- 3D -->
 <div id="threeDGrid" class="masonry">
 
-<div class="item" onclick="openImage('d/shixian/shixian1.jpg')">
+<div class="item" onclick="openImage('d/shixian/shixian1.jpg','展場空間設計')">
 <img src="d/shixian/shixian1.jpg">
 <div class="title">展場設計</div>
 </div>
@@ -264,7 +265,6 @@ body{
 </div>
 </div>
 
-<!-- ================= JS ================= -->
 <script>
 
 const overlay=document.getElementById("overlay")
@@ -279,7 +279,7 @@ const title=document.getElementById("title")
 let state="home"
 let current=""
 
-/* OPEN LIST */
+/* 開列表 */
 function openList(type){
 
   overlay.style.display="flex"
@@ -289,6 +289,8 @@ function openList(type){
   threeDGrid.style.display="none"
 
   player.style.display="none"
+  player.src=""
+
   imgViewer.style.display="none"
   intro.style.display="none"
 
@@ -302,31 +304,36 @@ function openList(type){
   title.innerText=type
 }
 
-/* VIDEO */
-function openVideo(url){
+/* 🎬 影片（點了才播放） */
+function openVideo(el,url){
+
   state="item"
-
-  player.style.display="block"
-  player.src=url   // ✔ 正確
-
-  intro.style.display="block"
-  intro.innerText="影片作品介紹：影像紀錄與敘事創作"
 
   videoGrid.style.display="none"
+
+  player.style.display="block"
+  player.src=url + "?autoplay=1&mute=1"
+
+  intro.style.display="block"
+  intro.innerText=el.querySelector(".title").innerText + "｜影片作品介紹"
 }
 
-/* IMAGE */
-function openImage(src){
+/* 🖼 圖片 */
+function openImage(src,text){
+
   state="item"
+
+  designGrid.style.display="none"
+  threeDGrid.style.display="none"
 
   imgViewer.style.display="block"
   imgViewer.src=src
 
-  designGrid.style.display="none"
-  threeDGrid.style.display="none"
+  intro.style.display="block"
+  intro.innerText=text
 }
 
-/* CLOSE AREA */
+/* 點空白 */
 document.getElementById("close-area").onclick=()=>{
 
   if(state==="item"){
