@@ -11,6 +11,16 @@
   font-family:'MantouSans';
   src:url('MantouSans-Regular.ttf') format('truetype');
 }
+  #moreImages{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+#moreImages img{
+  width:120px;
+  cursor:pointer;
+}
 
 body{
   margin:0;
@@ -400,7 +410,16 @@ body{
 <div id="threeDGrid" class="masonry">
 
   <div class="item"
-    onclick="openImage('d/shixian/shixian1.jpg','展場空間設計')">
+    onclick="openImage(
+'d/shixian/shixian1.jpg',
+'展場空間設計',
+[
+'d/shixian/shixian2.jpg',
+'d/shixian/shixian3.jpg',
+'d/shixian/shixian4.jpg',
+'d/shixian/shixian5.jpg',
+]
+)"
 
     <img src="d/shixian/shixian1.jpg">
     <div class="title">展場設計</div>
@@ -412,6 +431,7 @@ body{
 <iframe id="player"></iframe>
 <img id="imgViewer">
 <div id="intro"></div>
+<div id="moreImages"></div>
 
 </div>
 </div>
@@ -473,7 +493,7 @@ intro.innerText=""
 }
 
 /* 🖼 圖片 */
-function openImage(src,text){
+function openImage(src,text,more=[]){
 
   state="item"
 
@@ -485,6 +505,16 @@ function openImage(src,text){
 
   intro.style.display="block"
   intro.innerText=text
+
+  const box = document.getElementById("moreImages")
+  box.innerHTML=""
+
+  more.forEach(img=>{
+    const el=document.createElement("img")
+    el.src=img
+    el.onclick=()=> imgViewer.src=img
+    box.appendChild(el)
+  })
 }
   document.getElementById("close-area").onclick=()=>{
 
