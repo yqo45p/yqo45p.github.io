@@ -377,12 +377,21 @@ body{
     <div class="title">中正傳播營海報</div>
   </div>
 
-  <div class="item"
-    onclick="openImage('design/voiceofzhongzheng.jpg','中正之聲2024主視覺｜2024')">
+ <div class="item"
+  onclick="openImage(
+    'design/voiceofzhongzheng.jpg',
+    `中正之聲2024主視覺｜2024<br><br>
 
-    <img src="design/voiceofzhongzheng.jpg">
-    <div class="title">中正之聲2024主視覺</div>
-  </div>
+以「聲音擬人化」為核心概念，將麥克風轉化為角色，加入眼睛與手部，使聲音變得具象且有情緒。<br><br>
+
+角色頭戴耳機、靠在音響旁，象徵媒體在「輸出與接收」之間的流動狀態，也呈現校園廣播的陪伴性。<br><br>
+
+🔗 <a href='https://你的作品連結' target='_blank'>查看完整作品</a>`
+  )">
+
+  <img src="design/voiceofzhongzheng.jpg">
+  <div class="title">中正之聲2024主視覺</div>
+</div>
 
   <div class="item"
     onclick="openImage('design/eye.png','活動海報設計｜2025')">
@@ -545,7 +554,7 @@ function openImage(src,text,more=[]){
   imgViewer.src=src
 
   intro.style.display="block"
-  intro.innerText=text
+  intro.innerHTML = text
 
   const box = document.getElementById("moreImages")
 box.innerHTML=""
