@@ -36,7 +36,6 @@ body{
   height:100vh;
   position:relative;
   overflow:hidden;
-  background:#D6CFC4; /* 關鍵：當作“假透明底” */
 }
 
 .hero-images{
@@ -56,9 +55,6 @@ body{
   left:50%;
   transform:translate(-50%,-50%);
   width:55%;
-
-  object-fit:cover;
-  mix-blend-mode:normal; /* 避免奇怪相容問題 */
 }
 
 /* ================= WORK ================= */
@@ -217,7 +213,7 @@ body{
   </div>
 
   <video autoplay muted loop playsinline>
-  <source src="good/head.webm" type="video/webm">
+  <source src="good/head.mp4" type="video/mp4">
 </video>
 </section>
 
