@@ -613,18 +613,26 @@ function openList(type){
 /* 🎬 影片（點了才播放） */
 function openVideo(el,url){
 
-  state="item"
+  state = "item"
 
-  videoGrid.style.display="none"
-intro.style.display="none"
-intro.innerText=""
+  overlay.style.display = "flex"
 
-  player.style.display="block"
-  player.src=url + "?autoplay=1&mute=1"
+  // 🔥 關掉所有列表（重點）
+  videoGrid.style.display = "none"
+  designGrid.style.display = "none"
+  threeDGrid.style.display = "none"
 
-  intro.style.display="block"
+  // 清畫面
+  imgViewer.style.display = "none"
+
+  // 🎬 顯示影片
+  player.style.display = "block"
+  player.src = url + "?autoplay=1&mute=1"
+
+  // 📝 文字
+  intro.style.display = "block"
   intro.innerHTML =
-  `<b>${el.dataset.title}</b><br><br>${el.dataset.intro}`
+    `<b>${el.dataset.title}</b><br><br>${el.dataset.intro}`
 }
 
 /* 🖼 圖片 */
