@@ -49,12 +49,23 @@ body{
 
 .hero-images img{ height:220px; }
 
-#hero video{
+.hero-video{
   position:absolute;
   top:70%;
   left:50%;
   transform:translate(-50%,-50%);
   width:35%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  will-change:transform;
+  backface-visibility:hidden;
+}
+
+.hero-video video{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
 }
 
 /* ================= WORK ================= */
@@ -212,9 +223,11 @@ body{
     <img src="good/zhen.png">
   </div>
 
+  <div class="hero-video">
   <video autoplay muted loop playsinline>
-  <source src="good/head.mp4" type="video/mp4">
-</video>
+    <source src="good/head.mp4" type="video/mp4">
+  </video>
+</div>
 </section>
 
 <!-- ================= WORK ================= -->
