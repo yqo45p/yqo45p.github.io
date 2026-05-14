@@ -457,12 +457,14 @@ FB連結
   <div class="title">中正E報主視覺</div>
 </div>
 
-  <div class="item"
+ <div class="item"
   onclick="openImage(
     'design/ghost.jpg',
     `活動海報設計｜2025<br><br>
 
-以3D建模呈現塑膠袋材質，將鬼置入夾鏈袋中，打造具有記憶點的萬聖節活動海報。`
+以3D建模呈現塑膠袋材質，將鬼置入夾鏈袋中，打造具有記憶點的萬聖節活動海報。`,
+    [],
+    'https://www.youtube.com/embed/8K3tOsqboSA'
   )">
 
   <img src="design/ghost.jpg">
@@ -638,7 +640,7 @@ function openVideo(el,url){
 }
 
 /* 🖼 圖片 */
-function openImage(src,text,more=[]){
+function openImage(src,text,more=[],video=null){
 
   state="item"
 
@@ -647,6 +649,14 @@ function openImage(src,text,more=[]){
 
   imgViewer.style.display="block"
   imgViewer.src=src
+  // 有影片才顯示
+if(video){
+  player.style.display="block"
+  player.src=video + "?autoplay=1&mute=1"
+}else{
+  player.style.display="none"
+  player.src=""
+}
 
   intro.style.display="block"
   intro.innerHTML = text
