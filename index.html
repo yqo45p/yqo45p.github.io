@@ -4,518 +4,401 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#D6CFC4">
-<title>曾珮甄 ZENG PEI ZHEN — Portfolio</title>
+<title>曾珮甄 — Selected Works</title>
 <link rel="icon" href="good/logo.png?v=3">
 
 <style>
 @font-face {
-  font-family: MantouSans;
+  font-family: 'MantouSans';
   src: url('MantouSans-Regular.ttf') format('truetype');
-  font-display: swap;
 }
 
 :root {
   --bg: #D6CFC4;
-  --paper: #E9E3D9;
   --red: #87240E;
-  --dark: #332820;
-  --muted: #796B5F;
+  --dark: #29251F;
+  --muted: #82796D;
   --line: rgba(135,36,14,.25);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
   background: var(--bg);
-  color: var(--red);
-  font-family: MantouSans, sans-serif;
+  color: var(--dark);
+  font-family: 'MantouSans', sans-serif;
 }
 
-button { font: inherit; }
+button, a { font: inherit; }
 
-a { color: inherit; }
+button { cursor: pointer; }
 
 img { display: block; max-width: 100%; }
 
-::selection {
-  background: var(--red);
-  color: var(--bg);
-}
+a { color: inherit; }
 
-/* NAV */
+/* NAVIGATION */
 
 nav {
-  height: 72px;
+  height: 75px;
   padding: 0 5%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(214,207,196,.94);
+  backdrop-filter: blur(12px);
 }
 
 .logo {
-  font-size: 22px;
+  font-size: 19px;
+  color: var(--red);
   letter-spacing: 2px;
-}
-
-.nav-right {
-  display: flex;
-  gap: 28px;
-  font-size: 14px;
-}
-
-.nav-right a {
   text-decoration: none;
-  transition: opacity .3s;
 }
 
-.nav-right a:hover { opacity: .5; }
+.nav-links {
+  display: flex;
+  gap: 30px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  transition: .3s;
+}
+
+.nav-links a:hover { color: var(--red); }
 
 /* HERO */
 
 .hero {
-  min-height: 650px;
-  padding: 65px 7% 55px;
+  min-height: 480px;
+  padding: 100px 8% 85px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
   overflow: hidden;
 }
 
-.hero-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-.hero-label {
-  font-size: 13px;
-  letter-spacing: 3px;
-}
-
-.hero-number {
+.hero-small {
+  color: var(--red);
   font-size: 12px;
-  color: var(--muted);
+  letter-spacing: 3px;
+  margin-bottom: 30px;
 }
 
-.hero-title {
-  margin: 45px 0 30px;
-  font-size: clamp(65px, 12vw, 155px);
-  line-height: .9;
-  letter-spacing: -5px;
+.hero h1 {
+  color: var(--red);
+  font-size: clamp(55px, 10vw, 125px);
   font-weight: normal;
-}
-
-.hero-title span {
-  display: block;
-  margin-left: 13%;
+  line-height: .95;
+  letter-spacing: -4px;
 }
 
 .hero-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  display: flex;
+  justify-content: space-between;
   align-items: end;
-  gap: 50px;
+  margin-top: 45px;
+  gap: 30px;
 }
 
 .hero-description {
-  max-width: 350px;
-  font-size: 17px;
-  line-height: 1.8;
+  max-width: 360px;
+  font-size: 15px;
+  line-height: 2;
 }
 
-.hero-video {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 450px;
-  object-fit: contain;
-  background: var(--bg);
-}
-
-.hero-caption {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  letter-spacing: 2px;
-  margin-top: 10px;
-}
-
-/* MARQUEE */
-
-.marquee {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 15px 0;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 14px;
-  letter-spacing: 4px;
-}
-
-/* WORK */
-
-#work {
-  padding: 110px 7% 120px;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  margin-bottom: 45px;
-}
-
-.section-heading h2 {
-  font-size: clamp(45px, 7vw, 85px);
-  font-weight: normal;
-  margin: 0;
-  letter-spacing: -2px;
-}
-
-.section-heading p {
+.hero-year {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
+  letter-spacing: 2px;
 }
 
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+/* SECTION */
+
+.section {
+  padding: 65px 5% 100px;
 }
 
-.category {
-  cursor: pointer;
-  text-align: left;
-  border: none;
-  background: none;
-  color: var(--red);
-  padding: 0;
-  min-width: 0;
-}
-
-.category-image {
-  overflow: hidden;
-  background: var(--paper);
-  aspect-ratio: 4/5;
-}
-
-.category-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .7s cubic-bezier(.2,.7,.2,1);
-}
-
-.category:hover .category-image img {
-  transform: scale(1.06);
-}
-
-.category-info {
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 15px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  margin-bottom: 35px;
 }
 
-.category-name {
-  font-size: clamp(24px, 3vw, 38px);
+.section-header h2 {
+  font-size: 27px;
+  color: var(--red);
+  font-weight: normal;
 }
 
-.category-count {
+.section-header span {
   font-size: 12px;
   color: var(--muted);
+  letter-spacing: 2px;
 }
 
-/* ABOUT */
+/* FILTER */
 
-.about {
-  padding: 80px 7%;
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 9px 22px;
+  color: var(--dark);
+  font-size: 13px;
+  transition: .3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
   background: var(--red);
   color: var(--bg);
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 60px;
+  border-color: var(--red);
 }
 
-.about h2 {
-  font-size: clamp(45px, 7vw, 85px);
+/* WORK GRID */
+
+.work-grid {
+  columns: 3;
+  column-gap: 22px;
+}
+
+.work-card {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 35px;
+  cursor: pointer;
+  break-inside: avoid;
+  animation: appear .6s ease both;
+}
+
+.work-image {
+  overflow: hidden;
+  background: rgba(0,0,0,.04);
+  position: relative;
+}
+
+.work-image img {
+  width: 100%;
+  height: auto;
+  transition: transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.work-card:hover .work-image img {
+  transform: scale(1.045);
+}
+
+.work-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 13px;
+}
+
+.work-name {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.work-category {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+.work-year {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* PROJECT DETAIL */
+
+#detail {
+  display: none;
+  min-height: 100vh;
+  padding: 45px 8% 100px;
+  animation: appear .5s ease;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: var(--red);
+  font-size: 14px;
+  padding: 10px 0;
+  margin-bottom: 45px;
+}
+
+.back-btn:hover { opacity: .6; }
+
+.detail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.detail-title {
+  color: var(--red);
+  font-size: clamp(30px, 5vw, 58px);
   font-weight: normal;
-  margin: 0;
-  line-height: 1;
+  line-height: 1.3;
 }
 
-.about-text {
-  font-size: 17px;
-  line-height: 2;
-  max-width: 600px;
+.detail-meta {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  padding-top: 12px;
 }
 
-.about-small {
+.detail-media {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.detail-media img {
+  width: 100%;
+  max-height: 750px;
+  object-fit: contain;
+  margin: auto;
+}
+
+.detail-media iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+}
+
+.detail-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+  border-top: 1px solid var(--line);
+  padding-top: 25px;
+}
+
+.detail-label {
+  color: var(--muted);
   font-size: 12px;
   letter-spacing: 2px;
-  opacity: .7;
+}
+
+.detail-description {
+  font-size: 16px;
+  line-height: 2;
+}
+
+.detail-description a {
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 15px;
   margin-top: 35px;
+}
+
+.detail-gallery img {
+  width: 100%;
+  cursor: zoom-in;
+  transition: .3s;
+}
+
+.detail-gallery img:hover { opacity: .8; }
+
+/* IMAGE VIEWER */
+
+#imageViewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(20,18,15,.95);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  cursor: zoom-out;
+}
+
+#imageViewer img {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
 }
 
 /* FOOTER */
 
 footer {
-  padding: 35px 7%;
+  border-top: 1px solid var(--line);
+  padding: 40px 5%;
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  color: var(--muted);
   font-size: 12px;
   letter-spacing: 1px;
 }
 
-footer a { text-decoration: none; }
-
-/* OVERLAY */
-
-#overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: var(--bg);
-  display: none;
-  overflow-y: auto;
-  animation: fadeIn .3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.overlay-nav {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-  padding: 18px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.overlay-nav button {
-  border: 0;
-  background: none;
-  color: var(--red);
-  cursor: pointer;
-  font-size: 14px;
-}
-
-#overlayTitle {
-  font-size: 20px;
-  letter-spacing: 2px;
-}
-
-#backBtn { display: none; }
-
-#panel {
-  padding: 50px 7% 100px;
-  max-width: 1500px;
-  margin: auto;
-}
-
-/* PROJECT GRID */
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 35px 20px;
-}
-
-.project-card {
-  cursor: pointer;
-  min-width: 0;
-}
-
-.project-thumb {
-  overflow: hidden;
-  background: var(--paper);
-  aspect-ratio: 4/3;
-}
-
-.project-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .5s;
-}
-
-.project-card:hover .project-thumb img {
-  transform: scale(1.04);
-}
-
-.project-meta {
-  padding-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: baseline;
-}
-
-.project-name {
-  font-size: 19px;
-  line-height: 1.5;
-}
-
-.project-year {
-  font-size: 11px;
-  color: var(--muted);
-  flex-shrink: 0;
-}
-
-.project-role {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 5px;
-}
-
-/* DETAIL */
-
-#detail {
-  display: none;
-}
-
-.detail-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 20px;
-  margin-bottom: 35px;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-.detail-title {
-  font-size: clamp(35px, 6vw, 72px);
-  line-height: 1.1;
-  font-weight: normal;
-  margin: 0 0 25px;
-}
-
-.detail-content {
-  display: grid;
-  grid-template-columns: 1.5fr .7fr;
-  gap: 55px;
-  align-items: start;
-}
-
-.detail-media {
-  min-width: 0;
-}
-
-#imgViewer {
-  width: 100%;
-  max-height: 75vh;
-  object-fit: contain;
-  background: var(--paper);
-}
-
-#player {
-  display: none;
-  width: 100%;
-  aspect-ratio: 16/9;
-  border: 0;
-  background: #000;
-}
-
-#intro {
-  font-size: 16px;
-  line-height: 2;
-  color: var(--dark);
-  overflow-wrap: anywhere;
-}
-
-#intro a {
-  color: var(--red);
-  text-underline-offset: 4px;
-}
-
-.detail-thumbs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.detail-thumbs img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  cursor: pointer;
-  opacity: .65;
-  transition: opacity .3s;
-}
-
-.detail-thumbs img:hover { opacity: 1; }
-
-.detail-footer {
-  margin-top: 50px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-}
-
-.detail-footer button {
-  background: none;
-  border: 0;
-  color: var(--red);
-  cursor: pointer;
-  font-size: 14px;
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* RESPONSIVE */
 
-@media(max-width: 800px) {
-  .hero { min-height: 550px; }
-  .hero-title { letter-spacing: -2px; }
-  .category-grid { gap: 12px; }
-  .about { gap: 30px; }
-  .project-grid { grid-template-columns: repeat(2, 1fr); }
-  .detail-content { grid-template-columns: 1fr; gap: 30px; }
+@media(max-width:900px) {
+  .work-grid { columns: 2; }
+  .hero { min-height: 400px; }
 }
 
-@media(max-width: 550px) {
-  nav { height: 60px; padding: 0 5%; }
-  .logo { font-size: 18px; }
-  .nav-right { gap: 15px; font-size: 12px; }
-  .hero { min-height: auto; padding: 55px 6% 50px; }
-  .hero-title { font-size: 19vw; margin: 55px 0 40px; }
-  .hero-title span { margin-left: 5%; }
-  .hero-bottom { grid-template-columns: 1fr; gap: 25px; }
-  .hero-description { font-size: 14px; }
-  #work { padding: 70px 6%; }
-  .section-heading { margin-bottom: 25px; }
-  .section-heading p { font-size: 11px; }
-  .category-grid { grid-template-columns: 1fr; gap: 35px; }
-  .category-image { aspect-ratio: 16/10; }
-  .category-name { font-size: 30px; }
-  .about { padding: 65px 6%; grid-template-columns: 1fr; gap: 25px; }
-  .about-text { font-size: 15px; }
-  footer { padding: 25px 6%; font-size: 10px; }
-  #panel { padding: 35px 6% 70px; }
-  .project-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 25px 12px; }
-  .project-name { font-size: 15px; }
-  .project-year { font-size: 10px; }
-  .project-role { font-size: 11px; }
-  .detail-title { font-size: 36px; }
-  #intro { font-size: 14px; }
-  .detail-thumbs { grid-template-columns: repeat(3,1fr); }
+@media(max-width:600px) {
+  nav { height: 65px; }
+  .nav-links { gap: 13px; font-size: 11px; }
+  .hero { padding: 90px 6%; min-height: 380px; }
+  .hero h1 { letter-spacing: -2px; }
+  .hero-bottom { align-items: start; flex-direction: column; }
+  .section { padding: 45px 5% 70px; }
+  .work-grid { columns: 2; column-gap: 12px; }
+  .work-card { margin-bottom: 23px; }
+  .work-name { font-size: 13px; }
+  .work-category { display: none; }
+  #detail { padding: 25px 6% 70px; }
+  .detail-top { flex-direction: column; gap: 8px; }
+  .detail-content { grid-template-columns: 1fr; gap: 18px; }
+  .detail-gallery { gap: 8px; }
+  footer { gap: 20px; flex-wrap: wrap; }
 }
 </style>
 </head>
@@ -523,543 +406,512 @@ footer a { text-decoration: none; }
 <body>
 
 <nav>
-  <div class="logo">ZENG PEI ZHEN.</div>
-  <div class="nav-right">
-    <a href="#work">WORK</a>
-    <a href="#about">ABOUT</a>
-    <a href="mailto:mailto:jane940410@gmail.com">CONTACT</a>
+  <a href="#" class="logo" onclick="goHome();return false;">ZENG PEI ZHEN</a>
+
+  <div class="nav-links">
+    <a href="#works" onclick="goHome()">WORKS</a>
+    <a href="#about" onclick="goHome()">ABOUT</a>
+    <a href="mailto:">CONTACT</a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HOME -->
 
-<section class="hero">
-  <div class="hero-top">
-    <div class="hero-label">PORTFOLIO</div>
-    <div class="hero-number">VISUAL CREATOR · TAIWAN</div>
-  </div>
+<main id="home">
 
-  <h1 class="hero-title">
-    CREATIVE
-    <span>VISUAL.</span>
-  </h1>
+  <header class="hero">
+    <div class="hero-small">PORTFOLIO / 2024—2026</div>
 
-  <div class="hero-bottom">
-    <div>
-      <div class="hero-description">
-        影像、設計、3D。<br>
-        Exploring stories through images, motion and space.
-      </div>
+    <h1>Selected<br>Works.</h1>
+
+    <div class="hero-bottom">
+      <p class="hero-description">
+        曾珮甄 Zeng Pei Zhen<br>
+        影像製作、視覺設計與 3D 動畫。
+        <br>
+        Exploring images, motion and visual storytelling.
+      </p>
+
+      <div class="hero-year">TAIWAN / 2026</div>
+    </div>
+  </header>
+
+  <section class="section" id="works">
+
+    <div class="section-header">
+      <h2>Selected Works</h2>
+      <span>PROJECTS / 01—22</span>
     </div>
 
-    <div>
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="good/head.mp4" type="video/mp4">
-      </video>
-      <div class="hero-caption">
-      </div>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterWorks('ALL',this)">ALL</button>
+      <button class="filter-btn" onclick="filterWorks('VIDEO',this)">VIDEO</button>
+      <button class="filter-btn" onclick="filterWorks('DESIGN',this)">DESIGN</button>
+      <button class="filter-btn" onclick="filterWorks('3D',this)">3D</button>
     </div>
-  </div>
-</section>
 
-<!-- WORK -->
+    <div class="work-grid" id="workGrid"></div>
 
-<section id="work">
-  <div class="section-heading">
-    <h2>SELECTED<br>WORKS.</h2>
-    <p>01 — 03 / EXPLORE MY WORK</p>
-  </div>
+  </section>
 
-  <div class="category-grid">
+  <section class="section" id="about">
+    <div class="section-header">
+      <h2>About</h2>
+      <span>ABOUT ME</span>
+    </div>
 
-    <button class="category" onclick="openList('VIDEO')">
-      <div class="category-image">
-        <img src="good/ca.webp" alt="Video works" loading="lazy">
-      </div>
-      <div class="category-info">
-        <span class="category-name">VIDEO</span>
-        <span class="category-count">09 PROJECTS ↗</span>
-      </div>
-    </button>
+    <p style="font-size:16px;line-height:2;max-width:600px;">
+      曾珮甄 Zeng Pei Zhen<br>
+      影像創作者，關注影像敘事、視覺設計與 3D 動畫。
+      喜歡透過不同媒材探索畫面與故事的可能性。
+    </p>
+  </section>
 
-    <button class="category" onclick="openList('DESIGN')">
-      <div class="category-image">
-        <img src="good/table.webp" alt="Design works" loading="lazy">
-      </div>
-      <div class="category-info">
-        <span class="category-name">DESIGN</span>
-        <span class="category-count">10 PROJECTS ↗</span>
-      </div>
-    </button>
+</main>
 
-    <button class="category" onclick="openList('3D')">
-      <div class="category-image">
-        <img src="good/com.webp" alt="3D works" loading="lazy">
-      </div>
-      <div class="category-info">
-        <span class="category-name">3D</span>
-        <span class="category-count">04 PROJECTS ↗</span>
-      </div>
-    </button>
+<!-- DETAIL PAGE -->
 
-  </div>
-</section>
+<section id="detail">
 
-<!-- ABOUT -->
+  <button class="back-btn" onclick="goHome()">
+    ← BACK TO WORKS
+  </button>
 
-<section class="about" id="about">
-  <div>
-    <div class="about-small">A LITTLE ABOUT ME</div>
-    <h2>HELLO,<br>I'M ZENG.</h2>
+  <div class="detail-top">
+    <h1 class="detail-title" id="detailTitle"></h1>
+    <div class="detail-meta" id="detailMeta"></div>
   </div>
 
-  <div>
-    <div class="about-text">
+  <div class="detail-media" id="detailMedia"></div>
 
-      從拍攝、剪輯到平面設計與 3D 製作，
-      持續嘗試不同媒材，並在作品中尋找視覺與敘事之間的可能性。
-
-      <br><br>
-
-      I create visual stories through film, design and 3D animation.
+  <div class="detail-content">
+    <div class="detail-label">PROJECT INFORMATION</div>
+    <div class="detail-description" id="detailDescription"></div>
   </div>
+
+  <div class="detail-gallery" id="detailGallery"></div>
+
 </section>
 
 <footer>
-  <span>© 2026 ZENG PEI ZHEN</span>
-  <a href="mailto:mailto:jane940410@gmail.com">GET IN TOUCH ↗</a>
+  <span>ZENG PEI ZHEN</span>
+  <span>PORTFOLIO © 2026</span>
 </footer>
 
-<!-- PROJECT OVERLAY -->
-
-<div id="overlay">
-
-  <div class="overlay-nav">
-    <button onclick="goBack()" id="backBtn">← BACK</button>
-    <div id="overlayTitle">VIDEO</div>
-    <button onclick="closeOverlay()">CLOSE ✕</button>
-  </div>
-
-  <div id="panel">
-
-    <div id="projectGrid" class="project-grid"></div>
-
-    <div id="detail">
-      <div class="detail-top">
-        <span>PROJECT DETAILS</span>
-        <span id="detailCategory"></span>
-      </div>
-
-      <h1 class="detail-title" id="detailTitle"></h1>
-
-      <div class="detail-content">
-        <div class="detail-media">
-          <img id="imgViewer" alt="Project image">
-          <iframe id="player"
-            title="Project video"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-          <div class="detail-thumbs" id="detailThumbs"></div>
-        </div>
-
-        <div id="intro"></div>
-      </div>
-
-      <div class="detail-footer">
-        <button onclick="goBack()">← ALL PROJECTS</button>
-        <span>END OF PROJECT</span>
-      </div>
-    </div>
-
-  </div>
+<div id="imageViewer" onclick="this.style.display='none'">
+  <img id="viewerImage" src="">
 </div>
 
 <script>
 
-/* ================= PROJECT DATA ================= */
+/* ==================================
+   PROJECT DATA
+================================== */
 
-const projects = {
+const projects = [
 
-VIDEO: [
+/* VIDEO */
 
 {
-title: "與傷共行—那些尚未說完的事",
-image: "video/hurt.jpg",
-year: "2025",
-role: "攝影、剪輯",
-video: "https://www.youtube.com/embed/DDLpt_OMKXY",
-intro: `聚焦白色恐怖時期留下的歷史創傷，透過受難者、後代與助人工作者的視角，探討政治暴力對個人與社會的長期影響。<br><br>
-這部專題不只是靠訪談和資料整理來完成，而是花了很長的時間前往國家人權博物館、台南相關據點等地觀察與拍攝。<br><br>
-而在作品完成之後，我和伙伴也沒有停止對這個議題的關注，一直持續參與相關活動，並在過程中因為政治受難者呂昱、姚嘉文等人的分享與帶領，去了更多不同的地方，也接觸到更多相關團體。`
+ category:"VIDEO",
+ title:"與傷共行—那些尚未說完的事",
+ year:"2025",
+ role:"攝影、剪輯",
+ image:"video/hurt.jpg",
+ video:"https://www.youtube.com/embed/DDLpt_OMKXY",
+ description:`聚焦白色恐怖時期留下的歷史創傷，透過受難者、後代與助人工作者的視角，探討政治暴力對個人與社會的長期影響。<br><br>
+ 這部專題不只是靠訪談和資料整理來完成，而是花了很長的時間前往國家人權博物館、台南相關據點等地觀察與拍攝。<br><br>
+ 而在作品完成之後，我和伙伴也沒有停止對這個議題的關注，一直持續參與相關活動，並在過程中因為政治受難者呂昱、姚嘉文等人的分享與帶領，去了更多不同的地方，也接觸到更多相關團體。`
 },
 
 {
-title: "山溝",
-image: "video/ravine.png",
-year: "2024",
-role: "剪輯、場記",
-video: "https://www.youtube.com/embed/ANlh-9-dZR8",
-intro: `這是大一短片製作課的作品，我主要負責剪輯與場記工作。<br><br>
-作品獲得校內影展的最佳影片，對當時的我來說是一個重要的鼓勵。<br>
-不過回頭看，這次經驗更大的意義在於學習敘事故事的基本概念。`
+ category:"VIDEO",
+ title:"山溝",
+ year:"2024",
+ role:"剪輯、場記",
+ image:"video/ravine.png",
+ video:"https://www.youtube.com/embed/ANlh-9-dZR8",
+ description:`這是大一短片製作課的作品，我主要負責剪輯與場記工作。<br><br>
+ 作品獲得校內影展的最佳影片，對當時的我來說是一個重要的鼓勵。<br><br>
+ 不過回頭看，這次經驗更大的意義在於學習敘事故事的基本概念。`
 },
 
 {
-title: "Sony收你的創意－影視製作工作坊",
-image: "video/sony.png",
-year: "2025",
-role: "導演",
-video: "https://www.youtube.com/embed/YSA-ws8PeJo",
-intro: `這部片為參加「Sony收你的創意－影視製作工作坊」所完成的一分鐘廣告短片，我在裡面擔任導演，負責設計分鏡、拍攝現場調度。拍攝團隊共六人，雖然是小型編制但我們還是有專業分工，而在現場也有業界導演的指導，能直接學習實際拍攝流程。`
+ category:"VIDEO",
+ title:"Sony 收你的創意－影視製作工作坊",
+ year:"2025",
+ role:"導演",
+ image:"video/sony.png",
+ video:"https://www.youtube.com/embed/YSA-ws8PeJo",
+ description:`這部片為參加「Sony收你的創意－影視製作工作坊」所完成的一分鐘廣告短片，我在裡面擔任導演，負責設計分鏡、拍攝現場調度。拍攝團隊共六人，雖然是小型編制但我們還是有專業分工，而在現場也有業界導演的指導，能直接學習實際拍攝流程。`
 },
 
 {
-title: "從污名到教育—愛滋風險不分族群",
-image: "video/aids.jpg",
-year: "2025",
-role: "攝影、剪輯",
-video: "https://www.youtube.com/embed/D-h27S7wz5s",
-intro: `探討愛滋議題中長期存在的社會污名，並重新釐清「感染風險不等於性傾向」的觀念。<br><br>
-內容從台灣同婚合法化後的社會現況出發，對比醫療進步與觀念停滯的落差，進一步指出感染關鍵在於不安全性行為，而非特定族群。`
+ category:"VIDEO",
+ title:"從污名到教育—愛滋風險不分族群",
+ year:"2025",
+ role:"攝影、剪輯",
+ image:"video/aids.jpg",
+ video:"https://www.youtube.com/embed/D-h27S7wz5s",
+ description:`探討愛滋議題中長期存在的社會污名，並重新釐清「感染風險不等於性傾向」的觀念。<br>
+ 內容從台灣同婚合法化後的社會現況出發，對比醫療進步與觀念停滯的落差，進一步指出感染關鍵在於不安全性行為，而非特定族群。`
 },
 
 {
-title: "創傷到馨生—犯保協會的重建之路",
-image: "video/crime.jpg",
-year: "2025",
-role: "攝影、剪輯",
-video: "https://www.youtube.com/embed/_tzyIj1j39Q",
-intro: `聚焦《犯罪被害人權益保障法》修法後的實際影響，探討犯罪被害人在面對創傷與現實壓力時，制度與社會支持如何介入並協助復原。`
+ category:"VIDEO",
+ title:"創傷到馨生—犯保協會的重建之路",
+ year:"2025",
+ role:"攝影、剪輯",
+ image:"video/crime.jpg",
+ video:"https://www.youtube.com/embed/_tzyIj1j39Q",
+ description:`聚焦《犯罪被害人權益保障法》修法後的實際影響，探討犯罪被害人在面對創傷與現實壓力時，制度與社會支持如何介入並協助復原。`
 },
 
 {
-title: "窄房",
-image: "video/narrowhouse.png",
-year: "2025",
-role: "攝影助理",
-video: "https://www.youtube.com/embed/ODA4hvMLTbk",
-intro: `2025｜攝影助理`
+ category:"VIDEO",
+ title:"窄房",
+ year:"2025",
+ role:"攝影助理",
+ image:"video/narrowhouse.png",
+ video:"https://www.youtube.com/embed/ODA4hvMLTbk",
+ description:"2025｜攝影助理"
 },
 
 {
-title: "滿園文旦成廢果 農民收成化泡影？",
-image: "video/wendan.jpg",
-year: "2025",
-role: "攝影、剪輯",
-video: "https://www.youtube.com/embed/7ZRsVUVbRbg",
-intro: `關注文旦產業在颱風後所面臨的衝擊，從農民實際損失出發，延伸至農會與政府的因應措施，嘗試在災害報導中呈現個體經驗與制度回應之間的關係。`
+ category:"VIDEO",
+ title:"滿園文旦成廢果 農民收成化泡影？",
+ year:"2025",
+ role:"攝影、剪輯",
+ image:"video/wendan.jpg",
+ video:"https://www.youtube.com/embed/7ZRsVUVbRbg",
+ description:`關注文旦產業在颱風後所面臨的衝擊，從農民實際損失出發，延伸至農會與政府的因應措施，嘗試在災害報導中呈現個體經驗與制度回應之間的關係。`
 },
 
 {
-title: "中正傳播營回顧片",
-image: "video/camp.png",
-year: "2025",
-role: "活動紀錄",
-video: "https://www.youtube.com/embed/k5CRxQ0rPTc",
-intro: `需要在兩天半的營隊中，快速整理大量素材，並在有限時間內完成剪輯。<br><br>
-這培養了我對畫面篩選和節奏掌握的能力，也讓我在拍攝階段更有意識地去規劃每個畫面，讓素材在剪輯時能更順利運用。`
+ category:"VIDEO",
+ title:"中正傳播營回顧片",
+ year:"2025",
+ role:"活動紀錄",
+ image:"video/camp.png",
+ video:"https://www.youtube.com/embed/k5CRxQ0rPTc",
+ description:`需要在兩天半的營隊中，快速整理大量素材，並在有限時間內完成剪輯。<br><br>
+ 這培養了我對畫面篩選和節奏掌握的能力，也讓我在拍攝階段更有意識地去規劃每個畫面，讓素材在剪輯時能更順利運用。`
 },
 
 {
-title: "出去走走｜劇情短片",
-image: "video/gogo.jpg",
-year: "2025",
-role: "企劃、拍攝、剪輯",
-video: "https://www.youtube.com/embed/iD759dRtgIY",
-intro: `這部片從發想、拍攝到剪輯都是由我獨立完成，透過簡單的情境與畫面，呈現彰化各個角落的樣貌。<br><br>
-獲得第6屆「彰化百工百味－影片創作獎徵選」佳作。`
+ category:"VIDEO",
+ title:"出去走走｜劇情短片",
+ year:"2025",
+ role:"獨立製作",
+ image:"video/gogo.jpg",
+ video:"https://www.youtube.com/embed/iD759dRtgIY",
+ description:`這部片從發想、拍攝到剪輯都是由我獨立完成，透過簡單的情境與畫面，呈現彰化各個角落的樣貌。<br><br>
+ 獲得第6屆「彰化百工百味－影片創作獎徵選」佳作。`
+},
+
+/* DESIGN */
+
+{
+ category:"DESIGN",
+ title:"移面之詞主視覺",
+ year:"2026",
+ role:"主視覺設計",
+ image:"design/shift.jpg",
+ description:`移工議題 Podcast 節目的主視覺設計，以各國人物頭像作為主要視覺元素，象徵多元文化。排列方式反映移工在社會中既具個體性又同時被整體觀看的狀態。<br><br>
+ 此設計也延伸應用於 Instagram 等社群平台，以建立節目整體辨識度與視覺一致性。<br><br>
+ <a href="https://open.spotify.com/show/20a4tHLrIjfd6AYD8qEasJ" target="_blank">Podcast 連結 ↗</a><br>
+ <a href="https://www.instagram.com/listener.chiayi/" target="_blank">Instagram ↗</a>`
+},
+
+{
+ category:"DESIGN",
+ title:"第17屆瘋影展海報",
+ year:"2025",
+ role:"海報設計",
+ image:"design/filmfestival.png",
+ description:`除了海報設計之外，也發想以「三格排版」作為貼文形式，並負責分配組員製作其他相關美宣素材及社群貼文。<br><br>
+ <a href="https://www.instagram.com/ccu_crazyfilmfestival/" target="_blank">Instagram ↗</a>`
+},
+
+{
+ category:"DESIGN",
+ title:"中正傳播營海報",
+ year:"2024",
+ role:"海報設計",
+ image:"design/communicationcamp.jpg",
+ description:`除了海報設計之外，也負責製作社群貼文，讓整體宣傳保持一致的視覺風格。<br><br>
+ <a href="https://www.instagram.com/comcamp.21th/" target="_blank">Instagram ↗</a>`
+},
+
+{
+ category:"DESIGN",
+ title:"中正之聲2024主視覺",
+ year:"2024",
+ role:"視覺設計",
+ image:"design/voiceofzhongzheng.jpg",
+ description:`把麥克風擬人化，頭戴耳機、靠在音響旁，使聲音變得具象、有情緒。`
+},
+
+{
+ category:"DESIGN",
+ title:"Y2K 活動海報",
+ year:"2025",
+ role:"3D建模、平面設計",
+ image:"design/eye.png",
+ video:"https://www.youtube.com/embed/xkD5bGxKV48",
+ description:`透過3D建模詮釋Y2K風格，並結合平面海報的視覺風格進行呈現。`
+},
+
+{
+ category:"DESIGN",
+ title:"中正E報主視覺",
+ year:"2026",
+ role:"整體視覺設計",
+ image:"design/fb.png",
+ description:`負責整體主視覺系統設計，涵蓋 YouTube、Instagram、Facebook、官網與新聞素材製作，並延伸至 ETV 動畫視覺統一與風格規劃。<br><br>
+ 透過一致性的視覺語言建立品牌辨識度，讓跨平台內容在不同媒介中仍維持完整識別系統。<br><br>
+ <a href="https://www.youtube.com/@ENewsCCU" target="_blank">YouTube ↗</a><br>
+ <a href="https://www.instagram.com/enews_ccucom/" target="_blank">Instagram ↗</a><br>
+ <a href="https://www.facebook.com/ccuenews/" target="_blank">Facebook ↗</a><br>
+ <a href="https://enews.ccu.edu.tw/" target="_blank">官網 ↗</a>`
+},
+
+{
+ category:"DESIGN",
+ title:"萬聖節活動海報",
+ year:"2025",
+ role:"3D建模、視覺設計",
+ image:"design/ghost.jpg",
+ video:"https://www.youtube.com/embed/8K3tOsqboSA",
+ description:`以3D建模呈現塑膠袋材質，將鬼置入夾鏈袋中，打造具有記憶點的萬聖節活動海報。`
+},
+
+{
+ category:"DESIGN",
+ title:"第二十三屆新傳獎海報",
+ year:"2025",
+ role:"海報設計",
+ image:"design/news.png",
+ description:`以「漣漪」為主題，透過擴散的圓，象徵訊息傳播的影響力與持續擴張的過程。`
+},
+
+{
+ category:"DESIGN",
+ title:"夢核風格活動海報",
+ year:"2025",
+ role:"3D建模、視覺設計",
+ image:"design/one.png",
+ video:"https://www.youtube.com/embed/UsbZP1pJT28",
+ description:`整體畫面以3D建模完成，呈現夢核的氛圍。`
+},
+
+{
+ category:"DESIGN",
+ title:"《溫度回收計畫》專輯封面",
+ year:"2025",
+ role:"封面設計",
+ image:"design/temperature.png",
+ description:`樂團「失溫電影院」的專輯封面（未發行）。整體以黑色背景搭配顆粒質感。<br><br>
+ 畫面主體是電影院座椅，並以熱成像色彩呈現，藍色比例較高，暗示情緒冷卻的狀態，呼應專輯「溫度」概念。<br><br>
+ <a href="https://canva.link/fyirqdhulyrtu2v" target="_blank">專輯裝幀設計 ↗</a>`
+},
+
+/* 3D */
+
+{
+ category:"3D",
+ title:"世賢圖書館展場模擬",
+ year:"2026",
+ role:"3D場景建模",
+ image:"d/shixian/shixian1.jpg",
+ gallery:[
+  "d/shixian/shixian2.jpg",
+  "d/shixian/shixian3.jpg",
+  "d/shixian/shixian4.png",
+  "d/shixian/shixian5.png"
+ ],
+ description:"世賢圖書館展場空間模擬。"
+},
+
+{
+ category:"3D",
+ title:"嘉義市圖書館展場模擬",
+ year:"2026",
+ role:"3D場景建模",
+ image:"d/library/library1.jpg",
+ gallery:[
+  "d/library/library2.jpg",
+  "d/library/library3.jpg",
+  "d/library/library4.jpg"
+ ],
+ description:"嘉義市圖書館展場空間模擬。"
+},
+
+{
+ category:"3D",
+ title:"昨日世界 Official MV",
+ year:"2026",
+ role:"CGI特效",
+ image:"d/yestoday.jpg",
+ video:"https://www.youtube.com/embed/-nZzZwZ2bx4",
+ description:"2026｜CGI特效"
+},
+
+{
+ category:"3D",
+ title:"《數字之外》動畫",
+ year:"2026",
+ role:"3D動畫",
+ image:"good/number.jpg",
+ video:"https://www.youtube.com/embed/Hv6MFsGStpw",
+ description:"2026｜3D動畫"
 }
 
-],
+];
 
-DESIGN: [
+/* ==================================
+   RENDER WORKS
+================================== */
 
-{
-title: "移面之詞主視覺",
-image: "design/shift.jpg",
-year: "2026",
-role: "主視覺設計",
-intro: `移工議題 Podcast 節目的主視覺設計，以各國人物頭像作為主要視覺元素，象徵多元文化。排列方式反映移工在社會中既具個體性又同時被整體觀看的狀態。<br><br>
-此設計也延伸應用於 Instagram 等社群平台，以建立節目整體辨識度與視覺一致性。<br><br>
-🔗 <a href="https://open.spotify.com/show/20a4tHLrIjfd6AYD8qEasJ?si=4795ed5a1cef41ef" target="_blank" rel="noopener">Podcast連結</a><br>
-🔗 <a href="https://www.instagram.com/listener.chiayi/" target="_blank" rel="noopener">IG連結</a>`
-},
+const grid = document.getElementById("workGrid");
 
-{
-title: "第17屆瘋影展海報",
-image: "design/filmfestival.png",
-year: "2025",
-role: "海報、社群視覺",
-intro: `除了海報設計之外，也發想以「三格排版」作為貼文形式，並負責分配組員製作其他相關美宣素材及社群貼文。<br><br>
-🔗 <a href="https://www.instagram.com/ccu_crazyfilmfestival/" target="_blank" rel="noopener">IG連結</a>`
-},
+function renderWorks(category="ALL") {
 
-{
-title: "中正傳播營海報",
-image: "design/communicationcamp.jpg",
-year: "2024",
-role: "海報、社群設計",
-intro: `除了海報設計之外，也負責製作社群貼文，讓整體宣傳保持一致的視覺風格。<br><br>
-🔗 <a href="https://www.instagram.com/comcamp.21th/" target="_blank" rel="noopener">IG連結</a>`
-},
+  grid.innerHTML = "";
 
-{
-title: "中正之聲2024主視覺",
-image: "design/voiceofzhongzheng.jpg",
-year: "2024",
-role: "主視覺設計",
-intro: `把麥克風擬人化，頭戴耳機、靠在音響旁，使聲音變得具象、有情緒。`
-},
+  const list = projects.filter(p =>
+    category === "ALL" || p.category === category
+  );
 
-{
-title: "活動海報設計",
-image: "design/eye.png",
-year: "2025",
-role: "3D建模、平面設計",
-video: "https://www.youtube.com/embed/xkD5bGxKV48",
-intro: `透過3D建模詮釋Y2K風格，並結合平面海報的視覺風格進行呈現。`
-},
+  list.forEach((p) => {
 
-{
-title: "中正E報主視覺",
-image: "design/fb.png",
-year: "2026",
-role: "整體視覺設計",
-intro: `負責整體主視覺系統設計，涵蓋 YouTube、Instagram、Facebook、官網與新聞素材製作，並延伸至 ETV 動畫視覺統一與風格規劃。<br><br>
-透過一致性的視覺語言建立品牌辨識度，讓跨平台內容在不同媒介中仍維持完整識別系統。<br><br>
-🔗 <a href="https://www.youtube.com/@ENewsCCU" target="_blank" rel="noopener">YouTube連結</a><br>
-🔗 <a href="https://www.instagram.com/enews_ccucom/" target="_blank" rel="noopener">IG連結</a><br>
-🔗 <a href="https://www.facebook.com/ccuenews/" target="_blank" rel="noopener">FB連結</a><br>
-🔗 <a href="https://enews.ccu.edu.tw/" target="_blank" rel="noopener">官網連結</a>`
-},
-
-{
-title: "活動海報設計",
-image: "design/ghost.jpg",
-year: "2025",
-role: "3D建模、平面設計",
-video: "https://www.youtube.com/embed/8K3tOsqboSA",
-intro: `以3D建模呈現塑膠袋材質，將鬼置入夾鏈袋中，打造具有記憶點的萬聖節活動海報。`
-},
-
-{
-title: "第二十三屆新傳獎海報",
-image: "design/news.png",
-year: "2025",
-role: "海報設計",
-intro: `以「漣漪」為主題，透過擴散的圓，象徵訊息傳播的影響力與持續擴張的過程。`
-},
-
-{
-title: "活動海報設計",
-image: "design/one.png",
-year: "2025",
-role: "3D建模、平面設計",
-video: "https://www.youtube.com/embed/UsbZP1pJT28",
-intro: `整體畫面以3D建模完成，呈現夢核的氛圍。`
-},
-
-{
-title: "《溫度回收計畫》專輯封面",
-image: "design/temperature.png",
-year: "2025",
-role: "專輯封面設計",
-intro: `樂團「失溫電影院」的專輯封面（未發行）。整體以黑色背景搭配顆粒質感。<br><br>
-畫面主體是電影院座椅，並以熱成像色彩呈現，藍色比例較高，暗示情緒冷卻的狀態，呼應專輯「溫度」概念。<br><br>
-🔗 <a href="https://canva.link/fyirqdhulyrtu2v" target="_blank" rel="noopener">專輯裝幀設計</a>`
-}
-
-],
-
-"3D": [
-
-{
-title: "世賢圖書館展場模擬",
-image: "d/shixian/shixian1.jpg",
-year: "2025",
-role: "3D建模、場景設計",
-images: [
-"d/shixian/shixian2.jpg",
-"d/shixian/shixian3.jpg",
-"d/shixian/shixian4.png",
-"d/shixian/shixian5.png"
-],
-intro: `圖書館展場空間模擬，透過3D建模呈現展場配置與空間視覺。`
-},
-
-{
-title: "嘉義市圖書館展場模擬",
-image: "d/library/library1.jpg",
-year: "2025",
-role: "3D建模、場景設計",
-images: [
-"d/library/library2.jpg",
-"d/library/library3.jpg",
-"d/library/library4.jpg"
-],
-intro: `以3D建模進行圖書館展場模擬，呈現空間配置與整體視覺。`
-},
-
-{
-title: "昨日世界 Official MV",
-image: "d/yestoday.jpg",
-year: "2026",
-role: "CGI特效",
-video: "https://www.youtube.com/embed/-nZzZwZ2bx4",
-intro: `2026｜CGI特效`
-},
-
-{
-title: "《數字之外》動畫",
-image: "good/number.jpg",
-year: "2026",
-role: "3D動畫",
-video: "https://www.youtube.com/embed/Hv6MFsGStpw",
-intro: `2026｜3D動畫`
-}
-
-]
-
-};
-
-/* ================= INTERACTION ================= */
-
-const overlay = document.getElementById("overlay");
-const projectGrid = document.getElementById("projectGrid");
-const detail = document.getElementById("detail");
-const backBtn = document.getElementById("backBtn");
-const overlayTitle = document.getElementById("overlayTitle");
-const imgViewer = document.getElementById("imgViewer");
-const player = document.getElementById("player");
-const intro = document.getElementById("intro");
-const detailThumbs = document.getElementById("detailThumbs");
-
-let currentCategory = "";
-let currentProject = null;
-
-function openList(type) {
-  currentCategory = type;
-  overlay.style.display = "block";
-  document.body.style.overflow = "hidden";
-
-  overlayTitle.textContent = type;
-  backBtn.style.display = "none";
-
-  detail.style.display = "none";
-  projectGrid.style.display = "grid";
-
-  projectGrid.innerHTML = "";
-
-  projects[type].forEach((project, index) => {
     const card = document.createElement("article");
-    card.className = "project-card";
-    card.onclick = () => openProject(index);
+    card.className = "work-card";
 
     card.innerHTML = `
-      <div class="project-thumb">
-        <img src="${project.image}" alt="${project.title}" loading="lazy">
+      <div class="work-image">
+        <img src="${p.image}" alt="${p.title}" loading="lazy">
       </div>
-      <div class="project-meta">
-        <span class="project-name">${project.title}</span>
-        <span class="project-year">${project.year || ""}</span>
+
+      <div class="work-info">
+        <div>
+          <div class="work-name">${p.title}</div>
+          <div class="work-year">${p.year}</div>
+        </div>
+        <div class="work-category">${p.category}</div>
       </div>
-      <div class="project-role">${project.role || ""}</div>
     `;
 
-    projectGrid.appendChild(card);
+    card.onclick = () => openProject(p);
+
+    grid.appendChild(card);
+  });
+}
+
+/* FILTER */
+
+function filterWorks(category,btn) {
+
+  document.querySelectorAll(".filter-btn").forEach(b => {
+    b.classList.remove("active");
   });
 
-  window.scrollTo(0,0);
-  overlay.scrollTop = 0;
+  btn.classList.add("active");
+
+  renderWorks(category);
 }
 
-function openProject(index) {
-  const project = projects[currentCategory][index];
-  currentProject = project;
+/* ==================================
+   PROJECT DETAIL
+================================== */
 
-  projectGrid.style.display = "none";
+function openProject(p) {
+
+  document.getElementById("home").style.display = "none";
+
+  const detail = document.getElementById("detail");
   detail.style.display = "block";
 
-  backBtn.style.display = "block";
-  overlayTitle.textContent = currentCategory;
+  document.getElementById("detailTitle").textContent = p.title;
 
-  document.getElementById("detailCategory").textContent =
-    `${project.year || ""} / ${project.role || ""}`;
+  document.getElementById("detailMeta").textContent =
+    `${p.year}  /  ${p.role}`;
 
-  document.getElementById("detailTitle").textContent =
-    project.title;
+  const media = document.getElementById("detailMedia");
 
-  imgViewer.src = project.image;
-  imgViewer.style.display = project.image ? "block" : "none";
+  media.innerHTML = "";
 
-  player.style.display = "none";
-  player.src = "";
+  if(p.video) {
 
-  if(project.video) {
-    player.src = project.video + "?autoplay=1&mute=1&rel=0";
-    player.style.display = "block";
+    media.innerHTML = `
+      <iframe
+        src="${p.video}?autoplay=0"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    `;
+
+  } else {
+
+    const img = document.createElement("img");
+    img.src = p.image;
+    img.onclick = () => showImage(p.image);
+    img.style.cursor = "zoom-in";
+    media.appendChild(img);
+
   }
 
-  intro.innerHTML = project.intro || "";
+  document.getElementById("detailDescription").innerHTML =
+    p.description || "";
 
-  detailThumbs.innerHTML = "";
+  const gallery = document.getElementById("detailGallery");
 
-  if(project.images && project.images.length) {
-    project.images.forEach(src => {
-      const image = document.createElement("img");
-      image.src = src;
-      image.alt = project.title;
-      image.loading = "lazy";
+  gallery.innerHTML = "";
 
-      image.onclick = () => {
-        imgViewer.src = src;
-        imgViewer.style.display = "block";
-      };
+  if(p.gallery) {
 
-      detailThumbs.appendChild(image);
+    p.gallery.forEach(src => {
+
+      const img = document.createElement("img");
+      img.src = src;
+      img.loading = "lazy";
+      img.onclick = () => showImage(src);
+
+      gallery.appendChild(img);
+
     });
+
   }
 
-  overlay.scrollTop = 0;
+  window.scrollTo({top:0,behavior:"instant"});
+
 }
 
-function stopMedia() {
-  player.src = "";
-  player.style.display = "none";
+/* BACK */
+
+function goHome() {
+
+  document.getElementById("detail").style.display = "none";
+  document.getElementById("home").style.display = "block";
+
+  document.getElementById("detailMedia").innerHTML = "";
+
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function goBack() {
-  stopMedia();
+/* IMAGE VIEWER */
 
-  detail.style.display = "none";
-  projectGrid.style.display = "grid";
+function showImage(src) {
 
-  backBtn.style.display = "none";
-  overlayTitle.textContent = currentCategory;
+  document.getElementById("viewerImage").src = src;
 
-  overlay.scrollTop = 0;
+  document.getElementById("imageViewer").style.display = "flex";
+
 }
 
-function closeOverlay() {
-  stopMedia();
+/* INITIALIZE */
 
-  overlay.style.display = "none";
-  document.body.style.overflow = "";
-
-  currentProject = null;
-}
-
-document.addEventListener("keydown", event => {
-  if(event.key === "Escape" && overlay.style.display === "block") {
-    if(detail.style.display === "block") {
-      goBack();
-    } else {
-      closeOverlay();
-    }
-  }
-});
+renderWorks();
 
 </script>
 
